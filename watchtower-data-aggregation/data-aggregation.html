@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Watchtower Observatory</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Watchtower Observatory</h1>
+    <p class="tagline">"<i>For nothing is hidden that will not become evident...</i>"</p>
+    <div class="links-container">
+	  <a href="http://wt.local" class="link-item">WT.local</a>
+	  <a href="http://192.168.0.185/tool.html" class="link-item">Sankey Generation Tool</a>
+      <a href="https://wt-secure-redirect.local/#/dashboards?q=event.module%3Azeek%20AND%20file.mime_type%3Aapplication%2a%20AND%20NOT%20file.mime_type%3A%22application%2Fxml%22%20AND%20NOT%20file.mime_type%3A%22application%2Fzip%22%20AND%20NOT%20file.mime_type%3A%22application%2Fvnd.ms-pol%22%20AND%20NOT%20%22application%2Fx-ms-shortcut%22%20AND%20NOT%20%22application%2Fpdf%22%20AND%20NOT%20%22application%2Fsoap%2Bxml%22%20%7C%20groupby%20source.ip%20destination.port%20destination.ip%20file.mime_type%20file.name%20%7C%20groupby%20-maximize%20-sankey%20source.ip%20destination.port%20destination.ip%20file.mime_type%20file.name%20%7C%20groupby%20file.source%20%7C%20groupby%20-pie%20file.name&z=America%2FChicago&el=100&gl=500&rt=24&rtu=hours" class="link-item">24H All Possibly Executable Code Intercepted Sankey</a>
+      <a href="https://wt-secure-redirect.local/#/dashboards?q=event.module%3Azeek%20AND%20file.mime_type%3Aimage%2a%20AND%20NOT%20file.mime_type%3A%22application%2Fxml%22%20AND%20NOT%20file.mime_type%3A%22application%2Fvnd.ms-pol%22%20AND%20NOT%20%22application%2Fx-ms-shortcut%22%20AND%20NOT%20%22application%2Fpdf%22%20AND%20NOT%20%22application%2Fsoap%2Bxml%22%20%7C%20groupby%20source.ip%20destination.ip%20file.mime_type%20file.name%20%7C%20groupby%20-maximize%20-sankey%20source.ip%20destination.ip%20file.mime_type%20file.name%20%7C%20groupby%20file.source%20%7C%20groupby%20-pie%20file.name&z=America%2FChicago&el=100&gl=500&rt=12&rtu=hours" class="link-item">12H All Images Intercepted Sankey</a>
+      <a href="https://wt-secure-redirect.local/kibana/app/dashboards#/view/0245be10-6ec1-11ea-9266-1fd14ca6af34?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-12h,to:now))" class="link-item">12H All Files Intercepted Elastic via Zeek & Strelka</a>
+      <a href="https://wt-secure-redirect.local/#/dashboards?q=event.dataset%3Azeek.weird%20AND%20NOT%20source.ip%3A%22192.168.0.9%22%20AND%20NOT%20source.ip%3A192.168.0.10%20AND%20NOT%20destination.ip%3A192.168.0.9%20AND%20NOT%20destination.ip%3A192.168.0.10%20AND%20NOT%20destination.ip%3A192.168.0.36%20AND%20NOT%20destination.ip%3A10.0.0.10%20AND%20NOT%20source.ip%3A192.168.0.97%20AND%20source.ip%3A192.168.0.37%20%7C%20groupby%20-maximize%20-sankey%20source.ip%20source.port%20weird.name%20destination.port%20destination.ip%20%7C%20groupby%20weird.name%20%7C%20groupby%20weird.additional_info%20%7C%20groupby%20source.ip%20%7C%20groupby%20destination.ip%20%7C%20groupby%20destination.port%20%7C%20groupby%20destination_geo.organization_name&z=America%2FChicago&el=100&gl=500&rt=24&rtu=hours" class="link-item">24H REDACTED Abnormal Behavior Sankey</a>
+      <a href="https://wt-secure-redirect.local/#/hunt?q=tags%3Aconn AND source.ip%3A192.168.0.8 | groupby -legend -sankey -maximize source.ip source.port destination.port destination.ip&z=America%2FChicago&el=100&gl=10&rt=24&rtu=hours" class="link-item">24H REDACTED All Connections</a>
+
+    </div>
+  </div>
+  <script src="animations.js"></script>
+</body>
+</html>
