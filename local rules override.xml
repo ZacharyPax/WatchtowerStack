@@ -1,0 +1,86 @@
+  <rule id="100002" level="0">
+    <if_sid>5716</if_sid>
+    <description>This rule makes Failed to Perform Privileged Action shut up</description>
+  </rule>
+
+  <rule id="100003" level="0">
+    <if_sid>5716</if_sid>
+    <description>This rule makes more of the Failed to Perform Privileged Actions shut up</description>
+  </rule>
+
+  <rule id="100004" level="0">
+    <if_sid>201</if_sid>
+    <description>This rule shuts up Wazuh flood alerts</description>
+  </rule>
+
+  <rule id="60107" level="0" overwrite="yes">
+    <if_sid>60104</if_sid>
+    <field name="win.system.eventID">^577$|^4673$</field>
+    <options>no_full_log</options>
+    <description>Failed attempt to perform a privileged operation.</description>
+    <mitre>
+      <id>T1078</id>
+    </mitre>
+    <group>gdpr_IV_32.2,hipaa_164.312.b,nist_800_53_AC.6,nist_800_53_AU.14,pci_dss_10.2.2,tsc_CC6.8,tsc_CC7.2,tsc_CC7.3,</group>
+  </rule>
+
+  <rule id="60110" level="16" overwrite="yes">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^628$|^642$|^685$|^4738$|^4781$</field>
+    <options>no_full_log</options>
+    <description>User account changed.</description>
+    <mitre>
+      <id>T1098</id>
+    </mitre>
+    <group>account_changed,gdpr_IV_32.2,gdpr_IV_35.7.d,gpg13_7.10,hipaa_164.312.a.2.I,hipaa_164.312.a.2.II,hipaa_164.312.b,nist_800_53_AC.2,nist_800_53_AC.7,nist_800_53_AU.14,nist_800_53_IA.4,pci_dss_10.2.5,pci_dss_8.1.2,tsc_CC6.8,</group>
+  </rule>
+
+  <rule id="23503" level="16" overwrite="yes">
+      <if_sid>23501</if_sid>
+      <options>no_full_log</options>
+      <field name="vulnerability.status">Active</field>
+      <field name="vulnerability.severity">Low</field>
+      <description>$(vulnerability.cve) affects $(vulnerability.package.name)</description>
+  </rule>
+
+  <rule id="23504" level="16" overwrite="yes">
+      <if_sid>23501</if_sid>
+      <options>no_full_log</options>
+      <field name="vulnerability.status">Active</field>
+      <field name="vulnerability.severity">Medium|Untriaged</field>
+      <description>$(vulnerability.cve) affects $(vulnerability.package.name)</description>
+  </rule>
+
+  <rule id="23505" level="16" overwrite="yes">
+      <if_sid>23501</if_sid>
+      <options>no_full_log</options>
+      <field name="vulnerability.status">Active</field>
+      <field name="vulnerability.severity">High</field>
+      <description>$(vulnerability.cve) affects $(vulnerability.package.name)</description>
+  </rule>
+
+  <rule id="23506" level="16" overwrite="yes">
+      <if_sid>23501</if_sid>
+      <options>no_full_log</options>
+      <field name="vulnerability.status">Active</field>
+      <field name="vulnerability.severity">Critical</field>
+      <description>$(vulnerability.cve) affects $(vulnerability.package.name)</description>
+  </rule>
+
+  <rule id="554" level="16" overwrite="yes">
+    <category>ossec</category>
+    <decoded_as>syscheck_new_entry</decoded_as>
+    <description>File added to the system.</description>
+    <group>syscheck,syscheck_entry_added,syscheck_file,pci_dss_11.5,gpg13_4.11,gdpr_II_5.1.f,hipaa_164.312.c.1,hipaa_164.312.c.2,nist_800_53_SI.7,tsc_PI1.4,tsc_PI1.5,tsc_CC6.1,tsc_CC6.8,tsc_CC7.2,tsc_CC7.3,</group>
+  </rule>
+
+</group>
+<group name="windows-usb-detect,">
+  <rule id="111000" level="16">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^6416$</field>
+    <match>USBSTOR\\Disk</match>
+    <options>no_full_log</options>
+    <description>Windows: A USB device called $(win.eventdata.deviceDescription) was connected to $(win.system.computer)</description>
+  </rule>
+</group>
