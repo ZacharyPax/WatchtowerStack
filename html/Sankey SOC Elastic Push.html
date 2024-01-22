@@ -102,7 +102,7 @@
 	  const hours = document.getElementById('hours').value;
       
       const portUrl = 'https://wt-secure-redirect.local/#/dashboards?q=destination.port%3A';
-      const ipv4Url = 'https://we-secure-redirect.local/#/dashboards?q=%2a%20AND%20source.ip%3A%22' + ipv4 + '%22%20%7C%20groupby%20-maximize%20-sankey%20source.ip%20destination.ip%20destination.port&z=America%2FChicago&el=100&gl=10&rt=' + hours + '&rtu=hours';
+      const ipv4Url = 'https://wt-secure-redirect.local/#/dashboards?q=%2a%20AND%20source.ip%3A%22' + ipv4 + '%22%20%7C%20groupby%20-maximize%20-sankey%20source.ip%20destination.ip%20destination.port&z=America%2FChicago&el=100&gl=10&rt=' + hours + '&rtu=hours';
       
       if (portNumber) {
         const redirectUrl = portUrl + portNumber + '%20%7C%20groupby%20-maximize%20-legend%20-maximize%20-sankey%20source.ip%20destination.ip%20destination.port&z=America%2FChicago&el=100&gl=10&rt=' + hours + '&rtu=hours';
