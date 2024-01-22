@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Watchtower Stack Sankey Generation Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #222;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 1300px;
+      margin: 50px auto;
+      background-color: #333;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+    }
+    .content {
+      flex: 1;
+      text-align: left;
+      padding-right: 20px;
+    }
+    h1 {
+      font-size: 28px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 20px;
+      color: #aaa;
+      margin-bottom: 20px;
+    }
+    p {
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: calc(100% - 20px);
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #777;
+      background-color: #444;
+      color: #fff;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-right: 10px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .side-image {
+      flex: 1;
+    }
+    .side-image img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <h1>Watchtower Stack Sankey Generation Tool</h1>
+      <h2>"The shrewd one sees the danger and conceals himself"</h2>
+      <p>Enter either the destination port number OR the source IPv4 address to redirect to David AND the amount of hours to query:</p>
+      <form id="redirectForm">
+        <input type="text" id="portNumber" placeholder="Destination port">
+        <br>
+        <input type="text" id="ipv4" placeholder="Source IPv4">
+        <br>
+		<input type="text" id="hours" placeholder="Hours to query">
+        <br>
+        <button type="submit">Generate</button>
+        <a href="http://wt.local/" class="back-button"><button type="button">WT.local</button></a>
+      </form>
+    </div>
+    <div class="side-image">
+      <img src="https://i.imgur.com/nw47G4z.jpg" alt="Penguinie is a cutie pie">
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('redirectForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const portNumber = document.getElementById('portNumber').value;
+      const ipv4 = document.getElementById('ipv4').value;
+	  const hours = document.getElementById('hours').value;
+      
+      const portUrl = 'https://wt-secure-redirect.local/#/dashboards?q=destination.port%3A';
+      const ipv4Url = 'https://we-secure-redirect.local/#/dashboards?q=%2a%20AND%20source.ip%3A%22' + ipv4 + '%22%20%7C%20groupby%20-maximize%20-sankey%20source.ip%20destination.ip%20destination.port&z=America%2FChicago&el=100&gl=10&rt=' + hours + '&rtu=hours';
+      
+      if (portNumber) {
+        const redirectUrl = portUrl + portNumber + '%20%7C%20groupby%20-maximize%20-legend%20-maximize%20-sankey%20source.ip%20destination.ip%20destination.port&z=America%2FChicago&el=100&gl=10&rt=' + hours + '&rtu=hours';
+        window.location.href = redirectUrl;
+      } else if (ipv4) {
+        window.location.href = ipv4Url;
+      }
+    });
+  </script>
+</body>
+</html>
