@@ -17,4 +17,6 @@ Korah: Dashy; ICMP Status Checker
 
 David: Security Onion (ELK Stack; Redis; Suricata; Zeek; Strelka; Stenographer)
 
+Manasseh: Ubuntu Server Installation for keeping extremely long-term historical data on network connections (over 2 years capacity expected)
+
 
