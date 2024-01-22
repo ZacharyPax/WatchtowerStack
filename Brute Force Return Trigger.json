@@ -1,0 +1,11 @@
+{
+    "buckets_path": {
+        "_count": "_count"
+    },
+    "parent_bucket_path": "composite_agg",
+    "script": {
+        "source": "params._count > 3",
+        "lang": "painless"
+    },
+    "gap_policy": "skip"
+}
