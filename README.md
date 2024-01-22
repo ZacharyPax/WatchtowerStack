@@ -20,3 +20,4 @@ David: Security Onion (ELK Stack; Redis; Suricata; Zeek; Strelka; Stenographer)
 Manasseh: Ubuntu Server Installation for keeping extremely long-term historical data on network connections (over 2 years capacity expected)
 
 
+![Watchtower Data Flow](https://i.imgur.com/3dDJ9Of.jpg)
