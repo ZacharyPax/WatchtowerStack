@@ -1,8 +1,9 @@
 # Watchtower Stack
-Repository for configuration files and information on the Watchtower Stack
+## "The shrewd one sees the danger and conceals himself"
 
-The Watchtower Stack is a collection of virutal machines used to collect extensive network and endpoint telemetry for the purpose of increasing environment security.
+### Repository for configuration files and information on the Watchtower Stack
 
+"Watchtower" is a hardware server cluster running the Linux-based free and open-source hypervisor “Proxmox Virtual Environment.” Watchtower’s design provides extensive visibility into your network, with additional alerting capabilities based on network traffic and system telemetry to ensure maximum network security. To accomplish this, Watchtower ingests data from endpoints and the network directly.
 
 
 Currently, Watchtower consists of the following virtual machines:
