@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# This script should be ran at system startup before starting David virtual machine
+# This script should be ran at system startup on the hypervisor before starting David virtual machine
 # You can use/create an rc.local systemd service if you want this to run automatically
 
 # turns off swap on hypervisor (if you have very high IOPS you can remove this line)
