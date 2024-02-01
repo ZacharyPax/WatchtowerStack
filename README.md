@@ -27,13 +27,20 @@ Here are the key virtual machines that constitute the Watchtower Stack:
 
 1. **Vashti:**
    - Prometheus Database
+      - Collects real-time information from mission-critical servers
+      - RAM, CPU, Network, Disk, Windows Services, and more
    - HTTPd for piping data into Elasticsearch
 
 2. **Jehoahaz:**
    - Grafana for alerting
+      - Allows the creation of custom alerts from Prometheus and Elastic
+      - Send alerts to Discord, Teams, email, and more
 
 3. **Hezekiah:**
    - Wazuh Stack
+        - Monitors endpoint events
+        - Custom rules allow for monitoring directories, file tampering, etc.
+        - Alerts to email and SMS via email-to-SMS relay services
    - Postfix
 
 4. **Korah:**
@@ -42,6 +49,7 @@ Here are the key virtual machines that constitute the Watchtower Stack:
 
 5. **David:**
    - Security Onion
+     - Main data ingest virtual machine
      - ELK Stack
      - Redis
      - Suricata
