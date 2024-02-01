@@ -55,11 +55,11 @@ sections:
         icon: https://avatars.githubusercontent.com/u/2678585?s=280&v=4
         url: https://192.168.0.138:8006/
         id: 6_1932_proxmoxhypervisor
-      - title: Proxmox QNAP
+      - title: Proxmox PBS
         description: RAID0 Proxmox Backup Server
         icon: https://avatars.githubusercontent.com/u/2678585?s=280&v=4
-        url: https://192.168.0.116:8007/
-        id: 7_1932_proxmoxqnap
+        url: https://192.168.0.167:8007/
+        id: 7_1932_proxmoxsynology
     displayData:
       sortBy: default
       rows: 1
