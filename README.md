@@ -1,24 +1,47 @@
 # Watchtower Stack
+
 ## "The shrewd one sees the danger and conceals himself"
 
-### Repository for configuration files and information on the Watchtower Stack
+Welcome to the Watchtower Stack repository! 🚀 This repository houses configuration files and essential information for the Watchtower Stack, a robust hardware server cluster powered by the Linux-based, free, and open-source hypervisor, Proxmox Virtual Environment.
 
-"Watchtower" is a hardware server cluster running the Linux-based free and open-source hypervisor “Proxmox Virtual Environment.” Watchtower’s design provides extensive visibility into your network, with additional alerting capabilities based on network traffic and system telemetry to ensure maximum network security. To accomplish this, Watchtower ingests data from endpoints and the network directly.
+### Overview
 
+Watchtower is meticulously designed to offer comprehensive visibility into your network, coupled with advanced alerting capabilities based on network traffic and system telemetry. This ensures top-notch network security by ingesting data from endpoints and the network itself.
 
-Currently, Watchtower consists of the following virtual machines:
+### Virtual Machines
 
-Vashti: Prometheus; HTTPd for piping data into Elasticsearch
+Here are the key virtual machines that constitute the Watchtower Stack:
 
-Jehoahaz: Grafana for alerting
+1. **Vashti:**
+   - Prometheus Database
+   - HTTPd for piping data into Elasticsearch
 
-Hezekiah: Wazuh Stack; Postfix
+2. **Jehoahaz:**
+   - Grafana for alerting
 
-Korah: Dashy; ICMP Status Checker
+3. **Hezekiah:**
+   - Wazuh Stack
+   - Postfix
 
-David: Security Onion (ELK Stack; Redis; Suricata; Zeek; Strelka; Stenographer)
+4. **Korah:**
+   - Dashy
+   - ICMP Status Checker
 
-Manasseh: Ubuntu Server Installation for keeping extremely long-term historical data on network connections (over 2 years capacity expected)
+5. **David:**
+   - Security Onion
+     - ELK Stack
+     - Redis
+     - Suricata
+     - Zeek
+     - Strelka
+     - Stenographer
 
+6. **Manasseh:**
+   - Ubuntu Server Installation
+     - Maintains extremely long-term historical data on network connections (over 2 years capacity expected)
+
+### Watchtower Data Flow
 
 ![Watchtower Data Flow](https://i.imgur.com/3dDJ9Of.jpg)
+
+
