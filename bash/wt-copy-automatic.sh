@@ -15,5 +15,5 @@ thedayiwant=$(date -d "$today - 1 day" "+%Y-%m-%d")
 # shove yesterday into putty scp 
 wtforensiccopy="pscp -pw REDACTED-PASSWORD -r notroot@192.168.0.119:/nsm/zeek/logs/$thedayiwant Watchtower-Forensic-Datastore/"
 
-# Run your command
+# the command with the day in it
 $wtforensiccopy
