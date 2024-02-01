@@ -19,6 +19,7 @@ Watchtower is meticulously designed to offer comprehensive visibility into your 
 7. Easy-to-use interface via custom HTML and Dashy
 8. Ultra-long-term forensic storage of network connections indexed by Zeek via the Watchtower-Forensic Datastore
 9. A global dashboard to monitor network and system status from all data ingest points via Grafana
+10. So much more! (Wow!)
 
 ### Virtual Machines
 
