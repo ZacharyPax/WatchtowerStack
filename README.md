@@ -53,7 +53,7 @@ Here are the key virtual machines that constitute the Watchtower Stack:
    - Ubuntu Server Installation
      - Maintains extremely long-term historical data on network connections (over 2 years capacity expected)
 
-### Watchtower Data Flow
+### Watchtower Stack Data Flow
 
 ![Watchtower Data Flow](https://i.imgur.com/3dDJ9Of.jpg)
 
