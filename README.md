@@ -59,7 +59,7 @@ Here are the key virtual machines that constitute the Watchtower Stack:
 
 6. **Manasseh:**
    - Ubuntu Server Installation
-     - Maintains extremely long-term historical data on network connections (over 2 years capacity expected)
+     - Maintains extremely long-term historical data on network connections (over ten years capacity expected)
 
 ### Watchtower Stack Data Flow
 
