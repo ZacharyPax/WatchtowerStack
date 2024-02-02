@@ -1,0 +1,7 @@
+# Lucene query used for alerting in Grafana.
+# For full query information see Grafana alerting YAML.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+# CRITICAL: Worm Detected
+
+"ET WORM" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata AND NOT "ET EXPLOIT MS-SQL SQL Injection closing string plus line comment"

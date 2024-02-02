@@ -1,0 +1,7 @@
+# Lucene query used for alerting in Grafana.
+# For full query information see Grafana alerting YAML.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+# Unauthorized VMware Access (192.168.13.4)
+
+tags:ssl AND !source.ip:192.168.0.179 AND !source.ip:192.168.0.177 AND destination.ip:192.168.13.4 AND !source.ip:192.168.10.22

@@ -1,0 +1,7 @@
+# Lucene query used for alerting in Grafana.
+# For full query information see Grafana alerting YAML.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+# Likely Telnet Activity
+
+destination.port:23

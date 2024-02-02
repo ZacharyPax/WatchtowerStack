@@ -1,0 +1,7 @@
+# Lucene query used for alerting in Grafana.
+# For full query information see Grafana alerting YAML.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+# Likely Probing/Scanning (MS Terminal Server Traffic on Non-standard Port)
+
+event.dataset:*alert AND rule.name:"ET SCAN MS Terminal Server Traffic on Non-standard Port" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata

@@ -1,0 +1,7 @@
+# Lucene query used for alerting in Grafana.
+# For full query information see Grafana alerting YAML.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+# SSH Intrusion Detection
+
+tags:ssh AND !source.ip:192.168.0.111 AND !source.ip:192.168.0.157 AND !source.ip:192.168.0.179 AND !source.ip:192.168.0.177 AND !source.ip:192.168.0.30 AND !source.ip:192.168.0.38 AND !source.ip:192.168.0.36 AND !source.ip:192.168.0.201 AND !source.ip:192.168.0.68 AND !source.ip:192.168.0.121 AND !source.ip:192.168.0.37 AND !source.ip:192.168.0.136 AND !destination.ip:192.168.0.136 AND !source.ip:192.168.0.117 AND !destination.ip:192.168.0.117 AND !destination.ip:192.168.0.118 AND !source.ip:192.168.0.118 AND !source.ip:192.168.0.143

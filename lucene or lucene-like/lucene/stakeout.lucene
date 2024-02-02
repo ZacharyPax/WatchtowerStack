@@ -1,0 +1,8 @@
+# Lucene query used for alerting in Grafana.
+# For full query information see Grafana alerting YAML.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+# Possible Exploitation of Vulnerable Webserver
+# This monitors Stakeout's garbage.
+
+destination.port:8091 AND destination.ip:192.168.0.11 AND !source.ip:192.168.0.36 and !source.ip:192.168.2.104
