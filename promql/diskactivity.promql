@@ -1,0 +1,6 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates rate of disk activity averaged over the last five minutes.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+rate(windows_logical_disk_writes_total{volume =~ "C:|S:|F:"}[5m])+rate(windows_logical_disk_reads_total{volume =~ "C:|S:|F:"}[5m])

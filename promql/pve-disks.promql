@@ -1,0 +1,9 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# These queries calculate the used disk space of various disks on the hypervisor
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+pve_disk_usage_bytes{id="storage/adam/local-lvm"}/1000000000000
+pve_disk_usage_bytes{id="storage/adam/RAIDZ-Moses"}/1000000000000
+pve_disk_usage_bytes{id="storage/adam/Watchtower-Synology"}/1000000000000
+sum(pve_disk_usage_bytes)/1000000000000
