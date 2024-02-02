@@ -1,0 +1,7 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates the DNS queries per second averaged over a three-minute period. This relies on Windows telemetry.
+# The stack is capable of calculating this from network ingest too, but it is much less efficient.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+sum by (protocol) (rate(windows_dns_queries_total[3m]))
