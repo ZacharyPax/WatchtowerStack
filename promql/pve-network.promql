@@ -1,0 +1,6 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates rate of network activity on Proxmox averaged over the last 45 seconds. The math converts it to megabits per second.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+((rate(pve_network_receive_bytes[45s]))*8)/1000000
