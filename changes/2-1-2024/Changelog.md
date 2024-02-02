@@ -12,6 +12,8 @@ Created rule to alert when Shared Services VPN is connected to
 
 Added a new Watchtower Observatory button for H: drive access without background SMB radiation noise from group policy and whatnot
 
+Whitelisted Manasseh for Watchtower-Forensic copying over SFTP/SCP
+
 Other minor bug fixes and syntax improvements
 
 
