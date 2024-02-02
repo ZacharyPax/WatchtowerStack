@@ -1,0 +1,6 @@
+# This file represents a Lucene Onion Query Language (OQL) query that returns all H: Drive SMB Requests in our environment on the Security Onion Dashboard.
+# This query filters out SysVol noise from Active Directory/Group Policy.
+# This query is incorporated in Watchtower Observatory.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+tags:smb_files AND NOT file.name: "Policies" AND NOT file.path: "\\\\newpdc.rec.local\\SysVol" AND NOT file.path: "\\\\arcadiadc.rec.local\\SysVol" AND NOT file.path: "\\\\ArcadiaDC.rec.local\\SysVol" AND NOT file.path: "\\\\NEWPDC\\NETLOGON" AND NOT file.path: "\\\\192.168.0.9\\print$" AND NOT file.path: "\\\\newpdc.rec.local\\NETLOGON" AND NOT file.path: "\\\\ArcadiaDC.rec.local\\NETLOGON" AND NOT file.path: "\\\\ARCADIADC\\NETLOGON" AND NOT file.path: "\\\\newpdc\\NETLOGON" AND NOT file.path: "\\\\arcadiadc.rec.local\\NETLOGON" AND NOT file.path: "\\\\arcadiadc\\NETLOGON" AND (file.path:"\\\\192.168.0.9\\Data" OR "\\\\arcadiadc.rec.local\\data" OR "\\\\arcadiadc\data" OR "\\\\192.168.0.9\\data") AND NOT file.name: "<share_root>" AND NOT file.name: "FIXITP~1\\LAUNCH~1.EXE" AND NOT file.name:"AutoRun.inf" | groupby file.action | groupby file.path | groupby file.name | groupby -sankey source.ip file.name destination.ip | groupby source.ip | groupby destination.ip | groupby destination.port

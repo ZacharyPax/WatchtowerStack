@@ -1,0 +1,5 @@
+# This file represents a Lucene Onion Query Language (OQL) query that returns Zeek "weird" traffic from iVUE Vault on the Security Onion Dashboard.
+# This query is incorporated in Watchtower Observatory.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+event.dataset:zeek.weird AND NOT source.ip:"192.168.0.9" AND NOT source.ip:192.168.0.10 AND NOT destination.ip:192.168.0.9 AND NOT destination.ip:192.168.0.10 AND NOT destination.ip:192.168.0.36 AND NOT destination.ip:10.0.0.10 AND NOT source.ip:192.168.0.97 AND source.ip:192.168.0.37 | groupby -sankey source.ip source.port weird.name destination.port destination.ip | groupby weird.name | groupby weird.additional_info | groupby source.ip | groupby destination.ip | groupby destination.port | groupby destination_geo.organization_name
