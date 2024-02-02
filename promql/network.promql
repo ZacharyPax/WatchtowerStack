@@ -1,0 +1,6 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates rate of network activity averaged over the last five minutes and multiplies it in such a way that it reports in megabits per second.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+sum by (job) (rate(windows_net_bytes_sent_total[5m]) + rate(windows_net_bytes_received_total[5m]))*0.000008
