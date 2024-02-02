@@ -1,0 +1,7 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates average CPU usage on the system over a two minute period and returns a number that represents the percentage of CPU usage.
+# Part of this query was written by the Prometheus Community.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+avg by (job) (rate(windows_cpu_processor_utility_total[2m])/rate(windows_cpu_processor_rtc_total[2m]))
