@@ -1,0 +1,2 @@
+"<directories check_all=""yes"" realtime=""yes"">C:\Users\USERNAME\Downloads</directories>
+<ignore type=""sregex"">.log$|.htm$|.jpg$|.png$|.chm$|.pnf$|.evtx$|.tmp$|.pdf$|.csv$|.xls$|.doc$|.docx$|.xlsx$|.crdownload$|.msg$|.heic$|.crdownload$|.mp4$|.cmf2$|.png$|.webp$|.pptx$|.ppt$</ignore>"
