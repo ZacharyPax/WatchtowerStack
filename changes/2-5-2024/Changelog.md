@@ -14,6 +14,8 @@ QEMU Guest Integration Fixed on Vashti
 
 Moved Korah to Moses to make room for Vashti on Eve (see image) 
 
+Rebalanced RAM allocations for guests (101, 102, 103, 105) (see Proxmox qemu configs)
+
 
 Result of changes:
 
