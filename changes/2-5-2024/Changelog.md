@@ -12,6 +12,8 @@ Properly installed VirtIO Red Hat drivers on Vashti
 
 QEMU Guest Integration Fixed on Vashti
 
+Moved Korah to Moses to make room for Vashti on Eve (see image) 
+
 
 Result of changes:
 
