@@ -1,14 +1,14 @@
 # Future improvements in consideration/development
 
 * VirusTotal integration on all files downloaded on our endpoints
-  * This has a pretty clear path forward for development and would honestly not take very long to implement.
+  * This has a pretty clear path forward for development and would honestly not take very long to implement.
  
 * Move all Ubuntu VMs and Windows 10 VM to Oracle Linux or Rocky Linux.
-  * In addition, the merger of Vashti, Jehoahaz, and Korah should be possible now.
-  * It is probably wise to wait for additional hardware because I will want this to be high-availability so I can work on components without losing visibility in the mean time.
+  * In addition, the merger of Vashti, Jehoahaz, and Korah should be possible now.
+  * It is probably wise to wait for additional hardware because I will want this to be high-availability so I can work on components without losing visibility in the mean time.
 
 * Create a functional Strelka UI based on Strelka UI project
-  * The proof of concept already works, but there are some bugs. Probably because I'm firewalling Strelka through Security Onion.
+  * The proof of concept already works, but there are some bugs. Probably because I'm firewalling Strelka through Security Onion.
  
 * Replace Dashy installation with all custom HTML
 
