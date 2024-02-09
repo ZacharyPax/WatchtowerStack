@@ -1,6 +1,6 @@
 # Watchtower Stack
-
 ## "The shrewd one sees the danger and conceals himself"
+![GPLv3](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)
 
 Welcome to the Watchtower Stack repository! 🚀 This repository houses configuration files and essential information for the Watchtower Stack, a robust hardware server cluster powered by the Linux-based, free, and open-source hypervisor, Proxmox Virtual Environment.
 
