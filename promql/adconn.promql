@@ -1,0 +1,6 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates the average rate per minute of LDAP connections opened over a 5 minute period.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+rate(windows_ad_ldap_opened_connections_total[5m])*60
