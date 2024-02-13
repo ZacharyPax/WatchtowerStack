@@ -1,0 +1,6 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates the average rate of active directory database operations over a ten minute period and returns the per-minute average.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+rate(windows_ad_database_operations_total[10m])*60
