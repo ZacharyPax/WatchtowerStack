@@ -1,0 +1,7 @@
+# Lucene query used for alerting in Grafana.
+# For full query information see Grafana alerting YAML.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+# SMB Lateral Movement Detected
+
+tags:smb* AND NOT source.ip:192.168.0.9 AND NOT source.ip:192.168.0.10 AND NOT destination.ip:192.168.0.9 AND NOT destination.ip:192.168.0.10 AND NOT destination.ip:192.168.0.16 AND NOT destination.ip:192.168.3.185 AND NOT source.ip:192.168.0.48 AND NOT destination.ip:192.168.0.48 AND NOT source.ip:192.168.0.8
