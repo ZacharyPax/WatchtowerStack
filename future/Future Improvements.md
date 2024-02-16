@@ -1,5 +1,5 @@
 # Future improvements in consideration/development
----
+
 # Completed Improvements
 
 * Detection for lateral movement via SMB on any non-approved devices.
@@ -7,7 +7,7 @@
 
 * VirusTotal integration on all files downloaded on our endpoints
   * This has a pretty clear path forward for development and would honestly not take very long to implement.
----
+
 # Improvements still in development/consideration
  
 * Move all Ubuntu VMs and Windows 10 VM to Oracle Linux or Rocky Linux.
