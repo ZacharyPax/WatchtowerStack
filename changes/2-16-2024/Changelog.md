@@ -10,6 +10,8 @@ In other words, all files downloaded are now automatically scanned on VirusTotal
 
 In addition, various registry key FIM checks had to be whitelisted to prevent Wazuh from flooding VirusTotal with registry keys.
 
+Add more lists for DNS blocking.
+
 Result of changes:
 
 Greatly improved endpoint security and additional visibility.
