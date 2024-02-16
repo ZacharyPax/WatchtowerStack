@@ -1,4 +1,4 @@
-Our Wazuh installation is different than most. I’ve configured this by setting email notifications on level 16, which is not used for any alerts, and then manually I overwrite the alerting level of various alerts to get the alerts I want. Other alerts are achieved by OpenSearch alerting with custom JSON.
+Our Wazuh installation is different than most. I’ve configured this by setting email notifications to level 16, which is not used for any alerts, and then I manually overwrite the alerting level of various alerts to get the alerts I want to fire off. Other alerts are achieved by OpenSearch alerting with custom JSON.
 
 The byproduct of this approach is that you need to know what you're doing. This is especially true with integrations, such as VirusTotal.
 
