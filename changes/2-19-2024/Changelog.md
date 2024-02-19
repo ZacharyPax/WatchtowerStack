@@ -10,6 +10,8 @@ Added new button on Dashy to get to the software installation events dashboard
 
 Better image on Watchtower Observatory CSS
 
+Deploy Prometheus blackbox and add icmp logging of riverlandenergy.com to Grafana
+
 Result of changes:
 
 Bug fixes and increased visibility
