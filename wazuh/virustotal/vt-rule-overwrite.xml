@@ -31,7 +31,7 @@
   <rule id="87105" level="16" overwrite="yes">
      <if_sid>87100</if_sid>
      <field name="virustotal.malicious">1</field>
-     <description>WATCHTOWER ALERT: $(virustotal.source.file) was detected as MALICIOUS by $(virustotal.positives) engines!</description>
+     <description>WATCHTOWER ALERT: $(virustotal.source.file) was detected as MALICIOUS by $(virustotal.positives) engine(s)!</description>
      <group>pci_dss_10.6.1,pci_dss_11.4,gdpr_IV_35.7.d,</group>
      <options>no_full_log</options>
      <mitre>
