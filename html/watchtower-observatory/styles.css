@@ -1,14 +1,6 @@
 
 body {
-  background: 
-    linear-gradient(135deg, #9509ed 0%, #002040 100%),
-    linear-gradient(225deg, #9509ed 0%, #002040 100%),
-    linear-gradient(315deg, #9509ed 0%, #002040 100%),
-    linear-gradient(45deg, #9509ed 0%, #002040 100%);
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  color: #ffffg;
+  background-image: url("https://wallpapercave.com/wp/wp9484643.jpg");
 }
 
 .container {
