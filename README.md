@@ -31,6 +31,7 @@ Here are the key virtual machines that constitute the Watchtower Stack:
       - Collects real-time information from mission-critical servers
       - RAM, CPU, Network, Disk, Windows Services, and more
    - HTTPd for piping data into Elasticsearch
+   - Blackbox for Prometheus
 
 2. **Jehoahaz:**
    - Grafana for alerting
