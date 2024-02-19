@@ -8,6 +8,8 @@ Created new dashboard for software installation events
 
 Added new button on Dashy to get to the software installation events dashboard
 
+Better image on Watchtower Observatory CSS
+
 Result of changes:
 
 Bug fixes and increased visibility
