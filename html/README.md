@@ -1,4 +1,4 @@
-This directory contains custom HTML used in Watchtower.
+This directory contains custom HTML used in Watchtower. This custom HTML is regarded as all being part of "Watchtower Observatory."
 
 Although Watchtower Observatory is quite specific to our environment, Sankey SOC Elastic Push can be super useful to anyone who wants people who are not super familiar with Lucene to use Security Onion's Sankey feature via Elasticsearch.
 
