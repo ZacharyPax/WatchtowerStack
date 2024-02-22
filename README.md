@@ -18,7 +18,7 @@ Watchtower is meticulously designed to offer comprehensive visibility into your 
 6. Automatic software inventory system via Wazuh 📒
 7. ARP table monitoring via Arpwatch (optional) 📋
 8. Easy-to-use interface via custom HTML and Dashy 🧠
-9. Ultra-long-term forensic storage of network connections indexed by Zeek via the Watchtower-Forensic Datastore 💾
+9. Ultra-long-term forensic storage of network connections via the Watchtower-Forensic Datastore & Zeek 💾
 10. A global dashboard to monitor network and system status from all data ingest points via Grafana 🆗
 11. So much more! (Wow!) 🎆
 
