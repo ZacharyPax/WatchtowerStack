@@ -2,6 +2,14 @@
 ## "The shrewd one sees the danger and conceals himself"
 ![GPLv3](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)
 
+> [!WARNING]
+> Incorrectly configuring various pieces of software in this stack can have catastrophic consequences. It is important to ensure that all network connections made between components are secure. If you have a good understanding of the components, this is easy, and there is generally no need to worry. However, if you do not know what you are doing it is possible to create grave security problems without even realizing it. If you plan to deploy this stack in part or in entirety, you must have a good understanding of how it operates PRIOR to deploying it in order to ensure you're doing so in a safe manner.
+
+> [!CAUTION]
+> If you are an electric cooperative or other service provider using services provided by the National Information Solutions Cooperative (NISC), there are additional configuration steps you need to perform to ensure that you are not invertedly surveilling sensitive information, as NISC sends most things including files to "iVUE Vault" unencrypted. Zeek/Strelka will decode these files in real-time and place them in the /nsm datastore on Security Onion, which can present a grave security risk should the stack be compromised.
+
+---
+
 Welcome to the Watchtower Stack repository! 🚀 This repository houses configuration files, scripts, and other essential information for the Watchtower Stack, a robust hardware server cluster powered by the Linux-based, free, and open-source hypervisor, Proxmox Virtual Environment.
 
 ### Overview
