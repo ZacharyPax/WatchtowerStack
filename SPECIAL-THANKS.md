@@ -1,4 +1,4 @@
-# Special Thanks for Contributions to Watchtower Stack
+# Special Thanks for Personal Contributions to Watchtower Stack
 
 Marissa Pax - College of Saint Benedict
 
