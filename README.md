@@ -18,16 +18,16 @@ Watchtower is meticulously designed to offer comprehensive visibility into your 
 
 ### Stack Features
 
-1. Network intrusion detection and monitoring via Security Onion 👀
-2. Full packet capture via Stenographer ✍🏻
-3. Full endpoint event visibility via Wazuh 🎫
-4. Automatic file hash inspection of downloaded files with VirusTotal 🔍
-5. Instantaneous status monitoring for mission-critical systems via Prometheus 💓
-6. Automatic software inventory system via Wazuh 📒
-7. ARP table monitoring via Arpwatch (optional) 📋
-8. Easy-to-use interface via custom HTML and Dashy 🧠
-9. Ultra-long-term forensic storage of network connections via the Watchtower-Forensic Datastore & Zeek 💾
-10. A global dashboard to monitor network and system status from all data ingest points via Grafana 🆗
+1. Network intrusion detection and monitoring via Security Onion 👀 (David)
+2. Full packet capture via Stenographer ✍🏻 (David)
+3. Full endpoint event visibility via Wazuh 🎫 (Hezekiah)
+4. Automatic file hash inspection of downloaded files with VirusTotal 🔍 (Hezekiah)
+5. Instantaneous status monitoring for mission-critical systems via Prometheus 💓 (Vashti)
+6. Automatic software inventory system via Wazuh 📒 (Hezekiah)
+7. ARP table monitoring via Arpwatch (optional) 📋 (Adam/Eve/Moses/Forensic Node)
+8. Easy-to-use interface via custom HTML and Dashy 🧠 (Korah & Vashti)
+9. Ultra-long-term forensic storage of network connections via the Watchtower-Forensic Datastore & Zeek 💾 (David & Manasseh)
+10. A global dashboard to monitor network and system status from all data ingest points via Grafana 🆗 (Jehoahaz)
 11. So much more! (Wow!) 🎆
 
 ### Virtual Machines
