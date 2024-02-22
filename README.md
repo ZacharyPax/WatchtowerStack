@@ -1,4 +1,4 @@
-# Watchtower Stack & Watchtower Observatory
+# 🔭 Watchtower Stack & Watchtower Observatory 🔭
 ## "The shrewd one sees the danger and conceals himself"
 ![GPLv3](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)
 
