@@ -13,7 +13,7 @@ Watchtower is meticulously designed to offer comprehensive visibility into your 
 1. Network intrusion detection and monitoring via Security Onion 👀
 2. Full packet capture via Stenographer ✍🏻
 3. Full endpoint event visibility via Wazuh 🎫
-4. Automatic file hash inspection for downloaded files with VirusTotal 🔍
+4. Automatic file hash inspection of downloaded files with VirusTotal 🔍
 5. Instantaneous status monitoring for mission-critical systems via Prometheus 💓
 6. Automatic software inventory system via Wazuh 📒
 7. ARP table monitoring via Arpwatch (optional) 📋
