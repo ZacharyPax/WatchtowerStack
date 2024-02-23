@@ -1,0 +1,23 @@
+{
+  "name": "watchtowerapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "build": {
+    "appId": "pax.zachary.watchtowerapp",
+    "productName": "Watchtower App",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "C:/Users/zpax/Desktop/wt.png"
+    }
+  }
+}
