@@ -6,7 +6,7 @@
 > Incorrectly configuring various pieces of software in this stack can have catastrophic consequences. It is important to ensure that all network connections made between components are secure. If you have a good understanding of the components, this is easy, and there is generally no need to worry. However, if you do not know what you are doing it is possible to create grave security problems without even realizing it. If you plan to deploy this stack in part or in entirety, you must have a good understanding of how it operates PRIOR to deploying it in order to ensure you're doing so in a safe manner.
 
 > [!CAUTION]
-> If you are an electric cooperative or other service provider using services provided by the National Information Solutions Cooperative (NISC), there are additional configuration steps you need to perform to ensure that you are not inadvertently surveilling/aggregating sensitive information, as NISC sends most things including files to "iVUE Vault" unencrypted. Zeek/Strelka will decode these files in real-time and place them in the /nsm datastore on Security Onion, which can present a grave security risk should the stack be compromised.
+> If you are an electric cooperative or other service provider using services provided by the National Information Solutions Cooperative (NISC), there are additional configuration steps you need to perform to ensure that you are not inadvertently surveilling/aggregating sensitive information, as NISC sends most things including files to "iVUE Vault" unencrypted. Zeek/Strelka will decode these files in real-time and place them in the /nsm datastore on Security Onion, which can present a severe security risk should the stack be compromised.
 
 ---
 
