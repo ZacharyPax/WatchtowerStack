@@ -14,6 +14,9 @@ Components created by Zachary Pax in this repository are licensed under the GPLv
 
 ---
 
+### Introduction
+
+
 Welcome to the Watchtower Stack repository! 🚀 This repository houses configuration files, scripts, and other essential information for the Watchtower Stack, a robust hardware server cluster powered by the Linux-based, free, and open-source hypervisor, Proxmox Virtual Environment.
 
 ### Overview
