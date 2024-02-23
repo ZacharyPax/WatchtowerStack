@@ -82,4 +82,8 @@ Here are the key virtual machines that constitute the Watchtower Stack:
 
 ![Watchtower Data Flow](https://i.imgur.com/3dDJ9Of.jpg)
 
+See Watchtower in action lol:
+
+https://www.youtube.com/watch?v=SLj8QChscic&list=LL&index=1
+
 
