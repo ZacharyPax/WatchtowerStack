@@ -17,3 +17,9 @@ B.A. Computer Science
 - Going as far as to spin up my environment on her equipment to verify if fixes work or not
 ---
 
+Md. Nazmur Sakib - Security Engineer - Wazuh Incorporated
+
+B.S. Computer Science
+
+- Providing documentation that complimented Ms. Gupta's suggestions in resolving the Wazuh FIM Registry undesired behavior in Watchtower 2.1.0 rc1
+---
