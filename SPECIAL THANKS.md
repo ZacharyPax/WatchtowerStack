@@ -1,4 +1,5 @@
 # Special Thanks for Personal Contributions to Watchtower Stack
+
 This page highlights individuals who made contributions either to assist me in developing various components of the Watchtower Stack, or who made direct personal contributions to the stack itself.
 ---
 
