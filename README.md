@@ -58,10 +58,12 @@ Here are the key virtual machines that constitute the Watchtower Stack:
         - Monitors endpoint events
         - Custom rules allow for monitoring directories, file tampering, etc.
         - Alerts to email and SMS via email-to-SMS relay services
+        - Wazuh FIM facilitates VirusTotal cryptographic hash searching on non-whitelisted downloaded files
    - Postfix
 
 4. **Korah:**
    - Dashy
+   - Experimental Strelka UI under development
    - ICMP Status Checker
 
 5. **David:**
@@ -77,6 +79,7 @@ Here are the key virtual machines that constitute the Watchtower Stack:
 6. **Manasseh:**
    - Ubuntu Server Installation
      - Maintains extremely long-term historical data on network connections (over ten years capacity expected)
+     - Target for the Watchtower Data Preservation script
 
 ### Watchtower Stack Data Flow
 
