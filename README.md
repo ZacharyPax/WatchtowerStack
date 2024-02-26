@@ -81,7 +81,7 @@ Here are the key virtual machines that constitute the Watchtower Stack:
      - Maintains extremely long-term historical data on network connections (over ten years capacity expected)
      - Target for the Watchtower Data Preservation script
 
-### Watchtower Stack Data Flow
+### Watchtower Stack 2.1.0 Data Flow
 
-![Watchtower Data Flow](https://i.imgur.com/3dDJ9Of.jpg)
+![Watchtower Data Flow](https://i.imgur.com/vAU1Ec6.jpeg)
 
