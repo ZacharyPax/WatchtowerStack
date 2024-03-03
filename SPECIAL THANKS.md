@@ -7,7 +7,7 @@ Marissa Pax - College of Saint Benedict
 B.A. English
 
 - Proofreading and revising private Watchtower Stack documentation (not in this repository)
-- Proofreading and revising Analysis of Watchtower's ability to Protect IT Environments (coming soon to this repository)
+- Proofreading and revising "An Analysis of the Practicality of Assessing Cryptographic Hashes for Malware Detection with VirusTotal and Wazuh File Integrity Monitoring"
 ---
 
 Stuti Gupta - Wazuh Team
