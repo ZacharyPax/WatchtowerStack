@@ -29,7 +29,7 @@ Watchtower is meticulously designed to offer comprehensive visibility into your 
 2. Full packet capture via Stenographer ✍🏻 (David)
 3. Full endpoint event visibility via Wazuh 🎫 (Hezekiah)
 4. Automatic file hash inspection of downloaded files with VirusTotal 🔍 (Hezekiah)
-5. Automatic file behavior analysis with YARA rules 🕵️ (Hezekiah)
+5. Automatic file behavior analysis with Yara rules 🕵️ (Hezekiah)
 6. Instantaneous status monitoring for mission-critical systems via Prometheus 💓 (Vashti)
 7. Automatic software inventory system via Wazuh 📒 (Hezekiah)
 8. ARP table monitoring via Arpwatch (optional) 📋 (Adam/Eve/Moses/Forensic Node)
@@ -86,3 +86,6 @@ Here are the key virtual machines that constitute the Watchtower Stack:
 
 ![Watchtower Data Flow](https://i.imgur.com/3E0inR9.jpeg)
 
+### Watchtower Stack 2.1.0 File Inspection Pipeline
+
+![Watchtower File Inspection](https://i.imgur.com/yGCr01m.jpeg)
