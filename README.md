@@ -88,4 +88,4 @@ Here are the key virtual machines that constitute the Watchtower Stack:
 
 ### Watchtower Stack 2.1.0 File Inspection Pipeline
 
-![Watchtower File Inspection](https://i.imgur.com/yGCr01m.jpeg)
+![Watchtower File Inspection](https://i.imgur.com/wTLnaOW.png)
