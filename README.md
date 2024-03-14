@@ -32,7 +32,7 @@ Watchtower is meticulously designed to offer comprehensive visibility into your 
 5. Automatic file behavior analysis with Yara rules 🕵️ (Hezekiah)
 6. Instantaneous status monitoring for mission-critical systems via Prometheus 💓 (Vashti)
 7. Automatic software inventory and vulnerability management system via Wazuh 📒 (Hezekiah)
-8. ARP table monitoring via Arpwatch (optional) 📋 (Adam/Eve/Moses/Forensic Node)
+8. ARP table monitoring via Arpwatch (optional) 📋 (Adam/Eve/Moses/Zipporah/Forensic Node)
 9. Easy-to-use interface via custom HTML and Dashy 🧠 (Korah & Vashti)
 10. Ultra-long-term forensic storage of network connections via the Watchtower-Forensic Datastore & Zeek 💾 (David & Manasseh)
 11. A global dashboard to monitor network and system status from all data ingest points via Grafana 🆗 (Jehoahaz)
