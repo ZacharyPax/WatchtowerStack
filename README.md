@@ -59,7 +59,7 @@ Here are the key virtual machines that constitute the Watchtower Stack:
         - Monitors endpoint events
         - Custom rules allow for monitoring directories, file tampering, etc.
         - Alerts to email and SMS via email-to-SMS relay services
-        - Wazuh FIM facilitates VirusTotal cryptographic hash searching on non-whitelisted downloaded files
+        - Wazuh FIM facilitates VirusTotal cryptographic hash inspection on non-whitelisted downloaded files
    - Postfix
 
 4. **Korah:**
