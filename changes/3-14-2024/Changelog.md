@@ -12,7 +12,7 @@ Fixed bugs and added Zipporah to Grafana Dashboard
 
 Fixed alerting due to SSH cluster communication on Grafana
 
-Added Dedicated network switch between Zipporah and Eve so that Jehoahaz, Hezekiah, and Vashti can communicate without entering Meraki stack
+Added dedicated network switch between Zipporah and Eve so that Jehoahaz, Hezekiah, and Vashti can communicate without entering Meraki stack
 
 Result of changes:
 
