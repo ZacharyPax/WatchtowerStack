@@ -36,7 +36,8 @@ Watchtower is meticulously designed to offer comprehensive visibility into your 
 9. Easy-to-use interface via custom HTML and Dashy 🧠 (Korah & Vashti)
 10. Ultra-long-term forensic storage of network connections via the Watchtower-Forensic Datastore & Zeek 💾 (David & Manasseh)
 11. A global dashboard to monitor network and system status from all data ingest points via Grafana 🆗 (Jehoahaz)
-12. So much more! (Wow!) 🎆
+12. A simple HTML interface to inventory all network devices ☑️ (Zechariah)
+13. So much more! (Wow!) 🎆
 
 ### Virtual Machines
 
@@ -81,6 +82,10 @@ Here are the key virtual machines that constitute the Watchtower Stack:
    - Ubuntu Server Installation
      - Maintains extremely long-term historical data on network connections (over ten years capacity expected)
      - Target for the Watchtower Data Preservation script
+    
+7. **Zechariah:**
+  - Ubuntu Server Installation
+    - Manages network device inventory with "Watch Your LAN"
 
 ### Watchtower Stack 2.1.0 Data Flow
 
