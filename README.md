@@ -84,8 +84,8 @@ Here are the key virtual machines that constitute the Watchtower Stack:
      - Target for the Watchtower Data Preservation script
     
 7. **Zechariah:**
-  - Ubuntu Server Installation
-    - Manages network device inventory with "Watch Your LAN"
+   - Ubuntu Server Installation
+     - Manages network device inventory with "Watch Your LAN"
 
 ### Watchtower Stack 2.1.0 Data Flow
 
