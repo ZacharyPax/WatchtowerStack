@@ -10,6 +10,8 @@ Whitelisted Rebekah talking to other nodes
 
 Connected Rebekah to Elijah
 
+Add Zechariah VM on Rebekah
+
 Result of changes:
 
 Increased computational power of cluster with NVME storage. New node for more compute too.
