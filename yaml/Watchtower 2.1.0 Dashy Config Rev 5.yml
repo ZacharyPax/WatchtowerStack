@@ -1,4 +1,4 @@
-appConfig:
+﻿appConfig:
   theme: colorful
   layout: auto
   iconSize: large
@@ -217,6 +217,12 @@ sections:
         url: >-
           https://192.168.0.138:8006/#v1:0:=qemu%2F105:4:=jsconsole:=contentBackup:::8::5
         id: 7_838_korahconsole
+      - title: Zechariah Console
+        description: Console on Zechariah (Network Inventory Server)
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: 'https://192.168.0.138:8006/#v1:0:=qemu%2F107:4:::::8::'
+        id: 8_838_zechariahconsole
   - name: Documentation
     displayData:
       sortBy: default
@@ -245,7 +251,6 @@ sections:
           https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg/1101px-Microsoft_Office_Word_%282019%E2%80%93present%29.svg.png
         url: >-
           REDACTED
-        id: 2_1370_watchtowerbasicmanual
       - title: Watchtower Installation
         description: Outline of Watchtower's Basic Installation Procedure
         icon: >-
@@ -267,3 +272,10 @@ sections:
         url: http://192.168.0.185/watchtower-data-aggregation/data-aggregation.html
         target: newtab
         id: 5_1370_watchtowerobservatory
+      - title: Network Inventory
+        description: Inventory of Network Devices
+        icon: >-
+          https://raw.githubusercontent.com/aceberg/WatchYourLAN/main/assets/logo.png
+        url: http://inventory.local
+        target: newtab
+        id: 6_1370_networkinventory
