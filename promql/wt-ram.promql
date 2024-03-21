@@ -1,0 +1,6 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates the approximate RAM usage of the entire Watchtower Stack.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+sum(pve_memory_usage_byes)/2/1000000000
