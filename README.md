@@ -7,10 +7,10 @@ Components created by Zachary Pax in this repository are licensed under the GNU 
 ![GPLv3](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)
 
 > [!WARNING]
-> Incorrectly configuring various pieces of software in this stack can have catastrophic consequences. It is important to ensure that all network connections made between components are secure. If you have a good understanding of the components, this is easy, and there is generally no need to worry. However, if you do not know what you are doing it is possible to create grave security problems without even realizing it. If you plan to deploy this stack in part or in entirety, you must have a good understanding of how it operates PRIOR to deploying it in order to ensure you're doing so in a safe manner.
+> The misconfiguration of any software within this stack could potentially lead to severe repercussions. It is of paramount importance to ascertain that all network connections established between components are secure. With a comprehensive understanding of the components, this task becomes straightforward, and there is typically no cause for concern. However, a lack of knowledge can inadvertently result in significant security vulnerabilities. Therefore, if you intend to deploy this stack, either partially or wholly, it is essential to have a thorough understanding of its operation prior to deployment to guarantee a secure implementation.
 
 > [!CAUTION]
-> If you are an electric cooperative or other service provider using services provided by the National Information Solutions Cooperative (NISC), there are additional configuration steps you need to perform to ensure that you are not inadvertently surveilling/aggregating sensitive information, as NISC sends most things including files to "iVUE Vault" unencrypted. Zeek/Strelka will decode these files in real-time and place them in the /nsm datastore on Security Onion, which can present a severe security risk should the stack be compromised.
+> If you represent an electric cooperative or any other service provider utilizing the services offered by the National Information Solutions Cooperative (NISC), it is crucial to undertake additional configuration measures. This is to prevent the unintentional surveillance or aggregation of sensitive information. NISC typically transmits a majority of data, including files, to the “iVUE Vault” in an unencrypted format. Tools such as Zeek/Strelka included in the Watchtower Stack and/or its components are capable of **decoding these files in real-time and storing them** in the /nsm datastore on Security Onion. This could potentially pose a significant security threat in the event of a compromise of the stack. Therefore, it is essential to ensure the proper configuration to maintain the security and integrity of your data.
 
 ---
 ### Introduction
@@ -19,7 +19,7 @@ Welcome to the repository for the Watchtower Stack. This repository contains con
 
 ### Overview
 
-The Watchtower Stack is designed with meticulous attention to detail to provide comprehensive visibility into your network. It features advanced alerting capabilities based on network traffic and system telemetry, ensuring superior network security by ingesting data from both endpoints and the network.
+The Watchtower Stack is designed with meticulous attention to detail to provide comprehensive visibility into your IT environment. It features advanced alerting capabilities based on network traffic and system telemetry, ensuring superior network security by ingesting data from both endpoints and the network.
 
 ### Features of the Stack
 
@@ -32,7 +32,7 @@ The Watchtower Stack offers a range of features:
   -  Automatic file behavior analysis with Yara rules (Hezekiah)
   -  Real-time status monitoring for mission-critical systems via Prometheus (Vashti)
   -  Automatic software inventory and vulnerability management system via Wazuh (Hezekiah)
-  -  ARP table monitoring via Arpwatch (optional) (Adam/Eve/Moses/Zipporah/Forensic Node/Zechariah)
+  -  ARP table monitoring via Arpwatch (Adam/Eve/Moses/Zipporah/Forensic Node/Rebekah)
   -  User-friendly interface via custom HTML and Dashy (Korah & Vashti)
   -  Long-term forensic storage of network connections via the Watchtower-Forensic Datastore & Zeek (David & Manasseh)
   -  A global dashboard to monitor network and system status from all data ingest points via Grafana (Jehoahaz)
