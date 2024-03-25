@@ -10,6 +10,8 @@ Added alert for Nmap OS detection probe
 
 Added alert for external Oracle T3 requests on the LAN
 
+Updated Security Onion to 2.4.60
+
 
 Result of changes:
 
