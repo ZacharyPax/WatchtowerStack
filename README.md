@@ -61,10 +61,10 @@ The Watchtower Stack comprises several key virtual machines:
    - Zechariah: An Ubuntu Server Installation that manages network device inventory with “Watch Your LAN”.
 
 
-### Watchtower Stack 2.1.0 Data Flow
+### Watchtower Stack 2.1.1 Data Flow (Excluding Zechariah)
 
 ![Watchtower Data Flow](https://i.imgur.com/3E0inR9.jpeg)
 
-### Watchtower Stack 2.1.0 File Inspection Pipeline
+### Watchtower Stack 2.1.1 File Inspection Pipeline
 
 ![Watchtower File Inspection](https://i.imgur.com/wTLnaOW.png)
