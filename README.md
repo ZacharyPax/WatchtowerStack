@@ -1,7 +1,5 @@
 # Watchtower Stack & Watchtower Observatory
-
-
-***"The shrewd one sees the danger and conceals himself"***
+## "The shrewd one sees the danger and conceals himself"
 
 ### DISCLAIMERS
 Components created by Zachary Pax in this repository are licensed under the GNU General Public License version 3.
