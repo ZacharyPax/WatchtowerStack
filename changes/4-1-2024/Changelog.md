@@ -14,6 +14,8 @@ Used same technology as is present on Zechariah to create a phone inventory
 
 Added phones.local DNS record
 
+Updated iLo on Adam
+
 Result of changes:
 
-Working phone inventory for VLAN 3
+Working phone inventory for VLAN 3, improved security.
