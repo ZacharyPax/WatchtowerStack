@@ -16,6 +16,10 @@ Added phones.local DNS record
 
 Updated iLo on Adam
 
+Updated iLo on Watchtower Forensic
+
+Added Phone Inventory button on wt.local
+
 Result of changes:
 
 Working phone inventory for VLAN 3, improved security.
