@@ -62,7 +62,7 @@ The Watchtower Stack comprises several key virtual machines:
 
    - Lazarus: An Ubuntu Server Installation that does Internal Watchtower Stack status monitoring and orchestration.
 
-### Watchtower Stack 2.1.1 Data Flow (Excluding Zechariah & Ruth)
+### Watchtower Stack 2.1.1 Data Flow (Excluding Zechariah, Ruth, and Lazarus)
 
 ![Watchtower Data Flow](https://i.imgur.com/3E0inR9.jpeg)
 
