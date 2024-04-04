@@ -1,0 +1,260 @@
+appConfig:
+  theme: colorful
+  layout: auto
+  iconSize: large
+  language: en
+pageInfo:
+  title: Watchtower Stack Home
+  description: The shrewd one sees the danger and conceals himself
+  navLinks: []
+  footerText: Zachary Pax - 2024
+sections:
+  - name: Watchtower Services
+    icon: ''
+    items:
+      - title: Security Onion
+        description: Network intrusion detection and monitoring
+        icon: >-
+          https://styles.redditmedia.com/t5_2vu7f/styles/communityIcon_e71fu00lz8c51.png?width=256&s=ea504d2c214811bbe3168072817d6e00822a4ebb
+        url: https://wt-secure-redirect.local
+        target: newtab
+        id: 0_1932_securityonion
+      - title: Wazuh
+        description: Endpoint telemetry and package management
+        icon: https://avatars2.githubusercontent.com/u/13752566?v=3&s=400
+        url: https://wazuh.local
+        id: 1_1932_wazuh
+      - title: Grafana
+        description: Server telemetry and network alerting
+        icon: >-
+          https://cdn.icon-icons.com/icons2/2699/PNG/512/grafana_logo_icon_171048.png
+        url: http://status.local/
+        id: 2_1932_grafana
+      - title: Prometheus Database
+        description: Prometheus Database running on Vashti (Server Telemetry)
+        icon: >-
+          https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/2066px-Prometheus_software_logo.svg.png
+        url: http://192.168.0.185:9090/
+        id: 3_1932_prometheusdatabase
+      - title: Elasticsearch Database
+        description: Elasticsearch Database running on David (Network Events)
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/elasticsearch-logo-png-transparent.png
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'logs-*',interval:auto,query:(language:kuery,query:''),sort:!(!('@timestamp',desc)))
+        id: 4_1932_elasticsearchdatabase
+      - title: Opensearch Database
+        description: Opensearch Database Index running on Hezekiah (Endpoint Telemetry)
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fadmin.cloud.service.gov.uk%2Fassets%2Ffcce90f60ec4408f94d4.opensearch.png&f=1&nofb=1&ipt=7dfd8d3d96e27234ee5ffcf1e4135a99a8ec027e92d8a116f99dafab7699ffd1&ipo=images
+        url: >-
+          https://wazuh.local/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-24h,to:now))&_a=(columns:!(_source),filters:!(),index:'wazuh-alerts-*',interval:auto,query:(language:kuery,query:''),sort:!())
+        id: 5_1932_opensearchdatabase
+      - title: Proxmox Hypervisor
+        description: Watchtower's Hypervisor "Adam"
+        icon: https://avatars.githubusercontent.com/u/2678585?s=280&v=4
+        url: https://192.168.0.138:8006/
+        id: 6_1932_proxmoxhypervisor
+      - title: Proxmox RAID0 PBS
+        description: RAID0 Proxmox Backup Server
+        icon: https://avatars.githubusercontent.com/u/2678585?s=280&v=4
+        url: https://192.168.0.167:8007/
+        id: 7_1932_proxmoxraidpbs
+      - title: Proxmox RAIDZ PBS
+        description: RAIDZ Proxmox Backup Server
+        icon: https://avatars.githubusercontent.com/u/2678585?s=280&v=4
+        url: https://192.168.0.118:8007
+        target: newtab
+        id: 8_1932_proxmoxraidzpbs
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+  - name: Monitoring
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: RDP Connections
+        description: RDP Connection Log
+        icon: https://i.imgur.com/rFAb8qV.png
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/dashboards#/view/5b743150-75c5-11ea-9565-7315f4ee5cac?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))
+        target: newtab
+        id: 0_1062_rdpconnections
+      - title: SSH Connections
+        description: SSH Connection Log
+        icon: >-
+          https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/PuTTY_Icon.svg/2048px-PuTTY_Icon.svg.png
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/dashboards#/view/9dfd77e0-75eb-11ea-9565-7315f4ee5cac?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))
+        target: newtab
+        id: 1_1062_sshconnections
+      - title: FTP Connections
+        description: FTP Connection Log
+        icon: https://upload.wikimedia.org/wikipedia/commons/4/4f/WinSCP_6_Logo.png
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/dashboards#/view/739bfad0-755a-11ea-9565-7315f4ee5cac?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))
+        target: newtab
+        id: 2_1062_ftpconnections
+      - title: DNS Requests
+        description: Breakdown of DNS Statistics and Logs
+        icon: >-
+          https://www.seb8iaan.com/wp-content/uploads/2020/12/Azure-Defender-for-DNS-0-e1607675811815.png
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/dashboards#/view/55ac6bf0-6ec4-11ea-9266-1fd14ca6af34?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))
+        target: newtab
+        id: 3_1062_dnsrequests
+      - title: DHCP Logs
+        description: Breakdown of DHCP Statistics and Logs
+        icon: >-
+          https://i0.wp.com/technogecko.net/wp-content/uploads/2016/10/DHCP-Icon.png?fit=256%2C256&ssl=1
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/dashboards#/view/80625c10-96dd-11ea-814e-bb515e873c2c?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))
+        target: newtab
+        id: 4_1062_dhcplogs
+      - title: HTTP Connections
+        description: HTTP Connection Log
+        icon: https://cdn-icons-png.flaticon.com/512/3165/3165065.png
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/dashboards#/view/44e9c820-6eb1-11ea-9266-1fd14ca6af34?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))
+        id: 5_1062_httpconnections
+      - title: Security Onion Health
+        description: Security Onion Server Health Information
+        icon: https://assets.zabbix.com/img/brands/influxdb.svg
+        url: >-
+          https://wt-secure-redirect.local/influxdb/orgs/88c85e36b49a7c09/dashboards/0c16886984750000?lower=now%28%29+-+3h
+        target: newtab
+        id: 6_1062_securityonionhealth
+      - title: Software Installation Events
+        description: Endpoint Telemetry of Software Installation Events
+        icon: >-
+          https://icon-library.com/images/windows-installer-icon/windows-installer-icon-18.jpg
+        url: >-
+          https://wazuh.local/app/dashboards#/view/445c84a0-cf3e-11ee-a46a-ab0060fd2640?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-7d,to:now))&_a=(description:'Dashboard%20Highlighting%20Software%20Installation%20Events',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:'Watchtower%20Software%20Installation%20Events%20Dashboard',viewMode:view)
+        target: newtab
+        id: 7_1062_softwareinstallationevents
+      - title: Downloaded Files VT API
+        description: VirusTotal API Results for Downloaded Files on our Endpoints
+        icon: >-
+          https://cdn.icon-icons.com/icons2/2699/PNG/512/virustotal_logo_icon_171247.png
+        url: >-
+          https://wazuh.local/app/dashboards#/view/5518f570-d197-11ee-b1e1-4b96e09d13bd?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-24h,to:now))&_a=(description:'Contains%20what%20files%20were%20scanned%20by%20VirusTotal,%20what%20time%20they%20were%20scanned,%20and%20whether%20or%20not%20they%20were%20detected%20as%20malicious.',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:'VirusTotal%20Downloaded%20File%20Analytics',viewMode:view)
+        target: newtab
+        id: 8_1062_downloadedfilesvtapi
+  - name: Consoles
+    icon: ''
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Lazarus Console
+        description: wt-status.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: https://192.168.0.138:8006/#v1:0:=qemu%2F108:4:=jsconsole::::8::2
+        id: 0_838_lazarusconsole
+      - title: Ruth Console
+        description: phones.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: https://192.168.0.138:8006/#v1:0:=qemu%2F104:4:=jsconsole::::8::2
+        id: 1_838_ruthconsole
+      - title: David Console
+        description: wt-secure-redirect.local
+        icon: >-
+          https://yt3.googleusercontent.com/ytc/AOPolaTwvmHi2B4KX1MuxkIgYdGSsqy6qhcWQgg7Nn-f4w=s900-c-k-c0x00ffffff-no-rj
+        url: >-
+          https://192.168.0.138:8006/#v1:0:=qemu%2F100:4:5:=contentBackup:::8::21
+        id: 2_838_davidconsole
+      - title: Hezekiah Console
+        description: wazuh.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: >-
+          https://192.168.0.138:8006/#v1:0:=qemu%2F101:4:5:=contentBackup:::8::21
+        id: 3_838_hezekiahconsole
+      - title: Jehoahaz Console
+        description: status.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: >-
+          https://192.168.0.138:8006/#v1:0:=qemu%2F102:4:5:=contentBackup:::8::21
+        id: 4_838_jehoahazconsole
+      - title: Vashti Console
+        description: prometheus.local
+        icon: https://www.1kosmos.com/wp-content/uploads/2021/07/Windows_logo.png
+        url: >-
+          https://192.168.0.138:8006/#v1:0:=qemu%2F103:4:=jsconsole:=contentBackup:::8::5
+        id: 5_838_vashticonsole
+      - title: Manasseh Console
+        description: wt-forensic.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: >-
+          https://192.168.0.138:8006/#v1:0:=qemu%2F106:4:=jsconsole:=contentBackup:::8::5
+        id: 6_838_manassehconsole
+      - title: Korah Console
+        description: wt.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: >-
+          https://192.168.0.138:8006/#v1:0:=qemu%2F105:4:=jsconsole:=contentBackup:::8::5
+        id: 7_838_korahconsole
+      - title: Zechariah Console
+        description: inventory.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: 'https://192.168.0.138:8006/#v1:0:=qemu%2F107:4:::::8::'
+        id: 8_838_zechariahconsole
+  - name: Documentation
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Pi-hole
+        description: Pi-hole DNS Server
+        icon: >-
+          https://home.apeconsulting.co.uk/adrian/wp-content/uploads/sites/2/2020/01/1200px-Pi-hole_vector_logo.svg_-695x1024.png
+        url: http://192.168.0.6/admin/dns_records.php
+        target: newtab
+        id: 0_1370_pihole
+      - title: Watchtower Observatory
+        description: High level overviews of important traffic
+        icon: >-
+          https://clipart-library.com/new_gallery/1021998_all-seeing-eye-pyramid-png.png
+        url: >-
+          http://observatory.local/watchtower-data-aggregation/data-aggregation.html
+        target: newtab
+        id: 1_1370_watchtowerobservatory
+      - title: Network Inventory
+        description: Inventory of Network Devices
+        icon: >-
+          https://raw.githubusercontent.com/aceberg/WatchYourLAN/main/assets/logo.png
+        url: http://inventory.local
+        target: newtab
+        id: 2_1370_networkinventory
+      - title: Phone Inventory
+        description: Inventory of VoIP Phones on VLAN 3
+        icon: >-
+          https://d29fhpw069ctt2.cloudfront.net/clipart/118688/preview/VOIP-Desk-Phone_preview_10ed.png
+        url: http://phones.local
+        target: newtab
+        id: 3_1370_phoneinventory
+      - title: Watchtower Orchestration
+        description: Watchtower Health
+        icon: https://art.pixilart.com/044a0125e255154.png
+        url: http://wt-status.local
+        target: newtab
+        id: 4_1370_watchtowerorchestration
