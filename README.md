@@ -34,7 +34,7 @@ The Watchtower Stack offers a range of features:
   -  Automatic file behavior analysis with Yara rules (Hezekiah)
   -  Real-time status monitoring for mission-critical systems via Prometheus (Vashti)
   -  Automatic software inventory and vulnerability management system via Wazuh (Hezekiah)
-  -  ARP table monitoring via Arpwatch (Adam/Eve/Moses/Zipporah/Forensic Node/Rebekah/Andrew/Delilah)
+  -  ARP table monitoring via Arpwatch (Adam/Eve/Moses/Zipporah/Forensic Node/Rebekah/Andrew/Delilah/Watchtower-Orchestration)
   -  User-friendly interface via custom HTML and Dashy (Korah & Vashti)
   -  Long-term forensic storage of network connections via the Watchtower-Forensic Datastore & Zeek (David & Manasseh)
   -  A global dashboard to monitor network and system status from all data ingest points via Grafana (Jehoahaz)
