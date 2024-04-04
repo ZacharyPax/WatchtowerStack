@@ -60,6 +60,8 @@ The Watchtower Stack comprises several key virtual machines:
 
    - Ruth: An Ubuntu Server Installation that manages VoIP phone device inventory.
 
+   - Lazarus: Internal Watchtower Stack status monitoring and orchestration.
+
 ### Watchtower Stack 2.1.1 Data Flow (Excluding Zechariah & Ruth)
 
 ![Watchtower Data Flow](https://i.imgur.com/3E0inR9.jpeg)
