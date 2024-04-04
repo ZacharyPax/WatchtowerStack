@@ -18,6 +18,7 @@
 
 * Create a functional Strelka UI based on Strelka UI project
   * The proof of concept already works, but there are some bugs. Probably because I'm firewalling Strelka through Security Onion.
+  * Bugs continue, perhaps I'll spin up a parallel instance.
  
 * Replace Dashy installation with all custom HTML
 
