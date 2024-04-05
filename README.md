@@ -39,6 +39,8 @@ The Watchtower Stack offers a range of features:
   -  Long-term forensic storage of network connections via the Watchtower-Forensic Datastore & Zeek (David & Manasseh)
   -  A global dashboard to monitor network and system status from all data ingest points via Grafana (Jehoahaz)
   -  A simple HTML interface to inventory all network devices (Zechariah/Ruth)
+  -  An elaborate status monitoring system to ensure both frontend and backend elements of the stack are operational (Lazarus)
+  -  So much more!
 
 ### Virtual Machines
 
@@ -60,7 +62,7 @@ The Watchtower Stack comprises several key virtual machines:
 
    - Ruth: An Ubuntu Server Installation that manages VoIP phone device inventory.
 
-   - Lazarus: An Ubuntu Server Installation that does Internal Watchtower Stack status monitoring and orchestration.
+   - Lazarus: An Ubuntu Server Installation that does Internal Watchtower Stack status monitoring, orchestration, and alerting.
 
 ### Watchtower Stack 2.1.1 Data Flow (Software-defined)
 
