@@ -12,6 +12,8 @@ New Dashy theme and updates.
 
 Improved Orchestration alerts.
 
+Installed anomaly detection plugin on OpenSearch which is running on Wazuh and created two beta tests.
+
 Result of changes:
 
-Increased access to historical server and network telemetry. Better GUI and alerting.
+Increased access to historical server and network telemetry. Better GUI and alerting. A working beta for machine learning in the environment.
