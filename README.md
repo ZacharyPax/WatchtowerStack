@@ -34,12 +34,13 @@ The Watchtower Stack offers a range of features:
   -  Automatic file behavior analysis with Yara rules (Hezekiah)
   -  Real-time status monitoring for mission-critical systems via Prometheus (Vashti)
   -  Automatic software inventory and vulnerability management system via Wazuh (Hezekiah)
-  -  ARP table monitoring via Arpwatch (Adam/Eve/Moses/Zipporah/Forensic Node/Rebekah/Andrew/Delilah/Watchtower-Orchestration)
+  -  ARP table monitoring via Arpwatch (Hosts)
   -  User-friendly interface via custom HTML and Dashy (Korah & Vashti)
   -  Long-term forensic storage of network connections via the Watchtower-Forensic Datastore & Zeek (David & Manasseh)
   -  A global dashboard to monitor network and system status from all data ingest points via Grafana (Jehoahaz)
   -  A simple HTML interface to inventory all network devices (Zechariah/Ruth)
   -  An elaborate status monitoring system to ensure both frontend and backend elements of the stack are operational (Lazarus)
+  -  Machine learning on endpoint telemetry to forecast resource usage and detect anomalies (Ezra)
   -  So much more!
 
 ### Virtual Machines
@@ -63,6 +64,8 @@ The Watchtower Stack comprises several key virtual machines:
    - Ruth: An Ubuntu Server Installation that manages VoIP phone device inventory.
 
    - Lazarus: An Ubuntu Server Installation that does Internal Watchtower Stack status monitoring, orchestration, and alerting.
+     
+   - Ezra: Provides machine learning analysis for Prometheus Data to detect anomalies.
 
 ### Watchtower Stack 2.1.1 Data Flow (Software-defined)
 
