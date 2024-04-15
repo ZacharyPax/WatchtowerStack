@@ -1,0 +1,3579 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_VASHTI-VM",
+      "label": "Vashti-VM",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.3.3"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 10,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# <p align=\"center\"><strong>Watchtower Independent Neural Engine (WINE)</strong></p>\n<p align=\"center\"><em>For nothing is hidden that will not become evident...</em></p>\n\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.3.3",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.9:9182\", exported_job=\"ArcadiaDC\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\", value_type=\"yhat_upper\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.9:9182\", exported_job=\"ArcadiaDC\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\", value_type=\"yhat_lower\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{instance=\"192.168.0.9:9182\", job=\"ArcadiaDC\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 7,
+        "x": 10,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total_prophet {value_type=\"yhat_upper\", exported_job=\"ArcadiaDC\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\"}/1000000000)*1.05",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total {job=\"ArcadiaDC\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\"}/1000000000)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total_prophet {value_type=\"yhat_lower\", exported_job=\"ArcadiaDC\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\"}/1000000000)*0.95",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Total Network Traffic Sent - ArcadiaDC (±5%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.10:9182\", exported_job=\"newpdc\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\", value_type=\"yhat_upper\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.10:9182\", exported_job=\"newpdc\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\", value_type=\"yhat_lower\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{instance=\"192.168.0.10:9182\", job=\"newpdc\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 7,
+        "x": 17,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total_prophet {value_type=\"yhat_upper\", exported_job=\"newpdc\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\"}/1000000000)*1.05",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total {job=\"newpdc\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\"}/1000000000)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total_prophet {value_type=\"yhat_lower\", exported_job=\"newpdc\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\"}/1000000000)*0.95",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Total Network Traffic Sent - newpdc (±5%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.9:9182\", exported_job=\"ArcadiaDC\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_upper\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.9:9182\", exported_job=\"ArcadiaDC\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_lower\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{__name__=\"windows_ad_ldap_writes_total\", instance=\"192.168.0.9:9182\", job=\"ArcadiaDC\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Upper Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Value"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 21,
+        "w": 10,
+        "x": 0,
+        "y": 3
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_ad_ldap_writes_total_prophet {value_type=\"yhat_upper\"} * 1.02",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_ad_ldap_writes_total_prophet {value_type=\"yhat_lower\"} * 0.98",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_ad_ldap_writes_total",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "LDAP Authentication Projections (±2%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.11:9182\", exported_job=\"Stakeout\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\", value_type=\"yhat_upper\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.11:9182\", exported_job=\"Stakeout\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\", value_type=\"yhat_lower\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{instance=\"192.168.0.11:9182\", job=\"Stakeout\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 7,
+        "x": 10,
+        "y": 11
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total_prophet {value_type=\"yhat_upper\", exported_job=\"Stakeout\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\"}/1000000000)*1.05",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total {job=\"Stakeout\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\"}/1000000000)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total_prophet {value_type=\"yhat_lower\", exported_job=\"Stakeout\", nic=\"Intel_R__PRO_1000_MT_Network_Connection\"}/1000000000)*0.95",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Total Network Traffic Sent - Stakeout (±5%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.68:9182\", exported_job=\"StarEnergy\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", nic=\"Intel_R__82574L_Gigabit_Network_Connection\", value_type=\"yhat_upper\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.68:9182\", exported_job=\"StarEnergy\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", nic=\"Intel_R__82574L_Gigabit_Network_Connection\", value_type=\"yhat_lower\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{instance=\"192.168.0.68:9182\", job=\"StarEnergy\", nic=\"Intel_R__82574L_Gigabit_Network_Connection\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 7,
+        "x": 17,
+        "y": 11
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total_prophet {value_type=\"yhat_upper\", exported_job=\"StarEnergy\"}/1000000000)*1.05",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total {job=\"StarEnergy\"}/1000000000)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total_prophet {value_type=\"yhat_lower\", exported_job=\"StarEnergy\"}/1000000000)*0.95",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Total Network Traffic Sent - StarEnergy (±5%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.16:9182\", exported_job=\"ESRI\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", nic=\"Intel_R__82574L_Gigabit_Network_Connection\", value_type=\"yhat_upper\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.16:9182\", exported_job=\"ESRI\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", nic=\"Intel_R__82574L_Gigabit_Network_Connection\", value_type=\"yhat_lower\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{instance=\"192.168.0.16:9182\", job=\"ESRI\", nic=\"Intel_R__82574L_Gigabit_Network_Connection\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 16,
+        "y": 23
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total_prophet {value_type=\"yhat_upper\", exported_job=\"ESRI\"}/1000000000)*1.05",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total {job=\"ESRI\"}/1000000000)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "(windows_net_bytes_sent_total_prophet {value_type=\"yhat_lower\", exported_job=\"ESRI\"}/1000000000)*0.95",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Total Network Traffic Sent - ESRI (±5%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.9:9182\", exported_job=\"ArcadiaDC\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_upper\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.9:9182\", exported_job=\"ArcadiaDC\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_lower\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{__name__=\"windows_os_processes\", instance=\"192.168.0.9:9182\", job=\"ArcadiaDC\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Vlaue"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Upper Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Vlaue"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Lower Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 8,
+        "x": 0,
+        "y": 24
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.9:9182\", value_type=\"yhat_upper\"}*1.08",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.9:9182\", value_type=\"yhat_lower\"}*0.92",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes {job=\"ArcadiaDC\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "ArcadiaDC Windows Processes Projection (±8%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.10:9182\", exported_job=\"newpdc\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_upper\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.10:9182\", exported_job=\"newpdc\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_lower\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{__name__=\"windows_os_processes\", instance=\"192.168.0.10:9182\", job=\"newpdc\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Upper Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Vlaue"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Lower Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Value"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 8,
+        "x": 8,
+        "y": 24
+      },
+      "id": 9,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.10:9182\", value_type=\"yhat_upper\"}*1.04",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.10:9182\", value_type=\"yhat_lower\"}*0.96",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes {job=\"newpdc\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "newpdc Windows Processes Projection (±4%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.11:9182\", exported_job=\"Stakeout\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_upper\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.11:9182\", exported_job=\"Stakeout\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_lower\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{__name__=\"windows_os_processes\", instance=\"192.168.0.11:9182\", job=\"Stakeout\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Upper Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Vlaue"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Lower Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Value"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 8,
+        "x": 0,
+        "y": 35
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.11:9182\", value_type=\"yhat_upper\"}*1.08",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.11:9182\", value_type=\"yhat_lower\"}*0.92",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes {job=\"Stakeout\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Stakeout Windows Processes Projection (±8%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.68:9182\", exported_job=\"StarEnergy\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_upper\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.68:9182\", exported_job=\"StarEnergy\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_lower\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{__name__=\"windows_os_processes\", instance=\"192.168.0.68:9182\", job=\"StarEnergy\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Upper Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Vlaue"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Lower Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Value"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 8,
+        "x": 8,
+        "y": 35
+      },
+      "id": 11,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.68:9182\", value_type=\"yhat_upper\"}*1.08",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.68:9182\", value_type=\"yhat_lower\"}*0.92",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes {job=\"StarEnergy\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "StarEnergy Windows Processes Projection (±8%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.16:9182\", exported_job=\"ESRI\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_upper\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.16:9182\", exported_job=\"ESRI\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_lower\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{__name__=\"windows_os_processes\", instance=\"192.168.0.16:9182\", job=\"ESRI\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Upper Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Vlaue"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Lower Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Value"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 8,
+        "x": 16,
+        "y": 35
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.16:9182\", value_type=\"yhat_upper\"}*1.08",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.16:9182\", value_type=\"yhat_lower\"}*0.92",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes {job=\"ESRI\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "ESRI Windows Processes Projection (±8%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.112:9182\", exported_job=\"Veeam\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_upper\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.112:9182\", exported_job=\"Veeam\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_lower\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{__name__=\"windows_os_processes\", instance=\"192.168.0.112:9182\", job=\"Veeam\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Upper Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Vlaue"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Lower Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Value"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 46
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.112:9182\", value_type=\"yhat_upper\"}*1.08",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.112:9182\", value_type=\"yhat_lower\"}*0.92",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes {job=\"Veeam\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Veeam Windows Processes Projection (±8%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.171:9182\", exported_job=\"VeeamProxy1\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_upper\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{exported_instance=\"192.168.0.171:9182\", exported_job=\"VeeamProxy1\", instance=\"192.168.0.196:8080\", job=\"Watchtower-AI\", value_type=\"yhat_lower\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{__name__=\"windows_os_processes\", instance=\"192.168.0.171:9182\", job=\"VeeamProxy1\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Upper Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Vlaue"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Lower Projection"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Actual Value"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 46
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.171:9182\", value_type=\"yhat_upper\"}*1.08",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes_prophet {exported_instance=\"192.168.0.171:9182\", value_type=\"yhat_lower\"}*0.92",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "windows_os_processes {job=\"VeeamProxy1\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Veeam Proxy 1 Windows Processes Projection (±8%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_upper\", exported_job=\"ArcadiaDC\"})*1.05"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_lower\", exported_job=\"ArcadiaDC\"})*0.95"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total {job=\"ArcadiaDC\"})"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 0,
+        "y": 57
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_upper\", exported_job=\"ArcadiaDC\"})*1.05",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_lower\", exported_job=\"ArcadiaDC\"})*0.95",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total {job=\"ArcadiaDC\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "ArcadiaDC Total CPU Work Done Projection (±5%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_upper\", exported_job=\"newpdc\"})*1.05"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_lower\", exported_job=\"newpdc\"})*0.95"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total {job=\"newpdc\"})"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 12,
+        "y": 57
+      },
+      "id": 16,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_upper\", exported_job=\"newpdc\"})*1.05",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_lower\", exported_job=\"newpdc\"})*0.95",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total {job=\"newpdc\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "newpdc Total CPU Work Done Projection (±5%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_upper\", exported_job=\"Stakeout\"})*1.05"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_lower\", exported_job=\"Stakeout\"})*0.95"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total {job=\"Stakeout\"})"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 0,
+        "y": 71
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_upper\", exported_job=\"Stakeout\"})*1.05",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_lower\", exported_job=\"Stakeout\"})*0.95",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total {job=\"Stakeout\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Stakeout Total CPU Work Done Projection (±5%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_upper\", exported_job=\"ESRI\"})*1.05"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_lower\", exported_job=\"ESRI\"})*0.95"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total {job=\"ESRI\"})"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 12,
+        "y": 71
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_upper\", exported_job=\"ESRI\"})*1.05",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_lower\", exported_job=\"ESRI\"})*0.95",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total {job=\"ESRI\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "ESRI Total CPU Work Done Projection (±5%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_upper\", exported_job=\"Veeam\"})*1.20"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_lower\", exported_job=\"Veeam\"})*0.80"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total {job=\"Veeam\"})"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 0,
+        "y": 85
+      },
+      "id": 19,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_upper\", exported_job=\"Veeam\"})*1.20",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_lower\", exported_job=\"Veeam\"})*0.80",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total {job=\"Veeam\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Veeam Total CPU Work Done Projection (±20%)",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_upper\", exported_job=\"VeeamProxy1\"})*1.20"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Upper Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_lower\", exported_job=\"VeeamProxy1\"})*0.80"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Lower Projection"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg (windows_cpu_processor_utility_total {job=\"VeeamProxy1\"})"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Actual Value"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 12,
+        "y": 85
+      },
+      "id": 20,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_upper\", exported_job=\"VeeamProxy1\"})*1.20",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total_prophet {value_type=\"yhat_lower\", exported_job=\"VeeamProxy1\"})*0.80",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "avg (windows_cpu_processor_utility_total {job=\"VeeamProxy1\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Veeam Proxy 1 Total CPU Work Done Projection (±20%)",
+      "transparent": true,
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-7d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Watchtower Independent Neural Engine",
+  "uid": "be93f82d-1f53-40bb-a973-99c13267d944",
+  "version": 65,
+  "weekStart": ""
+}
