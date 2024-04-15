@@ -9,6 +9,8 @@
   * This has a pretty clear path forward for development and would honestly not take very long to implement.
 
 * YARA signature matching for malware detection
+  
+* Machine learning algorithm for endpoint data
 
 ## Improvements still in development/consideration
 
