@@ -41,6 +41,7 @@ The Watchtower Stack offers a range of features:
   -  A simple HTML interface to inventory all network devices (Zechariah/Ruth)
   -  An elaborate status monitoring system to ensure both frontend and backend elements of the stack are operational (Lazarus)
   -  Machine learning on endpoint telemetry to forecast resource usage and detect anomalies (Ezra)
+  -  Real-time status monitoring of critical network infrastructure (Bathesheba)
   -  So much more!
 
 ### Virtual Machines
@@ -66,6 +67,8 @@ The Watchtower Stack comprises several key virtual machines:
    - Lazarus: An Ubuntu Server Installation that does Internal Watchtower Stack status monitoring, orchestration, and alerting.
      
    - Ezra: Provides machine learning analysis for Prometheus Data to detect anomalies.
+     
+   - Bathsheba: An Ubuntu Server installation that does LAN infrastructure monitoring and uptime calculations.
 
 ### Watchtower Stack 2.1.1 Data Flow (Software-defined)
 
