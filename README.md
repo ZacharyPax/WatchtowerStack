@@ -41,7 +41,7 @@ The Watchtower Stack offers a range of features:
   -  A simple HTML interface to inventory all network devices (Zechariah/Ruth)
   -  An elaborate status monitoring system to ensure both frontend and backend elements of the stack are operational (Lazarus)
   -  Machine learning on endpoint telemetry to forecast resource usage and detect anomalies (Ezra)
-  -  Real-time status monitoring of critical network infrastructure (Bathesheba)
+  -  Real-time uptime monitoring of critical network infrastructure (Bathesheba)
   -  So much more!
 
 ### Virtual Machines
