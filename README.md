@@ -17,7 +17,7 @@ Components created by Zachary Pax in this repository are licensed under the GNU 
 ---
 ### Introduction
 
-Welcome to the repository for the Watchtower Stack. This repository contains configuration files, scripts, code, and other essential information for the Watchtower Stack, a robust hardware server cluster powered by the Linux-based, free, and open-source hypervisor, Proxmox Virtual Environment.
+Welcome to the repository for the Watchtower Stack. This repository contains configuration files, scripts, code, and other essential information for the Watchtower Stack, a robust hardware server cluster powered by the Linux-based, free/libre, and open-source hypervisor, Proxmox Virtual Environment.
 
 ### Overview
 
