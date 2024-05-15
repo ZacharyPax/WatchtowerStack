@@ -1,0 +1,2825 @@
+apiVersion: 1
+groups:
+    - orgId: 1
+      name: Instant
+      folder: Alerts
+      interval: 10s
+      rules:
+        - uid: c4ed0958-2e4a-4503-ac81-c0ee7fa5350e
+          title: RDP Intrusion Detection
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                    - id: "3"
+                      type: count
+                query: tags:rdp AND !source.ip:192.168.0.111 AND !source.ip:192.168.0.157 AND !source.ip:192.168.0.179 AND !source.ip:192.168.0.177
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then visit:
+
+                https://tinyurl.com/watchtowerrdp
+
+                To review recent RDP sessions.
+            summary: This alert is generated if an IP address starts an RDP session without being whitelisted. This alert will only trigger once every 5 minutes.
+          labels: {}
+          isPaused: false
+        - uid: db55002b-930c-4eda-8492-f1417e7382a8
+          title: Low Available RAM
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: b15587c3-6e65-48d2-a7b8-70349f76d739
+              model:
+                datasource:
+                    type: prometheus
+                    uid: b15587c3-6e65-48d2-a7b8-70349f76d739
+                editorMode: code
+                expr: (windows_os_physical_memory_free_bytes / windows_cs_physical_memory_bytes)*100
+                hide: false
+                instant: true
+                intervalMs: 1000
+                maxDataPoints: 43200
+                range: false
+                refId: A
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 10
+                            - 0
+                        type: lt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: threshold
+          noDataState: OK
+          execErrState: OK
+          for: 2m
+          annotations:
+            description: An alert has been triggered because there is less than 10% RAM free on the host for over two minutes. In other words, 90% or more of the RAM on the host is in use.
+            summary: This alert is generated if there is low available RAM on the host.
+          isPaused: false
+        - uid: d13b1987-fcfd-4ad5-82c3-966d3bbafaa2
+          title: Low Disk Space
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: b15587c3-6e65-48d2-a7b8-70349f76d739
+              model:
+                datasource:
+                    type: prometheus
+                    uid: b15587c3-6e65-48d2-a7b8-70349f76d739
+                editorMode: code
+                expr: (windows_logical_disk_free_bytes{volume="C:"})/(windows_logical_disk_size_bytes{volume="C:"})*100
+                hide: false
+                instant: true
+                intervalMs: 1000
+                maxDataPoints: 43200
+                range: false
+                refId: A
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 10
+                            - 0
+                        type: lt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: threshold
+          noDataState: OK
+          execErrState: OK
+          for: 5m
+          annotations:
+            description: An alert has been triggered because the disk utilization on the host has surpassed 90%. In other words, less than 10% of the total amount of disk space remains available.
+            summary: This alert is generated if there is low available disk space on the host.
+          isPaused: false
+        - uid: f5c84f75-c252-4ff3-ae48-305917897599
+          title: Very High CPU Utilization
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: b15587c3-6e65-48d2-a7b8-70349f76d739
+              model:
+                datasource:
+                    type: prometheus
+                    uid: b15587c3-6e65-48d2-a7b8-70349f76d739
+                editorMode: code
+                expr: avg by (job) (rate(windows_cpu_processor_utility_total[2m])/rate(windows_cpu_processor_rtc_total[2m]))
+                hide: false
+                instant: true
+                intervalMs: 1000
+                maxDataPoints: 43200
+                range: false
+                refId: A
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 95
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: threshold
+          noDataState: OK
+          execErrState: OK
+          for: 5m
+          annotations:
+            description: This alert is triggered if the total CPU utilization on the host is over 95% averaged over a two minute period, for five minutes.
+            summary: This alert is generated if there has been very high CPU usage over an extended period of time on the host.
+          isPaused: false
+        - uid: ef9ebe15-c3ec-4759-86b2-b51d1d03e890
+          title: FTP Intrusion Detection
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                    - id: "3"
+                      type: count
+                query: tags:ftp AND !source.ip:192.168.0.8 AND !source.ip:10.27.2.118 AND !source.ip:192.168.0.16 AND !source.ip:192.168.0.36
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then visit:
+
+                https://tinyurl.com/watchtowerftp
+
+                To review recent FTP sessions.
+            summary: This alert is generated if an IP address starts an FTP session without being whitelisted. This alert will only trigger once every 5 minutes.
+          labels: {}
+          isPaused: false
+        - uid: fe98e02c-addd-4c4a-a7cf-033cffe5e5d7
+          title: SSH Intrusion Detection
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                    - id: "3"
+                      type: count
+                query: tags:ssh AND !source.ip:192.168.0.111 AND !source.ip:192.168.0.157 AND !source.ip:192.168.0.179 AND !source.ip:192.168.0.177 AND !source.ip:192.168.0.30 AND !source.ip:192.168.0.38 AND !source.ip:192.168.0.36 AND !source.ip:192.168.0.201 AND !source.ip:192.168.0.68 AND !source.ip:192.168.0.121 AND !source.ip:192.168.0.37 AND !source.ip:192.168.0.136 AND !destination.ip:192.168.0.136 AND !source.ip:192.168.0.117 AND !destination.ip:192.168.0.117 AND !destination.ip:192.168.0.118 AND !source.ip:192.168.0.118 AND !source.ip:192.168.0.143 AND !source.ip:192.168.0.83 AND !destination.ip:192.168.0.83 AND !source.ip:192.168.0.81 AND !destination.ip:192.168.0.81
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then visit:
+
+                https://tinyurl.com/watchtowerssh
+
+                To review recent SSH sessions.
+            summary: This alert is generated if an IP address starts an SSH session without being whitelisted. This alert will only trigger once every 5 minutes.
+          labels: {}
+          isPaused: false
+        - uid: af4cfba5-dec6-417a-a341-68302c445da3
+          title: Likely Telnet Activity
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                    - id: "3"
+                      type: count
+                query: destination.port:23
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then visit:
+
+                https://tinyurl.com/port23activity
+
+                To review recent activity on TCP Port 23.
+            summary: This alert is generated if Watchtower detects activity headed to TCP Port 23. TCP Port 23 is typically used for Telnet, and this protocol is insecure and suspicious. This alert can also be triggered by port scan activity on TCP Port 23. This alert will only trigger once every 5 minutes.
+          labels: {}
+          isPaused: false
+        - uid: fdbeab30-f9ce-4bc4-9a55-fc5876ba90ae
+          title: Possible Exploitation of Vulnerable Webserver (192.168.0.11)
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                    - id: "3"
+                      type: count
+                query: destination.port:8091 AND destination.ip:192.168.0.11 AND !source.ip:192.168.0.36 and !source.ip:192.168.2.104
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into SecurityOnion, then visit:
+
+                https://tinyurl.com/port8091watchtower
+
+                To review recent activity on TCP Port 8091
+            summary: This alert is generated if Watchtower detects that any user on the network has visited the CRCLINK/Stakeout server (192.168.0.11) on TCP Port 8091. There is a web server on that port that is extremely vulnerable and allows anyone to access any files on the server. This is a serious alert and should prompt an immediate investigation.
+          labels: {}
+          isPaused: true
+        - uid: ed717327-f123-4355-80c5-ce8fbf0eaeac
+          title: Unauthorized VMware Access (192.168.13.4)
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: tags:ssl AND !source.ip:192.168.0.179 AND !source.ip:192.168.0.177 AND destination.ip:192.168.13.4 AND !source.ip:192.168.10.22
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into SecurityOnion, then visit:
+
+                https://tinyurl.com/13-4-unauth
+
+                To review recent SSL connections to 192.168.13.4.
+            summary: This alert is generated if Watchtower detects that an unauthorized device has accessed the VMware ESX Web Interface at 192.168.13.4.
+          labels: {}
+          isPaused: true
+        - uid: c3785370-2f62-4772-b204-7999bddddab9
+          title: Unauthorized VMware Access (192.168.13.5)
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: tags:ssl AND !source.ip:192.168.0.179 AND !source.ip:192.168.0.177 AND destination.ip:192.168.13.5 AND !source.ip:192.168.10.22
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into SecurityOnion, then visit:
+
+                https://tinyurl.com/13-5-unauth
+
+                To review recent SSL connections to 192.168.13.5.
+            summary: This alert is generated if Watchtower detects that an unauthorized device has accessed the VMware ESX Web Interface at 192.168.13.5.
+          labels: {}
+          isPaused: true
+        - uid: e9defa98-f359-48d6-8eee-1690c60dc897
+          title: Unauthorized VMware Access (192.168.13.6)
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: tags:ssl AND !source.ip:192.168.0.179 AND !source.ip:192.168.0.177 AND destination.ip:192.168.13.6 AND !source.ip:192.168.10.22
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into SecurityOnion, then visit:
+
+                https://tinyurl.com/13-6-unauth
+
+                To review recent SSL connections to 192.168.13.6.
+            summary: This alert is generated if Watchtower detects that an unauthorized device has accessed the VMware ESX Web Interface at 192.168.13.6.
+          labels: {}
+          isPaused: true
+        - uid: c3701b6e-78b3-4066-89bd-5935a2d1fc7e
+          title: Unauthorized Synology NAS Access (192.168.13.20)
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: tags:http AND !source.ip:192.168.0.179 AND !source.ip:192.168.0.177 AND destination.ip:192.168.13.20
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into SecurityOnion, then visit:
+
+                https://tinyurl.com/watchtower-daily
+
+                To review recent HTTP connections to Arcadia Daily.
+            summary: This alert is generated if Watchtower detects that an unauthorized device has accessed the Arcadia Daily Synology NAS Web Interface at 192.168.13.20.
+          labels: {}
+          isPaused: true
+        - uid: d16c814a-8563-430d-b749-97b4b413b69e
+          title: Unauthorized Synology NAS Access (192.168.17.5)
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: tags:http AND !source.ip:192.168.0.179 AND !source.ip:192.168.0.177 AND destination.ip:192.168.17.5
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then visit:
+
+                https://tinyurl.com/watchtower-17-5
+
+                To review recent HTTP connections to 192.168.17.5.
+            summary: This alert is generated if Watchtower detects that an unauthorized device has accessed the Synology Web Assistant Web Interface at 192.168.17.5.
+          labels: {}
+          isPaused: false
+        - uid: c18b72b4-1b58-47cc-ad42-cbecd4f7c9f5
+          title: Likely TFTP Activity
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                    - id: "3"
+                      type: count
+                query: destination.port:69
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then visit:
+
+                https://tinyurl.com/port69activity
+
+                To review recent activity on TCP Port 69.
+            summary: This alert is generated if Watchtower detects activity headed to TCP Port 69. TCP Port 69 is typically used for TFTP, and this protocol is insecure and suspicious. This alert will only trigger once every 5 minutes.
+          labels: {}
+          isPaused: false
+        - uid: c26123fb-1fde-4a88-a4d6-defa992177cf
+          title: Likely Port Scan (Activity on TCP 16000)
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: destination.port:16000
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then visit:
+
+                https://tinyurl.com/watchtower16000
+
+                To review recent activity on TCP Port 16000.
+            summary: This alert is generated if Watchtower detects activity headed to TCP Port 16000. This port is not used on our network, but it is scanned by Nmap's default scanning engine. Because of this, it can be used as a good indicator of whether or not a port scan has occurred. Devices sending data to this port can be reasonably suspected of running Nmap port scans on the network.
+          labels: {}
+          isPaused: false
+        - uid: e54abe13-4e9e-4876-aa7b-81b6d2356967
+          title: Unauthorized local Meraki Web Interface Access (Holmen MX67)
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                    - id: "3"
+                      type: count
+                query: destination.port:80 AND destination.ip:192.168.17.1
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then visit:
+
+                https://tinyurl.com/watchtowerholmx
+
+                To review recent activity at 192.168.17.1 on TCP Port 80.
+            summary: |-
+                (High Confidence Alert)
+
+                This alert is generated if Watchtower detects that any user on the network has visited the Holmen MX67 web interface located at 192.168.17.1 on TCP Port 80. It is extremely rare that there would be any legitimate reason to do this and it almost certainly indicates some sort of probing or scanning on the network.
+          labels: {}
+          isPaused: false
+        - uid: baecfe12-cb7f-4278-a0da-e584d8ae6bbd
+          title: Unauthorized local Meraki Web Interface Access (Arcadia MX84)
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                    - id: "3"
+                      type: count
+                query: destination.port:80 AND destination.ip:192.168.13.1
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then visit:
+
+                https://tinyurl.com/arcadiamx84
+
+                To review recent activity at 192.168.13.1 on TCP Port 80.
+            summary: |-
+                (High Confidence Alert)
+
+                This alert is generated if Watchtower detects that any user on the network has visited the Arcadia MX84 web interface located at 192.168.13.1 on TCP Port 80. It is extremely rare that there would be any legitimate reason to do this and it almost certainly indicates some sort of probing or scanning on the network.
+          labels: {}
+          isPaused: false
+        - uid: a56801b0-d2ab-44df-aba6-a0d419dec162
+          title: Likely Probing/Scanning (MS Terminal Server Traffic on Non-standard Port)
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: event.dataset:*alert AND rule.name:"ET SCAN MS Terminal Server Traffic on Non-standard Port" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then visit:
+
+                https://tinyurl.com/mstermservwrongport
+
+                To review recent alerts of this type.
+            summary: |-
+                (High Confidence Alert)
+
+                This alert is generated if Watchtower detects Microsoft Terminal Services activity occurring over a port not typically used for Microsoft Terminal Services. This alert has a very high likelihood of indicating malicious behavior, probing, or scanning activity and should prompt an immediate investigation.
+          labels: {}
+          isPaused: false
+        - uid: cb9e9a54-4622-4f88-b9b5-41ab375b80d2
+          title: Possible Dangerous Connection
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET CINS Active Threat Intelligence Poor Reputation IP" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata AND NOT destination.ip:192.168.0.201 AND NOT source.ip:10.0.0.10 AND NOT destination.ip:10.0.0.10'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into SecurityOnion, then visit:
+
+                https://tinyurl.com/watchtowerbadip
+
+                To review recent connections with a low IP reputation score.
+            summary: This alert is generated if a device on the network makes a connection to an IP address with a low CINS Active Threat Intelligence score. Although this may not indicate an immediate problem, activity with the IP should be terminated.
+          labels: {}
+          isPaused: false
+        - uid: d6e6872e-0c65-4b04-8879-f9d6928ac958
+          title: Connection to Tor Relay
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET TOR Known Tor Relay/Router" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then visit:
+
+                https://tinyurl.com/watchtowertor
+
+                To review recent connections to the Tor Network.
+            summary: This alert is generated if a device on the network makes a connection to an IP address known to be a Tor relay, router, or bridge.
+          labels: {}
+          isPaused: false
+        - uid: ad44d5a5-1393-4631-8e51-aef5640d479f
+          title: Soviet Union DNS Request
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET DNS Query for .su" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then visit:
+
+                https://tinyurl.com/watchtowersoviet
+
+                To review recent .su DNS requests.
+            summary: This alert is generated if a user makes a DNS request to a website with the .su (Soviet Union) TLD. This is extremely suspicious and is often associated with malware or other dangerous activity.
+          labels: {}
+          isPaused: false
+        - uid: fff66208-d5cf-4e13-aed2-6c5c436cf3ea
+          title: 'CRITICAL: Malware Network Activity'
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET MALWARE" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata AND NOT "ET MALWARE Java EXE Download by Vulnerable Version"'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 30s
+          annotations:
+            description: Log into Security Onion, and click "Alerts" in the right side pane. Locate the alert(s) labeled "ET MALWARE" and investigate.
+            summary: This alert is generated if Watchtower detects network activity related to malware on the network. This should prompt an immediate investigation.
+          labels: {}
+          isPaused: false
+        - uid: d87c9717-94a0-4177-a262-40fedf7997bb
+          title: Nmap Scripting Engine
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET SCAN Nmap Scripting Engine" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: avg
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then visit:
+
+                https://tinyurl.com/watchtowernmap
+
+                To review recent detections.
+            summary: This alert is generated if Watchtower detects that the Nmap Scripting Engine (-sV flag) is being ran on the network. This alert has a very high probability of indicating that a port scan is taking place, and should prompt an immediate investigation.
+          labels: {}
+          isPaused: false
+        - uid: e2fb7cd8-d60d-49eb-962e-4a800e071137
+          title: 'CRITICAL: Network Exploitation Detected'
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET EXPLOIT" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata AND NOT "ET EXPLOIT MS-SQL SQL Injection closing string plus line comment"AND NOT "ET EXPLOIT Possible OpenSSL HeartBleed"'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: Log into Security Onion, and click "Alerts" in the right side pane. Locate the alert(s) labeled "ET EXPLOIT" and investigate.
+            summary: This alert is generated if Watchtower detects that an exploit is currently being ran on the network. This should prompt an immediate investigation.
+          labels: {}
+          isPaused: false
+        - uid: fbd1bdcb-eef1-479e-8199-b7b2d4128171
+          title: High ICMP Activity
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: icmp
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 25
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, and then visit:
+
+                https://tinyurl.com/watchtowericmp
+
+                To review recent ICMP activity.
+            summary: This alert is generated if Watchtower detects an abnormally high amount of ICMP activity. This could be indicative of an IP scan taking place.
+          labels: {}
+          isPaused: false
+        - uid: adf89a83-ebdb-40aa-9567-99c11dcf8c1c
+          title: Executable Download
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET INFO Packed Executable Download" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata AND NOT "ET EXPLOIT MS-SQL SQL Injection closing string plus line comment" AND NOT source_geo.organization_name:"GOOGLE-CLOUD-PLATFORM" AND NOT source_geo.network:"8.250.0.0/15" AND NOT source_geo.organization_name:"EDGECAST"'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, and then visit:
+
+                https://tinyurl.com/watchtowerexec
+
+                To review recent unauthorized executable downloads.
+            summary: This alert is generated if Watchtower detects that an executable file has been downloaded without the source or destination being whitelisted.
+          labels: {}
+          isPaused: true
+        - uid: d6d374ed-46bd-4b8c-b5b0-d4dd5bfa4202
+          title: 'CRITICAL: Web-client Exploitation Detected '
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET WEB_CLIENT" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata AND NOT "ET EXPLOIT MS-SQL SQL Injection closing string plus line comment"'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: Log into Security Onion, and click "Alerts" in the right side pane. Locate the alert(s) labeled "ET WEB_CLIENT" and investigate.
+            summary: This alert is generated if Watchtower detects that a web-client on the network is performing malicious activity. This alert is very rare and has an extremely high likelihood of indicating real malicious activity. This should prompt an immediate investigation.
+          labels: {}
+          isPaused: false
+        - uid: b82f4b09-07fd-45a4-b046-e4bec50b884c
+          title: 'CRITICAL: Network Exploitation Detected (Ruleset 2)'
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"GPL EXPLOIT" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata AND NOT "ET EXPLOIT MS-SQL SQL Injection closing string plus line comment"'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: Log into SecurityOnion, and click "Alerts" in the right side pane. Locate the alert(s) labeled "GPL EXPLOIT" and investigate.
+            summary: This alert is generated if Watchtower detects that an exploit is currently being ran on the network. This should prompt an immediate investigation.
+          labels: {}
+          isPaused: false
+        - uid: ee7ea07c-acd6-448d-9e4d-098061c8bb66
+          title: 'CRITICAL: Attack Response Detected'
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET ATTACK_RESPONSE" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata AND NOT "ET EXPLOIT MS-SQL SQL Injection closing string plus line comment"'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: Log into Security Onion, and click "Alerts" in the right side pane. Locate the alert(s) labeled "ET ATTACK_RESPONSE" and investigate.
+            summary: This alert is generated if Watchtower detects that an endpoint has sent a network response that resembles a network response of an endpoint that has been compromised in some way.
+          labels: {}
+          isPaused: false
+        - uid: b43b24d4-c523-40b0-8abb-d0756f6ca10b
+          title: 'CRITICAL: Worm Detected'
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET WORM" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata AND NOT "ET EXPLOIT MS-SQL SQL Injection closing string plus line comment"'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: Log into Security Onion, and click "Alerts" in the right side pane. Locate the alert(s) labeled "ET WORM" and investigate.
+            summary: This alert is generated if Watchtower detects that a worm is transmitting activity on the network. This alert is almost never a false positive.
+          labels: {}
+          isPaused: false
+        - uid: b0648d8d-6b3d-441f-8da9-bd587382ce13
+          title: Service Control Lateral Movement
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET RPC DCERPC SVCCTL - Remote Service Control Manager Access" AND !destination.ip:192.168.0.16 AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: This alert is fired when Watchtower detects that a device is remotely manipulating or attempting to manipulate Windows services on a device other than ESRI server (which is typical behavior.) If this activity is unauthorized, it represents an attack vector commonly used for lateral movement and should be investigated promptly.
+            summary: Log into Security Onion, and click "Alerts" in the right side pane. Locate the alert(s) labeled "ET RPC DCERPC SVCCTL - Remote Service Control Manager Access" and investigate.
+          labels: {}
+          isPaused: false
+        - uid: a2975e73-e150-4871-8550-c9d0e5cc4194
+          title: 'EMERGENCY: FTP BRUTE FORCE SIGNATURE DETECTED'
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET SCAN Potential FTP Brute-Force attempt response" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: Take immediate action if this alert fires. This alert fires if and only if an FTP server on our local network responds with a signature that corresponds with too many failed login attempts. This is the intrusion detection rule that triggered when NISC was in our network on a FTP-whitelisted device, but continuously failed to log in.
+            summary: |-
+                Log into Security Onion, and click "Alerts" in the right side pane. Locate the alert(s) labeled "ET SCAN Potential FTP Brute-Force attempt response" and investigate.
+
+                Immediately block network access to the IP address that was attempting to log in. It is very unlikely that this is a false positive.
+          labels: {}
+          isPaused: false
+        - uid: e050bb39-6166-4591-b57b-e5ddce9be9a6
+          title: VNC Network Activity
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                hide: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET SCAN Potential VNC Scan 5900-5920" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: This alert fires if there is activity on ports typically associated with VNC remote access.
+            summary: Log into Security Onion, and click "Alerts" in the right side pane. Locate the alert(s) labeled "ET SCAN Potential VNC Scan 5900-5920" and investigate.
+          labels: {}
+          isPaused: false
+        - uid: b30d5af8-2af7-4ba8-a9e3-b48e6ef05159
+          title: 'EMERGENCY: BOTNET ACTIVITY DETECTEED'
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET BOTCC" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then triage the alert labeled:
+
+                "ET BOTCC"
+            summary: This alert is generated if Watchtower detects activity with a botnet command and control server. Take immediate action if this alert goes off.
+          labels: {}
+          isPaused: false
+        - uid: ab86b4e7-b458-4d84-a491-e05aa6305f63
+          title: Cryptocurrency Mining Activity Detected
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET COINMINING" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then triage the alert labeled:
+
+                "ET COINMINING"
+            summary: This alert is generated if Watchtower detects activity related to cryptocurrency mining on the network. This most likely is an indicator of malware on the network.
+          labels: {}
+          isPaused: false
+        - uid: f244b2ea-565f-4db8-a112-21d750b3459a
+          title: 'EMERGENCY: MALWARE HASH DETECTED'
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET JA3" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then triage the alert labeled:
+
+                "ET JA3"
+            summary: This alert is generated if Watchtower detects a file has been transmitted across the network which has a known-malicious hash. This should prompt an immediate investigation.
+          labels: {}
+          isPaused: false
+        - uid: db98d2a8-0446-4487-ab91-3ed9ba6e6233
+          title: Connection to Shared Services Tunnel from LAN
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: 'destination.ip:REDACTED AND NOT source.ip:192.168.13.4 AND NOT source.ip: 192.168.13.5 AND NOT source.ip:192.168.13.20'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion and Elasticsearch Kibana, and then follow the below link to investigate activity to this destination:
+
+                REDACTED
+            summary: This alert is generated if Watchtower detects a connection to the Eau Claire Energy Cooperative side of the Shared Services VPN tunnel. If this is unexpected, it should prompt an immediate investigation.
+          labels: {}
+          isPaused: false
+        - uid: aa43b992-0110-4514-b13e-011a4d7fa187
+          title: SMB Lateral Movement Detected
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: tags:smb* AND NOT source.ip:192.168.0.9 AND NOT source.ip:192.168.0.10 AND NOT destination.ip:192.168.0.9 AND NOT destination.ip:192.168.0.10 AND NOT destination.ip:192.168.0.16 AND NOT destination.ip:192.168.3.185 AND NOT source.ip:192.168.0.48 AND NOT destination.ip:192.168.0.48 AND NOT source.ip:192.168.0.8 AND NOT destination.ip:192.168.3.122
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: This alert fires if there is SMB activity between unauthorized hosts. Authorized hosts include Synology NAS devices and domain controllers.
+            summary: |-
+                Log into Security Onion and Elasticsearch Kibana, then visit:
+
+                http://tinyurl.com/watchtower-smb
+
+                To review recent SMB activity.
+          labels: {}
+          isPaused: false
+        - uid: ae93c266-7f87-4141-b36b-ffe56bb7736e
+          title: Nmap OS Detection Probe
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET SCAN NMAP OS Detection Probe" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then triage the alert labeled:
+
+                "ET SCAN NMAP OS Detection Probe"
+            summary: This alert is generated if Watchtower detects activity from nmap attempting to determine what operating system is running on a device.
+          labels: {}
+          isPaused: false
+        - uid: ac619be2-4907-49b8-b577-baa960451748
+          title: GIOP/IIOP Request Outbound
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET POLICY GIOP/IIOP Request Outbound" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then triage the alert labeled:
+
+                "ET POLICY GIOP/IIOP Request Outbound"
+            summary: This alert is generated if Watchtower detects activity related to the General Inter-ORB Protocol on the network. This is suspicious because there is no reason this traffic would be present on our network.
+          labels: {}
+          isPaused: false
+        - uid: fd5c1628-02a6-423f-8363-b1cf722d3beb
+          title: Java Remote Method Invocation
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET POLICY RMI Request Outbound" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then triage the alert labeled:
+
+                "ET POLICY RMI Request Outbound"
+            summary: This alert is generated if Watchtower detects Java Remote Method Invocation on the network. This is an archaic and highly insecure method of programming that isn't used in our environment, and is most likely something trying to move laterally or probe our Java-based applications.
+          labels: {}
+          isPaused: false
+        - uid: fb5881be-e693-47b0-afb4-31e23db4c48c
+          title: External Oracle T3 Requests
+          condition: B
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: fc1b07d3-37b1-47b6-890c-7fb859f16915
+              model:
+                alias: ""
+                bucketAggs:
+                    - field: '@timestamp'
+                      id: "2"
+                      settings:
+                        interval: auto
+                      type: date_histogram
+                intervalMs: 1000
+                maxDataPoints: 43200
+                metrics:
+                    - id: "1"
+                      type: count
+                query: '"ET POLICY External Oracle T3 Requests Inbound" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata'
+                refId: A
+                timeField: '@timestamp'
+            - refId: B
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 0
+                            - 0
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - A
+                      reducer:
+                        params: []
+                        type: max
+                      type: query
+                datasource:
+                    name: Expression
+                    type: __expr__
+                    uid: __expr__
+                expression: ""
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: B
+                type: classic_conditions
+          noDataState: OK
+          execErrState: OK
+          for: 10s
+          annotations:
+            description: |-
+                Log into Security Onion, then triage the alert labeled:
+
+                "ET POLICY External Oracle T3 Requests Inbound"
+            summary: This alert is generated if Watchtower detects external Oracle T3 requests on the network. This is highly unusual and normally indicates some probing or scanning activity on the network.
+          labels: {}
+          isPaused: false
