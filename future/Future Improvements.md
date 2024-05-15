@@ -19,15 +19,12 @@
   * It is probably wise to wait for additional hardware because I will want this to be high-availability so I can work on components without losing visibility in the mean time.
 
 * Create a functional Strelka UI based on Strelka UI project
+  * This has been completed but will not be moved to production because I don't think it's practical enough to justify the compute resources it needs.
   * The proof of concept already works, but there are some bugs. Probably because I'm firewalling Strelka through Security Onion.
   * Bugs continue, perhaps I'll spin up a parallel instance.
  
 * Replace Dashy installation with all custom HTML
 
 * Create something similar to the Sankey Generator, but that takes all inputs to generate a Sankey or perhaps something else. The Security Onion dashboard might make sense to me, but ultimately nobody is going to use it unless they know how to use Lucene query language and if I can make it easier than it will be useful for more people than just me.
-
-* Perhaps I can give ElastAlert a try, really just seems like a pain for no reason.
-
-* Create more Wazuh alerts for bad behavior.
 
 * Create another Pihole as a secondary DNS and point it to the same DNS servers so we can have fully redundant Pihole and prevent another cybersecurity incident from malvertising lol
