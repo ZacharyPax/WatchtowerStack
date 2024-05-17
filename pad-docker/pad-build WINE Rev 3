@@ -1,0 +1,9 @@
+docker run --name watchtower-wine-3 -p 8080:8080 --network host \
+    --env FLT_PROM_URL=http://192.168.0.185:9090 \
+    --env FLT_RETRAINING_INTERVAL_MINUTES=90 \
+    --env FLT_METRICS_LIST='windows_net_bytes_sent_total; windows_os_physical_memory_free_bytes; windows_ad_ldap_writes_total; windows_os_processes' \
+    --env APP_FILE=app.py \
+    --env FLT_DATA_START_TIME=30d \
+	--env FLT_PARALLELISM=16 \
+    --env FLT_ROLLING_TRAINING_WINDOW_SIZE=15d \
+    quay.io/aicoe/prometheus-anomaly-detector:latest
