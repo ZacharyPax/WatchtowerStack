@@ -15,14 +15,15 @@ ip link set ens1f0 promisc on
 ip link set ens1f1 promisc on
 
 # sets bridge MAC address aging to 0 (your bridges might not be vmbr420-422)
-brctl setageing vmbr421 0
 brctl setageing vmbr420 0
+brctl setageing vmbr421 0
 brctl setageing vmbr422 0
 
 # sets bridge to forward traffic instantly
 brctl setfd vmbr420 0
-brctl setfd vmbr422 0
 brctl setfd vmbr421 0
+brctl setfd vmbr422 0
+
 
 # launches PVE exporter (https://github.com/prometheus-pve/prometheus-pve-exporter)
 pve_exporter
