@@ -24,6 +24,8 @@ Recreated Watchtower Forensic Datastore
 
 Significant performance and usability improvements
 
+Updated Grafana to version 11
+
 Custom kernel parameters for KVM access and hugepages
 
 Database performance improvement
