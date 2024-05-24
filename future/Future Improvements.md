@@ -11,6 +11,8 @@
 * YARA signature matching for malware detection
   
 * Machine learning algorithm for endpoint data
+  
+* Move Watchtower Stack to its own dedicated VLAN
 
 ## Improvements still in development/consideration
 
