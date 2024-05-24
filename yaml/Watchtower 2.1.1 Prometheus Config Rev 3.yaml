@@ -1,0 +1,76 @@
+# my global config
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: "ArcadiaDC"
+    static_configs:
+      - targets: ["192.168.0.9:9182"]
+
+  - job_name: "newpdc"
+    static_configs:
+      - targets: ["192.168.0.10:9182"]
+
+  - job_name: "Stakeout"
+    static_configs:
+      - targets: ["192.168.0.11:9182"]
+
+  - job_name: "ESRI"
+    static_configs:
+      - targets: ["192.168.0.16:9182"]
+
+# Decomissioned Spicerack, kept for contingency
+  - job_name: "Spicerack"
+    static_configs:
+      - targets: ["192.168.0.115:9182"]
+
+  - job_name: "StarEnergy"
+    static_configs:
+      - targets: ["192.168.0.68:9182"]
+
+  - job_name: "Veeam"
+    static_configs:
+      - targets: ["192.168.0.112:9182"]
+
+  - job_name: "VeeamProxy1"
+    static_configs:
+      - targets: ["192.168.0.171:9182"]
+
+  - job_name: "Pihole"
+    static_configs:
+      - targets: ["192.168.0.6:9617"]
+
+  - job_name: "pve"
+    static_configs:
+      - targets: ["192.168.69.4:9221"]
+    metrics_path: /pve
+
+  - job_name: "blackbox-icmp"
+    metrics_path: /probe
+    params:
+      module: [icmp]
+      target: [www.riverlandenergy.com]
+    static_configs:
+      - targets:
+        - localhost:9115
+
+  - job_name: "Watchtower-AI"
+    static_configs:
+      - targets: ["192.168.69.125:8080"]
