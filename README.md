@@ -70,7 +70,9 @@ The Watchtower Stack comprises several key virtual machines:
      
    - Bathsheba: An Ubuntu Server installation that does LAN infrastructure monitoring and uptime calculations.
 
-### Watchtower Stack 2.1.1 Data Flow (Software-defined)
+   - Peter: An Ubuntu Server installation that scrapes SNMP data from network devices.
+
+### Watchtower Stack 2.1.1 Data Flow (Excludes Peter)
 
 ![Watchtower Data Flow](https://i.imgur.com/7awKLTp.png)
 
