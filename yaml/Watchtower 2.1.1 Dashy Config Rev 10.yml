@@ -276,3 +276,9 @@ sections:
         url: http://lan.local
         target: newtab
         id: 6_2061_riverlandinfrastructurestatus
+      - title: SNMP Polling
+        description: Network Management Data for Meraki Infrastructure
+        icon: https://avatars.githubusercontent.com/u/5791783
+        url: http://192.168.69.29/
+        target: newtab
+        id: 7_2061_snmppolling
