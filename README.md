@@ -76,7 +76,7 @@ The Watchtower Stack comprises several key virtual machines:
 
    - Jezebel: A Kali Linux installation running OpenVAS for vulnerability detection.
 
-### Watchtower Stack 2.1.1 Data Flow (Excludes Peter)
+### Watchtower Stack 2.1.1 Data Flow (Excludes Peter & Jezebel)
 
 ![Watchtower Data Flow](https://i.imgur.com/7awKLTp.png)
 
