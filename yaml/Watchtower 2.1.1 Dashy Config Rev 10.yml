@@ -220,6 +220,20 @@ sections:
         url: 'https://192.168.69.4:8006/#v1:0:=qemu%2F112:4:::::8::'
         target: newtab
         id: 10_838_micahconsole
+      - title: Jezebel Console
+        description: pentesting.wt.local
+        icon: >-
+          https://cdn.freelogovectors.net/wp-content/uploads/2021/12/kali-logo-freelogovectors.net_.png
+        url: 'https://192.168.69.4:8006/#v1:0:=qemu%2F104:4:::::8::'
+        target: newtab
+        id: 11_838_jezebelconsole
+      - title: Peter Console
+        description: snmp-core.wt.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: 'https://192.168.69.4:8006/#v1:0:=qemu%2F114:4:::::8::'
+        target: newtab
+        id: 12_838_peterconsole
   - name: Documentation/Status
     displayData:
       sortBy: default
@@ -273,12 +287,13 @@ sections:
       - title: Riverland Infrastructure Status
         description: Health of Riverland's Critical Infrastructure
         icon: https://art.pixilart.com/044a0125e255154.png
-        url: http://lan.local
+        url: http://lan.local/status/wt-rec-lan
         target: newtab
         id: 6_2061_riverlandinfrastructurestatus
       - title: SNMP Polling
         description: Network Management Data for Meraki Infrastructure
         icon: https://avatars.githubusercontent.com/u/5791783
-        url: http://192.168.69.29/
+        url: >-
+          http://secure-intraroute-71mini.watchtower-internal-infrastructure.wt.local
         target: newtab
         id: 7_2061_snmppolling
