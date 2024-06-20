@@ -43,6 +43,7 @@ The Watchtower Stack offers a range of features:
   -  Machine learning on endpoint telemetry to forecast resource usage and detect anomalies (Ezra)
   -  Real-time uptime monitoring of critical network infrastructure (Bathesheba)
   -  Per-port and per-device network management statistics and information (Peter)
+  -  Vulnerability scanning with OpenVAS/Greenbone (Jezebel)
   -  So much more!
 
 ### Virtual Machines
@@ -72,6 +73,8 @@ The Watchtower Stack comprises several key virtual machines:
    - Bathsheba: An Ubuntu Server installation that does LAN infrastructure monitoring and uptime calculations.
 
    - Peter: An Ubuntu Server installation that scrapes SNMP data from network devices with LibreNMS.
+
+   - Jezebel: A Kali Linux installation running OpenVAS for vulnerability detection.
 
 ### Watchtower Stack 2.1.1 Data Flow (Excludes Peter)
 
