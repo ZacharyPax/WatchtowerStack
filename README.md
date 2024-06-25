@@ -8,6 +8,8 @@ Components created by Zachary Pax in this repository are licensed under the GNU 
 
 ![GPLv3](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)
 
+![Freedom](https://static.fsf.org/nosvn/appeal2023/fall/banner.png)
+
 > [!WARNING]
 > The misconfiguration of any software within this stack could potentially lead to severe repercussions. It is of paramount importance to ascertain that all network connections established between components are secure. With a comprehensive understanding of the components, this task becomes straightforward, and there is typically no cause for concern. However, a lack of knowledge can inadvertently result in significant security vulnerabilities. Therefore, if you intend to deploy this stack, either partially or wholly, it is essential to have a thorough understanding of its operation prior to deployment to guarantee a secure implementation.
 
