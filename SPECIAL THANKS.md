@@ -4,7 +4,7 @@ This page highlights individuals who made contributions either to assist me in d
 ---
 Marissa Pax - University of Montana 
 
-M.A. Communications 
+M.A. Communication
 
 - Proofreading and revising private Watchtower Stack documentation (not in this repository)
 - Proofreading and revising "An Analysis of the Practicality of Assessing Cryptographic Hashes for Malware Detection with VirusTotal and Wazuh File Integrity Monitoring"
