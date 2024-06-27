@@ -2,9 +2,9 @@
 This page highlights individuals who made contributions either to assist me in developing/configuring various components of the Watchtower Stack, or who made direct personal contributions to the stack itself.
 
 ---
-Marissa Pax - College of Saint Benedict
+Marissa Pax - University of Montana 
 
-B.A. English
+M.A. Communicatons 
 
 - Proofreading and revising private Watchtower Stack documentation (not in this repository)
 - Proofreading and revising "An Analysis of the Practicality of Assessing Cryptographic Hashes for Malware Detection with VirusTotal and Wazuh File Integrity Monitoring"
