@@ -10,6 +10,8 @@ Started scraping Prometheus Pushgateway data on Vashti
 
 Using this data added ambient temperature sensor to Grafana Dashboard
 
+Updated Security Onion to 2.4.80
+
 Result of changes:
 
 More visibility 
