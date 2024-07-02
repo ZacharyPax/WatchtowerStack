@@ -1,0 +1,6 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates average the ambient server room temperature via Watchtower Core Switch's inlet air sensor.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+(librenms_sensor{instance="192.168.69.2", job="librenms", measurement="sensor", sensor_class="temperature", sensor_descr="Chassis-Temperature", sensor_index="12001", sensor_type="entity-sensor"}) * 1.8 + 32
