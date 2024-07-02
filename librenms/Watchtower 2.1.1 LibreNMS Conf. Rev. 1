@@ -1,0 +1,802 @@
+    active_directory.users_purge 0
+    addhost_alwayscheckip false
+    alert.ack_until_clear false
+    alert.admins true
+    alert.macros.rule { "bill_quota_over_quota": "((%bills.total_data / %bills.bill_quota)*100) && %bills.bill_type = \"quota\"", "bill_cdr_over_quota": "((%bills.rate_95th / %bills.bill_cdr)*100) && %bills.bill_type = \"cdr\"", "component": "(%component.disabled = 0 && %component.ignore = 0)", "component_critical": "(%component.status = 2 && %macros.component)", "component_normal": "(%component.status = 0 && %macros.component)", "component_warning": "(%component.status = 1 && %macros.component)", "device": "(%devices.disabled = 0 && %devices.ignore = 0)", "device_component_down_junos": "%sensors.sensor_class = \"state\" && %sensors.sensor_current != \"6\" && (%sensors.sensor_type = \"jnxFruState\" || %sensors.sensor_type = \"jnxFruTable\") && %sensors.sensor_current != \"2\" && %sensors.sensor_alert = \"1\"", "device_component_down_cisco": "%sensors.sensor_current != \"1\" && %sensors.sensor_current != \"5\" && %sensors.sensor_type REGEXP \"^cisco.*State$\" && %sensors.sensor_alert = \"1\"", "device_up": "(%devices.status = 1 && %macros.device)", "device_down": "(%devices.status = 0 && %macros.device)", "now": "NOW()", "packet_loss_15m": "if(%devices.status = 0, 100, 0)", "packet_loss_5m": "if(%devices.status = 0, 100, 0)", "past_5m": "DATE_SUB(NOW(),INTERVAL 5 MINUTE)", "past_10m": "DATE_SUB(NOW(),INTERVAL 10 MINUTE)", "past_15m": "DATE_SUB(NOW(),INTERVAL 15 MINUTE)", "past_20m": "DATE_SUB(NOW(),INTERVAL 20 MINUTE)", "past_30m": "DATE_SUB(NOW(),INTERVAL 30 MINUTE)", "past_60m": "DATE_SUB(NOW(),INTERVAL 60 MINUTE)", "port": "(%ports.deleted = 0 && %ports.ignore = 0 && %ports.disabled = 0)", "port_out_error_perc": "((%ports.ifOutErrors_rate) / %ports.ifOutUcastPkts_rate)*100", "port_in_error_perc": "((%ports.ifInErrors_rate) / %ports.ifInUcastPkts_rate)*100", "port_down": "(%ports.ifOperStatus = \"down\" && %ports.ifAdminStatus != \"down\" && %macros.port)", "port_up": "(%ports.ifOperStatus = \"up\" && %ports.ifAdminStatus = \"up\" && %macros.port)", "port_usage_perc": "((SELECT IF(%ports.ifOutOctets_rate>%ports.ifInOctets_rate, %ports.ifOutOctets_rate, %ports.ifInOctets_rate)*8) / %ports.ifSpeed)*100", "port_in_usage_perc": "((%ports.ifInOctets_rate*8) / %ports.ifSpeed)*100", "port_out_usage_perc": "((%ports.ifOutOctets_rate*8) / %ports.ifSpeed)*100", "port_now_down": "%ports.ifOperStatus != %ports.ifOperStatus_prev && %ports.ifOperStatus_prev = \"up\" && %ports.ifAdminStatus = \"up\" && %macros.port", "port_has_xdp_neighbours": "(%macros.port && %links.local_port_id = %ports.port_id)", "port_has_xdp_neighbours_device": "(%macros.port_has_xdp_neighbours && %links.remote_port_id IS NOT NULL)", "pdu_over_amperage_apc": "%sensors.sensor_class = \"current\" && %sensors.sensor_descr = \"Bank Total\" && %sensors.sensor_current > %sensors.sensor_limit && %devices.os = \"apc\"", "sensor": "(%sensors.sensor_alert = 1)", "sensor_port_link": "(%sensors.entPhysicalIndex_measured = 'ports' && %sensors.entPhysicalIndex = %ports.ifIndex && %macros.port_up)", "state_sensor_critical": "%sensors.sensor_current = %state_translations.state_value && %state_translations.state_generic_value = 2", "state_sensor_ok": "%sensors.sensor_current = %state_translations.state_value && %state_translations.state_generic_value = 0", "state_sensor_unknown": "%sensors.sensor_current = %state_translations.state_value && %state_translations.state_generic_value = 3", "state_sensor_warning": "%sensors.sensor_current = %state_translations.state_value && %state_translations.state_generic_value = 1" }
+    alert_colour.ok #00ff00
+    alert_colour.bad #ff0000
+    alert_colour.acknowledged #337ab7
+    alert_colour.worse #ff0000
+    alert_colour.better #f0ad4e
+    alert.default_copy true
+    alert.default_mail false
+    alert.default_only true
+    alert.disable false
+    alert.acknowledged true
+    alert.fixed-contacts true
+    alert.globals true
+    alert.syscontact true
+    alert.transports.mail 5
+    alert.tolerance_window 5
+    alert.users false
+    alert_graph_date_format %Y-%m-%d %H:%i
+    alert_log_purge 365
+    alerts.bgp.whitelist
+    alerts.email.default_only
+    alerts.email.enable false
+    alert_rule.severity warning
+    alert_rule.max_alerts 1
+    alert_rule.delay 1
+    alert_rule.interval 5
+    alert_rule.mute_alerts false
+    alert_rule.acknowledged_alerts true
+    alert_rule.invert_rule_match false
+    alert_rule.recovery_alerts true
+    alert_rule.acknowledgement_alerts true
+    alert_rule.invert_map false
+    discovery_on_reboot false
+    allow_duplicate_sysName false
+    allow_entity_sensor.amperes true
+    allow_entity_sensor.celsius true
+    allow_entity_sensor.dBm true
+    allow_entity_sensor.specialEnum true
+    allow_entity_sensor.truthvalue true
+    allow_entity_sensor.voltsAC true
+    allow_entity_sensor.voltsDC true
+    allow_entity_sensor.watts true
+    allow_unauth_graphs false
+    allow_unauth_graphs_cidr []
+    api.cors.allowheaders [ "Origin", "X-Requested-With", "Content-Type", "Accept", "X-Auth-Token" ]
+    api.cors.allowcredentials false
+    api.cors.allowmethods [ "POST", "GET", "PUT", "DELETE", "PATCH" ]
+    api.cors.enabled false
+    api.cors.exposeheaders [ "Cache-Control", "Content-Language", "Content-Type", "Expires", "Last-Modified", "Pragma" ]
+    api.cors.maxage 86400
+    api.cors.origin [ "*" ]
+    apps.powerdns-recursor.api-key
+    apps.powerdns-recursor.https false
+    apps.powerdns-recursor.port 8082
+    apps.sneck.polling_time_diff false
+    astext { "65332": "Cymru FullBogon Feed", "65333": "Cymru Bogon Feed" }
+    auth.allow_get_login false
+    auth.socialite.redirect false
+    auth.socialite.register false
+    auth.socialite.configs
+    auth.socialite.scopes
+    auth.socialite.default_role none
+    auth.socialite.claims []
+    auth_ad_base_dn
+    auth_ad_check_certificates false
+    auth_ad_debug false
+    auth_ad_domain
+    auth_ad_group_filter (objectclass=group)
+    auth_ad_groups []
+    auth_ad_user_filter (objectclass=user)
+    auth_ad_binddn
+    auth_ad_bindpassword
+    auth_ad_binduser
+    auth_ad_url
+    auth_ad_require_groupmembership false
+    auth_ad_starttls disabled
+    auth_ldap_attr.uid uid
+    auth_ldap_binddn
+    auth_ldap_bindpassword
+    auth_ldap_binduser
+    auth_ldap_cache_ttl 300
+    auth_ldap_debug false
+    auth_ldap_cacertfile
+    auth_ldap_ignorecert false
+    auth_ldap_emailattr mail
+    auth_ldap_groupbase
+    auth_ldap_groupmemberattr memberUid
+    auth_ldap_groupmembertype
+    auth_ldap_groups []
+    auth_ldap_port 389
+    auth_ldap_prefix uid=
+    auth_ldap_server ldap.example.com
+    auth_ldap_require_groupmembership true
+    auth_ldap_starttls disabled
+    auth_ldap_suffix ,ou=People,dc=example,dc=com
+    auth_ldap_timeout 5
+    auth_ldap_uid_attribute uidnumber
+    auth_ldap_userdn false
+    auth_ldap_wildcard_ou false
+    auth_ldap_version 3
+    auth_mechanism mysql
+    auth_remember 30
+    authlog_purge 30
+    autodiscovery.bgp true
+    autodiscovery.cdp_exclude.platform_regexp [ "/^Cisco IP Phone/" ]
+    autodiscovery.nets-exclude [ "0.0.0.0/8", "127.0.0.0/8", "169.254.0.0/16", "224.0.0.0/4", "240.0.0.0/4" ]
+    autodiscovery.ospf true
+    autodiscovery.snmpscan true
+    autodiscovery.xdp true
+    autodiscovery.xdp_exclude.sysdesc_regexp [ "/-K9W8/" ]
+    bad_entity_sensor_regex
+    bad_disk_regexp []
+    bad_if [ "voip-null", "virtual-", "unrouted", "eobc", "lp0", "-atm", "faith0", "container", "async", "plip", "-physical", "container", "unrouted", "bluetooth", "isatap", "ras", "qos", "span rp", "span sp", "sslvpn", "pppoe-", "irtual" ]
+    bad_if_regexp [ "/^ng[0-9]+$/", "/^sl[0-9]/" ]
+    bad_iftype [ "voiceEncap", "voiceFXO", "voiceFXS", "voiceOverAtm", "voiceOverFrameRelay", "voiceOverIp", "ds0", "ds1", "ds3", "sonet", "atmSubInterface", "aal5", "mpls" ]
+    bad_ifoperstatus [ "notPresent" ]
+    base_url http://192.168.69.29/
+    billing.base 1000
+    callback_clear https://stats.librenms.org/clear.php
+    callback_post https://stats.librenms.org/log.php
+    callback_proxy
+    collectd_dir
+    core_descr [ "core" ]
+    cpu_details_overview false
+    custom_descr [ "" ]
+    customers_descr [ "cust" ]
+    dateformat.byminute Y-m-d H:i
+    dateformat.compact Y-m-d H:i:s
+    dateformat.long r
+    dateformat.mysql.compact %Y-%m-%d %H:%i:%s
+    dateformat.mysql.date %Y-%m-%d
+    dateformat.mysql.time %H:%i:%s
+    dateformat.time H:i:s
+    default_port_group 0
+    device_location_map_open false
+    default_port_association_mode ifIndex
+    device_display_default {{ $hostname }}
+    device_traffic_descr [ "/loopback/", "/vlan/", "/tunnel/", "/bond/", "/null/", "/dummy/" ]
+    device_traffic_iftype [ "/loopback/", "/tunnel/", "/virtual/", "/mpls/", "/ieee8023adLag/", "/l2vlan/", "/ppp/" ]
+    device_types [ { "icon": "appliance.png", "text": "Appliance", "type": "appliance" }, { "icon": "collaboration.png", "text": "Collaboration", "type": "collaboration" }, { "icon": "environment.png", "text": "Environment", "type": "environment" }, { "icon": "firewall.png", "text": "Firewalls", "type": "firewall" }, { "icon": "loadbalancer.png", "text": "Load Balancers", "type": "loadbalancer" }, { "icon": "network.png", "text": "Network", "type": "network" }, { "icon": "printer.png", "text": "Printers", "type": "printer" }, { "icon": "power.png", "text": "Power", "type": "power" }, { "icon": "server.png", "text": "Servers", "type": "server" }, { "icon": "storage.png", "text": "Storage", "type": "storage" }, { "icon": "wireless.png", "text": "Wireless", "type": "wireless" }, { "icon": "workstation.png", "text": "Workstation", "type": "workstation" } ]
+    disabled_sensors
+    disabled_sensors_regex
+    discover_services false
+    discover_services_templates false
+    discovery_by_ip false
+    discovery_modules.core true
+    discovery_modules.os true
+    discovery_modules.ports true
+    discovery_modules.ports-stack true
+    discovery_modules.xdsl false
+    discovery_modules.entity-physical true
+    discovery_modules.entity-state false
+    discovery_modules.isis false
+    discovery_modules.processors true
+    discovery_modules.mempools true
+    discovery_modules.cisco-vrf-lite true
+    discovery_modules.cisco-mac-accounting false
+    discovery_modules.cisco-pw false
+    discovery_modules.vrf false
+    discovery_modules.cisco-cef false
+    discovery_modules.slas false
+    discovery_modules.cisco-cbqos false
+    discovery_modules.cisco-otv false
+    discovery_modules.cisco-qfp false
+    discovery_modules.ipv4-addresses true
+    discovery_modules.ipv6-addresses true
+    discovery_modules.route false
+    discovery_modules.sensors true
+    discovery_modules.storage true
+    discovery_modules.hr-device true
+    discovery_modules.discovery-protocols true
+    discovery_modules.arp-table true
+    discovery_modules.discovery-arp false
+    discovery_modules.junose-atm-vp false
+    discovery_modules.bgp-peers true
+    discovery_modules.vlans true
+    discovery_modules.vminfo false
+    discovery_modules.printer-supplies false
+    discovery_modules.ucd-diskio true
+    discovery_modules.applications false
+    discovery_modules.services true
+    discovery_modules.stp true
+    discovery_modules.ntp true
+    discovery_modules.loadbalancers false
+    discovery_modules.mef false
+    discovery_modules.wireless true
+    discovery_modules.fdb-table true
+    discovery_modules.mpls true
+    distributed_poller false
+    distributed_poller_group 0
+    default_poller_group 0
+    distributed_poller_memcached_host example.net
+    distributed_poller_memcached_port 11211
+    graphing.availability [ 86400, 604800, 2592000, 31536000 ]
+    graphing.availability_consider_maintenance false
+    dot /usr/bin/dot
+    email_auto_tls true
+    email_attach_graphs true
+    email_backend mail
+    email_from "LibreNMS" <LibreNMS@peter>
+    email_html false
+    email_sendmail_path /usr/sbin/sendmail
+    email_smtp_auth false
+    email_smtp_host localhost
+    email_smtp_password NULL
+    email_smtp_port 25
+    email_smtp_secure
+    email_smtp_timeout 10
+    email_smtp_username NULL
+    email_user LibreNMS
+    enable_billing false
+    enable_clear_discovery true
+    enable_footer false
+    enable_inventory true
+    enable_lazy_load true
+    enable_libvirt false
+    enable_ports_adsl true
+    enable_ports_etherlike false
+    enable_ports_junoseatmvp false
+    enable_pseudowires true
+    enable_syslog false
+    enable_vrf_lite_cisco true
+    enable_vrfs true
+    eventlog_purge 30
+    favicon
+    fping /usr/bin/fping
+    fping6 /usr/bin/fping6
+    fping_options.count 3
+    fping_options.interval 500
+    fping_options.timeout 500
+    front_page default
+    front_page_down_box_limit 10
+    front_page_settings.top.devices 10
+    front_page_settings.top.ports 10
+    geoloc.api_key
+    geoloc.dns true
+    geoloc.engine false
+    geoloc.latlng false
+    geoloc.layer Streets
+    github_api https://api.github.com/repos/librenms/librenms/
+    good_if
+    graph_stat_percentile_disable false
+    graph_colours.blues [ "A9A9F2", "9696DD", "8080C9", "6A6AB7", "5151A3", "3D3D99" ]
+    graph_colours.default [ "A0A0E5", "8080BD", "606096", "40406F", "202048", "000033" ]
+    graph_colours.greens [ "CAE853", "B2D849", "94C63D", "75BA30", "49A81E", "0C990C" ]
+    graph_colours.manycolours [ "FFF8A3", "FAE16B", "F8D753", "F3C01C", "F0B400", "A9CC8F", "82B16A", "5C9746", "3D8128", "1E6C0B", "B2C8D9", "779DBF", "3E75A7", "205F9A", "00488C", "BEA37A", "907A52", "7A653E", "63522B", "3D3000", "F3AA79", "EB8953", "E1662A", "DC5313", "D84000", "B5B5A9", "8B8D82", "74796F", "5D645A", "434C43", "E6A4A5", "D6707B", "C4384F", "BC1C39", "B30023" ]
+    graph_colours.mixed [ "CC0000", "008C00", "4096EE", "73880A", "D01F3C", "36393D", "FF0084", "91B13C" ]
+    graph_colours.oranges [ "E43C00", "E74B00", "EB5B00", "EF6A00", "F37900", "F78800", "FB9700", "FFA700" ]
+    graph_colours.pinks [ "D0558F", "B34773", "943A57", "792C38", "5C1F1E", "401F10" ]
+    graph_colours.psychedelic [ "CC7CCC", "D0558F", "B6D14B", "A0A0E5", "E43C00", "AF63AF", "B34773", "91B13C", "8080BD", "E74B00", "934A93", "943A57", "6D912D", "606096", "EB5B00", "773177", "792C38", "48721E", "40406F", "EF6A00", "5B185B", "5C1F1E", "24520F", "202048", "F37900", "3F003F", "401F10", "003300", "000033", "F78800", "FB9700", "FFA700" ]
+    graph_colours.purples [ "CC7CCC", "AF63AF", "934A93", "773177", "5B185B", "3F003F" ]
+    graph_colours.rainbow [ "881177", "AA3355", "CC6666", "EE9944", "EEDD00", "99DD55", "44DD88", "22CCBB", "00BBCC", "0099CC", "3366BB", "663399" ]
+    graph_colours.rainbow_stats_green [ "99DD55", "22CCBB", "00BBCC", "0099CC", "3366BB", "AA3355", "881177", "CC6666", "EEDD00", "44DD88", "663399" ]
+    graph_colours.rainbow_stats_purple [ "663399", "22CCBB", "00BBCC", "0099CC", "3366BB", "AA3355", "881177", "CC6666", "EEDD00", "44DD88", "99DD55" ]
+    graph_colours.varied [ "CC0000", "DC7201", "FFBE55", "008FEA", "3CB371", "708090", "663399", "00BFFF" ]
+    graph_descr.device_processor This is an aggregate graph of all processors in the system.
+    graph_descr.device_smokeping_in_all This is an aggregate graph of the incoming smokeping tests to this host. The line corresponds to the average RTT. The shaded area around each line denotes the standard deviation.
+    graph_types.device.agent { "section": "poller", "order": 0, "descr": "Agent Execution Time" }
+    graph_types.device.arbos_flows { "section": "graphs", "order": 0, "descr": "Accumulative flow count per SP device" }
+    graph_types.device.asa_conns { "section": "firewall", "order": 0, "descr": "Current connections" }
+    graph_types.device.asyncos_conns { "section": "proxy", "order": 0, "descr": "Current connections" }
+    graph_types.device.barracuda_firewall_sessions { "section": "firewall", "order": 0, "descr": "Active Sessions" }
+    graph_types.device.bigip_apm_sessions { "section": "apm", "order": 0, "descr": "Active Sessions" }
+    graph_types.device.bigip_system_client_concurrent_connections { "section": "ltm", "order": 2, "descr": "Global Client Concurrent Connections" }
+    graph_types.device.bigip_system_client_connection_rate { "section": "ltm", "order": 4, "descr": "Global Client Connection Rate" }
+    graph_types.device.bigip_system_server_concurrent_connections { "section": "ltm", "order": 1, "descr": "Global Server Concurrent Connections" }
+    graph_types.device.bigip_system_server_connection_rate { "section": "ltm", "order": 3, "descr": "Global Server Connection Rate" }
+    graph_types.device.bigip_system_tps { "section": "ltm", "order": 0, "descr": "SSL Transactions" }
+    graph_types.device.bits { "section": "netstats", "order": 0, "descr": "Total Traffic" }
+    graph_types.device.bluecoat_http_client_connections { "section": "network", "order": 0, "descr": "HTTP Client Connections" }
+    graph_types.device.bluecoat_http_client_connections_active { "section": "network", "order": 0, "descr": "HTTP Client Connections Active" }
+    graph_types.device.bluecoat_http_client_connections_idle { "section": "network", "order": 0, "descr": "HTTP Client Connections Idle" }
+    graph_types.device.bluecoat_http_server_connections { "section": "network", "order": 0, "descr": "HTTP Server Connections" }
+    graph_types.device.bluecoat_http_server_connections_active { "section": "network", "order": 0, "descr": "HTTP Server Connections Active" }
+    graph_types.device.bluecoat_http_server_connections_idle { "section": "network", "order": 0, "descr": "HTTP Server Connections Idle" }
+    graph_types.device.cambium-epmp-frameUtilization { "section": "wireless", "order": 7, "descr": "Frame Utilization" }
+    graph_types.device.cambium_epmp_RFStatus { "section": "wireless", "order": 0, "descr": "RF Status" }
+    graph_types.device.cambium_epmp_access { "section": "wireless", "order": 4, "descr": "Access Info" }
+    graph_types.device.cambium_epmp_freq { "section": "wireless", "order": 6, "descr": "Frequency" }
+    graph_types.device.cambium_epmp_gpsSync { "section": "wireless", "order": 5, "descr": "GPS Sync Status" }
+    graph_types.device.cambium_epmp_modulation { "section": "wireless", "order": 2, "descr": "ePMP Modulation" }
+    graph_types.device.cambium_epmp_registeredSM { "section": "wireless", "order": 3, "descr": "ePMP Registered SM" }
+    graph_types.device.canopy_generic_450_linkRadioDbm { "section": "wireless", "order": 5, "descr": "Radio Link H/V" }
+    graph_types.device.canopy_generic_450_powerlevel { "section": "wireless", "order": 4, "descr": "Power Level of Registered SM" }
+    graph_types.device.canopy_generic_450_ptpSNR { "section": "wireless", "order": 6, "descr": "Master SNR" }
+    graph_types.device.canopy_generic_450_slaveHV { "section": "wireless", "order": 7, "descr": "Dbm H/V" }
+    graph_types.device.canopy_generic_crcErrors { "section": "wireless", "order": 15, "descr": "CRC Errors (Migrated to Wireless Sensor)" }
+    graph_types.device.canopy_generic_errorCount { "section": "wireless", "order": 14, "descr": "Error Count (Migrated to Wireless Sensor)" }
+    graph_types.device.canopy_generic_gpsStats { "section": "wireless", "order": 0, "descr": "GPS Stats" }
+    graph_types.device.canopy_generic_jitter { "section": "wireless", "order": 2, "descr": "Jitter" }
+    graph_types.device.canopy_generic_radioDbm { "section": "wireless", "order": 13, "descr": "Radio Dbm" }
+    graph_types.device.canopy_generic_regCount { "section": "wireless", "order": 11, "descr": "Registered SM" }
+    graph_types.device.canopy_generic_signalHV { "section": "wireless", "order": 3, "descr": "Signal" }
+    graph_types.device.ceraos_DefectedBlocks { "section": "wireless", "order": 4, "descr": "DefectedBlocks" }
+    graph_types.device.ceraos_MSE { "section": "wireless", "order": 2, "descr": "Radial MSE" }
+    graph_types.device.ceraos_RxBitrate { "section": "wireless", "order": 6, "descr": "RxBitrate" }
+    graph_types.device.ceraos_RxLevel { "section": "wireless", "order": 0, "descr": "RX Level" }
+    graph_types.device.ceraos_TxBitrate { "section": "wireless", "order": 5, "descr": "TxBitrate" }
+    graph_types.device.ceraos_TxPower { "section": "wireless", "order": 1, "descr": "TX Power" }
+    graph_types.device.ceraos_XPI { "section": "wireless", "order": 3, "descr": "Cross Polarisation Interference" }
+    graph_types.device.charge { "section": "system", "order": 0, "descr": "Battery Charge" }
+    graph_types.device.cipsec_flow_bits { "section": "firewall", "order": 0, "descr": "IPSec Tunnel Traffic Volume" }
+    graph_types.device.cipsec_flow_pkts { "section": "firewall", "order": 0, "descr": "IPSec Tunnel Traffic Packets" }
+    graph_types.device.cipsec_flow_stats { "section": "firewall", "order": 0, "descr": "IPSec Tunnel Statistics" }
+    graph_types.device.cipsec_flow_tunnels { "section": "firewall", "order": 0, "descr": "IPSec Active Tunnels" }
+    graph_types.device.cisco-iosdsp { "section": "voice", "order": 0, "descr": "DSP Utilisation" }
+    graph_types.device.cisco-iosmtp { "section": "voice", "order": 0, "descr": "Hardware MTP Utilisation" }
+    graph_types.device.cisco-iospri { "section": "voice", "order": 0, "descr": "PRI Utilisation" }
+    graph_types.device.cisco-iosxcode { "section": "voice", "order": 0, "descr": "Transcoder Utilisation" }
+    graph_types.device.cisco-voice-ip { "section": "voice", "order": 0, "descr": "IP Real Time Calls" }
+    graph_types.device.cisco_wwan_mnc { "section": "wireless", "order": 1, "descr": "MNC" }
+    graph_types.device.cisco_wwan_rssi { "section": "wireless", "order": 0, "descr": "Signal Rssi" }
+    graph_types.device.cras_sessions { "section": "firewall", "order": 0, "descr": "Remote Access Sessions" }
+    graph_types.device.customoid { "section": "customoid", "order": 0, "descr": "Custom OID" }
+    graph_types.device.fdb_count { "section": "system", "order": 0, "descr": "MAC Addresses Learnt" }
+    graph_types.device.fortigate_cpu { "section": "system", "order": 0, "descr": "CPU" }
+    graph_types.device.fortigate_sessions { "section": "firewall", "order": 0, "descr": "Active Sessions" }
+    graph_types.device.fortios_lograte { "section": "analyzer", "order": 0, "descr": "Log Rate" }
+    graph_types.device.gaia_logserver_lograte { "section": "firewall", "order": 0, "descr": "Log Rate" }
+    graph_types.device.gaia_firewall_lograte { "section": "firewall", "order": 0, "descr": "Log Rate" }
+    graph_types.device.gaia_connections { "section": "firewall", "order": 0, "descr": "Active Connections" }
+    graph_types.device.gaia_firewall_packets { "section": "firewall", "order": 0, "descr": "Firewall Packets" }
+    graph_types.device.hr_processes { "section": "system", "order": 0, "descr": "Running Processes" }
+    graph_types.device.hr_users { "section": "system", "order": 0, "descr": "Users Logged In" }
+    graph_types.device.ib_dhcp_messages { "section": "dhcp", "order": 0, "descr": "DHCP messages" }
+    graph_types.device.ib_dns_dyn_updates { "section": "dns", "order": 0, "descr": "DNS dynamic updates" }
+    graph_types.device.ib_dns_performance { "section": "dns", "order": 0, "descr": "DNS performance" }
+    graph_types.device.ib_dns_request_return_codes { "section": "dns", "order": 0, "descr": "DNS request return codes" }
+    graph_types.device.ipsystemstats_ipv4 { "section": "netstats", "order": 0, "descr": "IPv4 Packet Statistics" }
+    graph_types.device.ipsystemstats_ipv4_frag { "section": "netstats", "order": 0, "descr": "IPv4 Fragmentation Statistics" }
+    graph_types.device.ipsystemstats_ipv6 { "section": "netstats", "order": 0, "descr": "IPv6 Packet Statistics" }
+    graph_types.device.ipsystemstats_ipv6_frag { "section": "netstats", "order": 0, "descr": "IPv6 Fragmentation Statistics" }
+    graph_types.device.junos_jsrx_spu_flows { "section": "network", "order": 0, "descr": "SPU Flows" }
+    graph_types.device.junos_jsrx_spu_sessions { "section": "network", "order": 1, "descr": "Flow Sessions" }
+    graph_types.device.mempool { "section": "system", "order": 0, "descr": "Memory Usage" }
+    graph_types.device.netscaler_tcp_bits { "section": "load balancer", "order": 0, "descr": "TCP Traffic" }
+    graph_types.device.netscaler_tcp_conn { "section": "load balancer", "order": 0, "descr": "TCP Connections" }
+    graph_types.device.netscaler_tcp_pkts { "section": "load balancer", "order": 0, "descr": "TCP Packets" }
+    graph_types.device.netstat_icmp { "section": "netstats", "order": 0, "descr": "ICMP Statistics" }
+    graph_types.device.netstat_icmp_info { "section": "netstats", "order": 0, "descr": "ICMP Informational Statistics" }
+    graph_types.device.netstat_ip { "section": "netstats", "order": 0, "descr": "IP Statistics" }
+    graph_types.device.netstat_ip_forward { "section": "netstats", "order": 0, "descr": "IP Forwarding Statistics" }
+    graph_types.device.netstat_ip_frag { "section": "netstats", "order": 0, "descr": "IP Fragmentation Statistics" }
+    graph_types.device.netstat_snmp { "section": "netstats", "order": 0, "descr": "SNMP Statistics" }
+    graph_types.device.netstat_snmp_pkt { "section": "netstats", "order": 0, "descr": "SNMP Packet Type Statistics" }
+    graph_types.device.netstat_tcp { "section": "netstats", "order": 0, "descr": "TCP Statistics" }
+    graph_types.device.netstat_udp { "section": "netstats", "order": 0, "descr": "UDP Statistics" }
+    graph_types.device.panos_activetunnels { "section": "firewall", "order": 0, "descr": "Active GlobalProtect Tunnels" }
+    graph_types.device.panos_sessions { "section": "firewall", "order": 0, "descr": "Active Sessions" }
+    graph_types.device.panos_sessions_icmp { "section": "firewall", "order": 0, "descr": "Active ICMP Sessions" }
+    graph_types.device.panos_sessions_ssl { "section": "firewall", "order": 0, "descr": "Active SSL Proxy Sessions" }
+    graph_types.device.panos_sessions_sslutil { "section": "firewall", "order": 0, "descr": "Active SSL Proxy Utilization" }
+    graph_types.device.panos_sessions_tcp { "section": "firewall", "order": 0, "descr": "Active TCP Sessions" }
+    graph_types.device.panos_sessions_udp { "section": "firewall", "order": 0, "descr": "Active UDP Sessions" }
+    graph_types.device.panos_panFlowDosBlkNumEntries { "section": "firewall", "order": 0, "descr": "Entries in DOS block table" }
+    graph_types.device.panos_panFlowMeterVsysThrottle { "section": "firewall", "order": 0, "descr": "Session Setup Denied - vsys Maximum Sessions" }
+    graph_types.device.panos_panFlowPolicyDeny { "section": "firewall", "order": 0, "descr": "Session Setup Denied - Policy" }
+    graph_types.device.panos_panFlowPolicyNat { "section": "firewall", "order": 0, "descr": "Session Setup Denied - NAT/IP allocation error" }
+    graph_types.device.panos_panFlowScanDrop { "section": "firewall", "order": 0, "descr": "Session Setup Denied - Scan Detection" }
+    graph_types.device.panos_panFlowDosDropIpBlocked { "section": "firewall", "order": 0, "descr": "Source flagged for blocking" }
+    graph_types.device.panos_panFlowDosRedIcmp { "section": "firewall", "order": 0, "descr": "Zone Protection RED - ICMP" }
+    graph_types.device.panos_panFlowDosRedIcmp6 { "section": "firewall", "order": 0, "descr": "Zone Protection RED - ICMPv6" }
+    graph_types.device.panos_panFlowDosRedIp { "section": "firewall", "order": 0, "descr": "Zone Protection RED - Other IP" }
+    graph_types.device.panos_panFlowDosRedTcp { "section": "firewall", "order": 0, "descr": "Zone Protection RED - TCP-SYN" }
+    graph_types.device.panos_panFlowDosRedUdp { "section": "firewall", "order": 0, "descr": "Zone Protection RED - UDP" }
+    graph_types.device.panos_panFlowDosPbpDrop { "section": "firewall", "order": 0, "descr": "Packet Buffer Protection RED" }
+    graph_types.device.panos_panFlowDosRuleDeny { "section": "firewall", "order": 0, "descr": "DOS Rule - Denied" }
+    graph_types.device.panos_panFlowDosRuleDrop { "section": "firewall", "order": 0, "descr": "DOS Rule - Rate Limited or IP Blocked" }
+    graph_types.device.panos_panFlowDosZoneRedAct { "section": "firewall", "order": 0, "descr": "Zone RED - Activation Threshold Reached" }
+    graph_types.device.panos_panFlowDosZoneRedMax { "section": "firewall", "order": 0, "descr": "Zone RED - Maximum Threshold Reached" }
+    graph_types.device.panos_panFlowDosSyncookieNotTcpSyn { "section": "firewall", "order": 0, "descr": "Session Discarded - TCP SYN Cookies - Not SYN" }
+    graph_types.device.panos_panFlowDosSyncookieNotTcpSynAck { "section": "firewall", "order": 0, "descr": "Session Discarded - TCP SYN Cookies - Not SYN-ACK" }
+    graph_types.device.panos_panFlowDosBlkSwEntries { "section": "firewall", "order": 0, "descr": "Entries in software DOS block table" }
+    graph_types.device.panos_panFlowDosBlkHwEntries { "section": "firewall", "order": 0, "descr": "Entries in hardware DOS block table" }
+    graph_types.device.pf_badoffset { "section": "firewall", "order": 6, "descr": "BadOffset" }
+    graph_types.device.pf_drops { "section": "firewall", "order": 11, "descr": "Drops" }
+    graph_types.device.pf_fragmented { "section": "firewall", "order": 7, "descr": "Fragmented" }
+    graph_types.device.pf_inserts { "section": "firewall", "order": 3, "descr": "Inserts" }
+    graph_types.device.pf_matches { "section": "firewall", "order": 5, "descr": "Matches" }
+    graph_types.device.pf_memdropped { "section": "firewall", "order": 10, "descr": "MemDropped" }
+    graph_types.device.pf_normalized { "section": "firewall", "order": 9, "descr": "Normalized" }
+    graph_types.device.pf_removals { "section": "firewall", "order": 4, "descr": "Removals" }
+    graph_types.device.pf_searches { "section": "firewall", "order": 2, "descr": "Searches" }
+    graph_types.device.pf_short { "section": "firewall", "order": 8, "descr": "Short" }
+    graph_types.device.pf_states { "section": "firewall", "order": 1, "descr": "States" }
+    graph_types.device.ping_perf { "section": "poller", "order": 0, "descr": "Ping Response" }
+    graph_types.device.poller_modules_perf { "section": "poller", "order": 0, "descr": "Poller Modules Performance" }
+    graph_types.device.poller_perf { "section": "poller", "order": 0, "descr": "Poller Time" }
+    graph_types.device.processor { "section": "system", "order": 0, "descr": "Processor Usage" }
+    graph_types.device.pulse_sessions { "section": "firewall", "order": 0, "descr": "Active Sessions" }
+    graph_types.device.pulse_users { "section": "firewall", "order": 0, "descr": "Active Users" }
+    graph_types.device.riverbed_connections { "section": "network", "order": 0, "descr": "Connections" }
+    graph_types.device.riverbed_datastore { "section": "network", "order": 2, "descr": "Datastore productivity" }
+    graph_types.device.riverbed_optimization { "section": "network", "order": 1, "descr": "Optimization" }
+    graph_types.device.riverbed_passthrough { "section": "network", "order": 3, "descr": "Bandwidth passthrough" }
+    graph_types.device.routeros_leases { "section": "network", "order": 0, "descr": "DHCP Lease Count" }
+    graph_types.device.routeros_pppoe_sessions { "section": "network", "order": 0, "descr": "PPPoE Session Count" }
+    graph_types.device.rutos_2xx_mobileDataUsage { "section": "network", "order": 0, "descr": "Mobile Data Usage" }
+    graph_types.device.screenos_sessions { "section": "firewall", "order": 0, "descr": "Active Sessions" }
+    graph_types.device.secureplatform_sessions { "section": "firewall", "order": 0, "descr": "Active connections" }
+    graph_types.device.sgos_average_requests { "section": "network", "order": 0, "descr": "Average HTTP Requests" }
+    graph_types.device.sgos_client_connections { "section": "network", "order": 1, "descr": "HTTP Client Connections" }
+    graph_types.device.sgos_client_connections_active { "section": "network", "order": 2, "descr": "HTTP Client Connections Active" }
+    graph_types.device.sgos_client_connections_idle { "section": "network", "order": 3, "descr": "HTTP Client Connections Idle" }
+    graph_types.device.sgos_server_connections { "section": "network", "order": 4, "descr": "HTTP Server Connections" }
+    graph_types.device.sgos_server_connections_active { "section": "network", "order": 5, "descr": "HTTP Server Connections Active" }
+    graph_types.device.sgos_server_connections_idle { "section": "network", "order": 6, "descr": "HTTP Server Connections Idle" }
+    graph_types.device.siklu_rfinterfaceOctets { "section": "wireless", "order": 5, "descr": "Traffic" }
+    graph_types.device.siklu_rfinterfaceOtherOctets { "section": "wireless", "order": 6, "descr": "Other Octets" }
+    graph_types.device.siklu_rfinterfaceOtherPkts { "section": "wireless", "order": 4, "descr": "Other Packets" }
+    graph_types.device.siklu_rfinterfacePkts { "section": "wireless", "order": 3, "descr": "Packets" }
+    graph_types.device.sonicwall_sessions { "section": "firewall", "order": 0, "descr": "Active Sessions" }
+    graph_types.device.storage { "section": "system", "order": 0, "descr": "Filesystem Usage" }
+    graph_types.device.availability { "section": "availability", "order": 0, "descr": "Device Availability" }
+    graph_types.device.sub10_sub10RadioLclAFER { "section": "wireless", "order": 4, "descr": "Radio Air Frame Error Rate" }
+    graph_types.device.sub10_sub10RadioLclDataRate { "section": "wireless", "order": 4, "descr": "Data Rate on the Airside interface" }
+    graph_types.device.sub10_sub10RadioLclLnkLoss { "section": "wireless", "order": 3, "descr": "Radio Link Loss" }
+    graph_types.device.sub10_sub10RadioLclRxPower { "section": "wireless", "order": 1, "descr": "Radio Receive Power" }
+    graph_types.device.sub10_sub10RadioLclTxPower { "section": "wireless", "order": 0, "descr": "Radio Transmit Power" }
+    graph_types.device.sub10_sub10RadioLclVectErr { "section": "wireless", "order": 3, "descr": "Radio Vector Error" }
+    graph_types.device.temperature { "section": "system", "order": 0, "descr": "temperature" }
+    graph_types.device.topvision_cmoffline { "section": "cmts", "order": 2, "descr": "Cable Modem Offline" }
+    graph_types.device.topvision_cmreg { "section": "cmts", "order": 1, "descr": "Cable Modem Registered" }
+    graph_types.device.topvision_cmtotal { "section": "cmts", "order": 0, "descr": "Cable Modem Total" }
+    graph_types.device.ubnt_airfiber_Capacity { "section": "wireless", "order": 2, "descr": "Link Capacity" }
+    graph_types.device.ubnt_airfiber_LinkDist { "section": "wireless", "order": 1, "descr": "Link Distance" }
+    graph_types.device.ubnt_airfiber_RFTotOctetsRx { "section": "wireless", "order": 6, "descr": "RF Total Octets Rx" }
+    graph_types.device.ubnt_airfiber_RFTotOctetsTx { "section": "wireless", "order": 4, "descr": "RF Total Octets Tx" }
+    graph_types.device.ubnt_airfiber_RFTotPktsRx { "section": "wireless", "order": 7, "descr": "RF Total Packets Rx" }
+    graph_types.device.ubnt_airfiber_RFTotPktsTx { "section": "wireless", "order": 5, "descr": "RF Total Packets Tx" }
+    graph_types.device.ubnt_airfiber_RadioFreqs { "section": "wireless", "order": 0, "descr": "Radio Frequencies" }
+    graph_types.device.ubnt_airfiber_RadioTemp { "section": "wireless", "order": 3, "descr": "Radio Temperatures" }
+    graph_types.device.ubnt_airfiber_RxPower { "section": "wireless", "order": 8, "descr": "Radio Rx Power" }
+    graph_types.device.ubnt_airfiber_TxPower { "section": "wireless", "order": 0, "descr": "Radio Tx Power" }
+    graph_types.device.ucd_contexts { "section": "system", "order": 0, "descr": "Context Switches" }
+    graph_types.device.ucd_cpu { "section": "system", "order": 0, "descr": "Detailed Processor Usage" }
+    graph_types.device.ucd_cpu_steal { "section": "system", "order": 0, "descr": "CPU Steal" }
+    graph_types.device.ucd_interrupts { "section": "system", "order": 0, "descr": "Interrupts" }
+    graph_types.device.ucd_io_wait { "section": "system", "order": 0, "descr": "I/0 Wait" }
+    graph_types.device.ucd_io { "section": "system", "order": 0, "descr": "System I/O Activity" }
+    graph_types.device.ucd_load { "section": "system", "order": 0, "descr": "Load Averages" }
+    graph_types.device.ucd_swap_io { "section": "system", "order": 0, "descr": "Swap I/O Activity" }
+    graph_types.device.uptime { "section": "system", "order": 0, "descr": "System Uptime" }
+    graph_types.device.vpdn_sessions_l2tp { "section": "vpdn", "order": 0, "descr": "VPDN L2TP Sessions" }
+    graph_types.device.vpdn_tunnels_l2tp { "section": "vpdn", "order": 0, "descr": "VPDN L2TP Tunnels" }
+    graph_types.device.waas_cwotfostatsactiveoptconn { "section": "graphs", "order": 0, "descr": "Optimized TCP Connections" }
+    graph_types.device.xirrus_stations { "section": "wireless", "order": 0, "descr": "Associated Stations" }
+    graph_types.device.zywall_sessions { "section": "firewall", "order": 0, "descr": "Sessions" }
+    graphite.enable false
+    graphite.host 127.0.0.1
+    graphite.port 2003
+    graphite.prefix
+    graphs.mini.normal { "day": "24 Hours", "week": "One Week", "month": "One Month", "year": "One Year" }
+    graphs.mini.widescreen { "sixhour": "6 Hours", "day": "24 Hours", "week": "One Week", "twoweek": "Two Weeks", "month": "One Month", "twomonth": "Two Months", "year": "One Year", "twoyear": "Two Years" }
+    graphs.port_speed_zoom false
+    graphs.row.normal { "sixhour": "6 Hours", "day": "24 Hours", "twoday": "48 Hours", "week": "One Week", "twoweek": "Two Weeks", "month": "One Month", "twomonth": "Two Months", "year": "One Year", "twoyear": "Two Years" }
+    graylog.base_uri
+    graylog.device-page.loglevel 7
+    graylog.device-page.rowCount 10
+    graylog.password
+    graylog.port
+    graylog.server
+    graylog.timezone
+    graylog.username
+    graylog.version
+    graylog.query.field source
+    group librenms
+    gui.network-map.style new
+    html.device.links []
+    html.device.primary_link edit
+    http_auth_header REMOTE_USER
+    html_dir /opt/librenms/html
+    http_proxy
+    https_proxy
+    icmp_check true
+    ignore_mount [ "/kern", "/mnt/cdrom", "/proc", "/dev", "/compat/linux/proc", "/compat/linux/sys" ]
+    ignore_mount_network true
+    ignore_mount_optical true
+    ignore_mount_regexp [ "/on: \\/packages/", "/on: \\/dev/", "/on: \\/proc/", "/on: \\/junos^/", "/on: \\/junos\\/dev/", "/on: \\/jail\\/dev/", "/^(dev|proc)fs/", "/^\\/dev\\/md0/", "/^\\/var\\/dhcpd\\/dev/", "/UMA/", "/^\\/Volumes\\/OS X Base System/" ]
+    ignore_mount_removable true
+    ignore_mount_string [ "packages", "devfs", "procfs", "linprocfs", "linsysfs", "UMA", "MALLOC" ]
+    ignore_unmapable_port false
+    influxdb.enable false
+    influxdb.transport http
+    influxdb.host 127.0.0.1
+    influxdb.port 8086
+    influxdb.db librenms
+    influxdb.username
+    influxdb.password
+    influxdb.timeout 0
+    influxdb.verifySSL false
+    influxdbv2.enable false
+    influxdbv2.transport http
+    influxdbv2.host 127.0.0.1
+    influxdbv2.port 8086
+    influxdbv2.bucket librenms
+    influxdbv2.organization librenms
+    influxdbv2.allow_redirects false
+    influxdbv2.token
+    install_dir /opt/librenms
+    int_core true
+    int_customers true
+    int_l2tp false
+    int_peering true
+    int_transit true
+    ipmi.type [ "lanplus", "lan", "imb", "open" ]
+    ipmi_unit { "Amps": "current", "RPM": "fanspeed", "Volts": "voltage", "Watts": "power", "degrees C": "temperature", "discrete": "", "percent": "load" }
+    ipmitool /usr/bin/ipmitool
+    irc_alert false
+    irc_alert_short false
+    irc_alert_utf8 false
+    irc_authtime 3
+    irc_chan [ "##librenms" ]
+    irc_ctcp false
+    irc_ctcp_version LibreNMS IRCbot. https://www.librenms.org/
+    irc_debug false
+    irc_external
+    irc_host
+    irc_maxretry 3
+    irc_nick LibreNMS
+    irc_pass
+    irc_port
+    leaflet.default_lat 51.48
+    leaflet.default_lng 0
+    leaflet.default_zoom 2
+    leaflet.group_radius 10
+    leaflet.tile_url {s}.tile.openstreetmap.org
+    libvirt_protocols [ "qemu+ssh", "xen+ssh" ]
+    libvirt_username
+    list_colour.even #ffffff
+    list_colour.even_alt #f9f9f9
+    list_colour.even_alt2 #f0f0f0
+    list_colour.highlight #ffcccc
+    list_colour.odd #eeeeee
+    list_colour.odd_alt #f0f0f0
+    list_colour.odd_alt2 #e3e3e3
+    location_map
+    location_map_regex
+    location_map_regex_sub
+    log_dir /opt/librenms/logs
+    log_file /opt/librenms/logs/librenms.log
+    login_message Unauthorised access or use shall render the user liable to criminal and/or civil prosecution.
+    mac_oui.enabled true
+    map.engine leaflet
+    mapael.default_map maps/world_countries.js
+    mib_dir /opt/librenms/mibs
+    mono_font DejaVuSansMono
+    mtr /usr/bin/mtr
+    mydomain
+    nagios_plugins /usr/lib/nagios/plugins
+    nets []
+    network_map_items [ "xdp", "mac" ]
+    network_map_legend { "0": "#008dca", "5": "#0092a6", "10": "#009782", "15": "#009c5f", "20": "#00a13b", "25": "#00a617", "30": "#0bad00", "35": "#2fb700", "40": "#53c100", "45": "#77cc00", "50": "#9ad600", "55": "#bee000", "60": "#e2ea00", "65": "#ead600", "70": "#e5b200", "75": "#e08e00", "80": "#db6b00", "85": "#d64700", "90": "#d12300", "95": "#cc0000", "100": "#cc0000", "di": { "border": "#cccccc", "edge": "#dddddd88", "node": "#eeeeee" }, "dn": { "border": "#ff5555", "edge": "#ff777788", "node": "#ffdddd" }, "highlight": { "border": "#ee4000", "borderWidth": 3 } }
+    network_map_show_on_worldmap false
+    network_map_vis_options { layout:{ randomSeed:2 }, "edges": { arrows: { to: {enabled: true, scaleFactor:0.5}, }, "smooth": { enabled: false }, font: { size: 14, color: "red", face: "sans", background: "white", strokeWidth:3, align: "middle", strokeWidth: 2 } }, "physics": { "barnesHut": { "gravitationalConstant": -2000, "centralGravity": 0.3, "springLength": 200, "springConstant": 0.04, "damping": 0.09, "avoidOverlap": 1 }, "forceAtlas2Based": { "gravitationalConstant": -50, "centralGravity": 0.01, "springLength": 200, "springConstant": 0.08, "damping": 0.4, "avoidOverlap": 1 }, "repulsion": { "centralGravity": 0.2, "springLength": 250, "springConstant": 0.2, "nodeDistance": 200, "damping": 0.07 }, "hierarchicalRepulsion": { "nodeDistance": 300, "centralGravity": 0.2, "springLength": 300, "springConstant": 0.2, "damping": 0.07 }, "maxVelocity": 50, "minVelocity": 0.4, "solver": "hierarchicalRepulsion", "stabilization": { "enabled": true, "iterations": 1000, "updateInterval": 100, "onlyDynamicEdges": false, "fit": true }, "timestep": 0.4, } }
+    nfdump /usr/bin/nfdump
+    nfsen_enable false
+    nfsen_rrds [ "/var/nfsen/profiles-stat/live" ]
+    nfsen_subdirlayout 1
+    nfsen_last_max 153600
+    nfsen_top_max 500
+    nfsen_top_N [ 10, 20, 50, 100, 200, 500 ]
+    nfsen_top_default 20
+    nfsen_stat_default srcip
+    nfsen_order_default packets
+    nfsen_last_default 900
+    nfsen_lasts { "300": "5 minutes", "600": "10 minutes", "900": "15 minutes", "1800": "30 minutes", "3600": "1 hour", "9600": "3 hours", "38400": "12 hours", "76800": "24 hours", "115200": "36 hours", "153600": "48 hours" }
+    nfsen_base []
+    nfsen_split_char
+    nfsen_suffix
+    nmap /usr/bin/nmap
+    no_proxy localhost,127.0.0.1,::1
+    notifications.LibreNMS https://www.librenms.org/notifications.rss
+    notifications.local misc/notifications.rss
+    old_graphs true
+    opentsdb.enable false
+    opentsdb.host 127.0.0.1
+    opentsdb.port 4242
+    os.default.over [ { "graph": "device_processor", "text": "Processor Usage" }, { "graph": "device_mempool", "text": "Memory Usage" } ]
+    os_def_cache_time 86400
+    os_group.unix.over [ { "graph": "device_processor", "text": "Processor Usage" }, { "graph": "device_mempool", "text": "Memory Usage" } ]
+    os_group.unix.processor_stacked true
+    os_group.unix.type server
+    overlib_defaults ,FGCOLOR,'#ffffff', BGCOLOR, '#e5e5e5', BORDER, 5, CELLPAD, 4, CAPCOLOR, '#555555', TEXTCOLOR, '#3e3e3e'
+    overview_show_sysDescr true
+    own_hostname localhost
+    oxidized.default_group false
+    oxidized.ignore_groups []
+    oxidized.enabled false
+    oxidized.features.versioning false
+    oxidized.group_support false
+    oxidized.ignore_os []
+    oxidized.ignore_types []
+    oxidized.maps { "os": { "os": [ { "match": "airos-af-ltu", "value": "airfiber" }, { "match": "airos-af", "value": "airfiber" }, { "match": "arista_eos", "value": "eos" }, { "match": "ciscosb", "value": "ciscosmb" }, { "match": "f5", "value": "tmos" }, { "match": "fireware", "value": "firewareos" }, { "match": "fortigate", "value": "fortios" }, { "match": "fortiswitch", "value": "fortios" }, { "match": "vyos", "value": "vyatta" }, { "match": "slms", "value": "zhoneolt" }, { "match": "oneaccess", "value": "oneos" } ] } }
+    oxidized.reload_nodes false
+    oxidized.url
+    snmptraps.eventlog unhandled
+    snmptraps.eventlog_detailed false
+    page_refresh 300
+    page_title_prefix
+    page_title_suffix LibreNMS
+    password.min_length 8
+    peering_descr [ "peering" ]
+    peeringdb.enabled false
+    percentile_value 95
+    permission.device_group.allow_dynamic false
+    php_memory_limit
+    ping /bin/ping
+    plugin_dir /opt/librenms/html/plugins
+    plugins.show_errors false
+    poller_modules.unix-agent false
+    poller_modules.core true
+    poller_modules.os true
+    poller_modules.availability true
+    poller_modules.ipmi true
+    poller_modules.sensors true
+    poller_modules.processors true
+    poller_modules.mempools true
+    poller_modules.storage true
+    poller_modules.netstats true
+    poller_modules.hr-mib true
+    poller_modules.ucd-mib true
+    poller_modules.ipSystemStats true
+    poller_modules.ports true
+    poller_modules.xdsl false
+    poller_modules.customoid true
+    poller_modules.bgp-peers true
+    poller_modules.junose-atm-vp false
+    poller_modules.printer-supplies false
+    poller_modules.ucd-diskio true
+    poller_modules.vminfo false
+    poller_modules.wifi false
+    poller_modules.wireless true
+    poller_modules.ospf true
+    poller_modules.isis false
+    poller_modules.cisco-ipsec-flow-monitor false
+    poller_modules.cisco-remote-access-monitor false
+    poller_modules.cisco-cef false
+    poller_modules.slas false
+    poller_modules.cisco-mac-accounting false
+    poller_modules.cipsec-tunnels false
+    poller_modules.cisco-ace-loadbalancer false
+    poller_modules.cisco-ace-serverfarms false
+    poller_modules.cisco-asa-firewall false
+    poller_modules.cisco-voice false
+    poller_modules.cisco-cbqos false
+    poller_modules.cisco-otv false
+    poller_modules.cisco-qfp false
+    poller_modules.cisco-vpdn false
+    poller_modules.nac false
+    poller_modules.netscaler-vsvr false
+    poller_modules.aruba-controller false
+    poller_modules.entity-physical true
+    poller_modules.entity-state false
+    poller_modules.applications true
+    poller_modules.stp true
+    poller_modules.ntp true
+    poller_modules.loadbalancers false
+    poller_modules.mef false
+    poller_modules.mpls true
+    port_descr_parser includes/port-descr-parser.inc.php
+    ports_fdb_purge 10
+    ports_nac_purge 10
+    ports_page_default details
+    ports_purge true
+    project_home https://www.librenms.org/
+    project_id librenms
+    project_issues https://community.librenms.org/c/help
+    project_name LibreNMS
+    prometheus.enable true
+    prometheus.url http://0.0.0.0:9091
+    prometheus.job librenms
+    prometheus.attach_sysname false
+    prometheus.prefix librenms
+    public_status false
+    radius.default_roles []
+    radius.enforce_roles true
+    rancid_configs []
+    rancid_ignorecomments false
+    rancid_repo_type svn
+    reporting.error false
+    reporting.dump_errors false
+    reporting.throttle 300
+    reporting.usage false
+    rewrite_if
+    rewrite_if_regexp { "/^cpu interface/": "Mgmt" }
+    routes_max_number 1000
+    route_purge 10
+    rrd.heartbeat 600
+    rrd.step 300
+    rrd_dir /opt/librenms/rrd
+    rrd_purge 0
+    rrd_rra RRA:AVERAGE:0.5:1:2016 RRA:AVERAGE:0.5:6:1440 RRA:AVERAGE:0.5:24:1440 RRA:AVERAGE:0.5:288:1440 RRA:MIN:0.5:1:2016 RRA:MIN:0.5:6:1440 RRA:MIN:0.5:24:1440 RRA:MIN:0.5:288:1440 RRA:MAX:0.5:1:2016 RRA:MAX:0.5:6:1440 RRA:MAX:0.5:24:1440 RRA:MAX:0.5:288:1440 RRA:LAST:0.5:1:2016
+    rrdcached
+    rrdgraph_def_text -c BACK#EEEEEE00 -c SHADEA#EEEEEE00 -c SHADEB#EEEEEE00 -c CANVAS#FFFFFF00 -c GRID#a5a5a5 -c MGRID#FF9999 -c FRAME#5e5e5e -c ARROW#5e5e5e
+    rrdgraph_def_text_dark -c BACK#EEEEEE00 -c SHADEA#EEEEEE00 -c SHADEB#EEEEEE00 -c CANVAS#FFFFFF00 -c GRID#292929 -c MGRID#2f343e -c FRAME#5e5e5e -c ARROW#5e5e5e
+    rrdgraph_def_text_color 000000
+    rrdgraph_def_text_color_dark bfc0c0
+    rrdgraph_real_percentile false
+    rrdtool /usr/bin/rrdtool
+    rrdtool_tune false
+    rrdtool_version 1.7.2
+    sensors.guess_limits true
+    service_poller_enabled true
+    service_poller_workers 24
+    service_poller_frequency 300
+    service_poller_down_retry 60
+    service_discovery_enabled true
+    service_discovery_workers 16
+    service_discovery_frequency 21600
+    service_services_enabled true
+    service_services_workers 8
+    service_services_frequency 300
+    service_billing_enabled true
+    service_billing_frequency 300
+    service_billing_calculate_frequency 60
+    service_alerting_enabled true
+    service_alerting_frequency 60
+    service_ping_enabled false
+    ping_rrd_step 60
+    service_update_enabled true
+    service_update_frequency 86400
+    service_loglevel INFO
+    service_master_timeout 20
+    service_watchdog_enabled false
+    sfdp /usr/bin/sfdp
+    shorthost_target_length 12
+    show_locations true
+    show_locations_dropdown true
+    show_services false
+    site_style dark
+    smokeping.pings 5
+    smokeping.probes 2
+    snmp.community [ "public" ]
+    snmp.unescape false
+    snmp.exec_timeout 1200
+    snmp.max_oid 10
+    snmp.max_repeaters 0
+    snmp.oids.no_bulk []
+    snmp.oids.unordered []
+    snmp.timeout 120
+    snmp.retries 10
+    snmp.port 161
+    snmp.transports [ "udp", "udp6", "tcp", "tcp6" ]
+    snmp.v3 [ { "authalgo": "MD5", "authlevel": "noAuthNoPriv", "authname": "root", "authpass": "", "cryptoalgo": "AES", "cryptopass": "" } ]
+    snmp.version [ "v2c", "v3", "v1" ]
+    snmpbulkwalk /usr/bin/snmpbulkwalk
+    snmpget /usr/bin/snmpget
+    snmpgetnext /usr/bin/snmpgetnext
+    snmptranslate /usr/bin/snmptranslate
+    snmpwalk /usr/bin/snmpwalk
+    sso.create_users true
+    sso.update_users true
+    sso.user_attr REMOTE_USER
+    storage_perc_warn 60
+    stylesheet css/styles.css
+    summary_errors false
+    syslog_filter [ "last message repeated", "Connection from UDP: [", "ipSystemStatsTable node ipSystemStatsOutFragOKs not implemented", "diskio.c" ]
+    syslog_purge 30
+    temp_dir /tmp
+    title_image https://i.imgur.com/Bwqdn7V.png
+    top_devices true
+    top_ports true
+    traceroute /usr/bin/traceroute
+    transit_descr [ "transit" ]
+    twofactor false
+    twofactor_lock 0
+    unix-agent-connection-time-out 10
+    unix-agent-read-time-out 10
+    unix-agent.connection-timeout 10
+    unix-agent.port 6556
+    unix-agent.read-timeout 10
+    update 1
+    update_channel master
+    uptime_warning 86400
+    user librenms
+    vertical_summary 0
+    virsh /usr/bin/virsh
+    warn.ifdown true
+    warn_colour #ffeeee
+    warn_colour_alt #ffcccc
+    web_mouseover true
+    webui.availability_map_box_size 165
+    webui.availability_map_compact false
+    webui.availability_map_sort_status false
+    webui.availability_map_use_device_groups false
+    webui.custom_css []
+    webui.default_dashboard_id 0
+    webui.dynamic_graphs false
+    webui.global_search_result_limit 8
+    webui.graph_stacked false
+    webui.graph_type svg
+    webui.min_graph_height 300
+    whois /usr/bin/whois
+    xirrus_disable_stations false
+    smokeping.integration false
+    smokeping.dir /var/lib/smokeping/rrd
+    smokeping.url 
