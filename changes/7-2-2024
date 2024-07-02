@@ -1,0 +1,15 @@
+7-2-2024 Changelog
+
+Watchtower 2.1.1
+
+Added Prometheus Pushgateway on Peter
+
+Added Prometheus exporting on LibreNMS on Peter
+
+Started scraping Prometheus Pushgateway data on Vashti
+
+Using this data added ambient temperature sensor to Grafana Dashboard
+
+Result of changes:
+
+More visibility 
