@@ -3,4 +3,4 @@
 # This query calculates traffic to and from each access point.
 # Zachary Pax 2024 for Riverland Energy Cooperative
 
-(sum by (instance) (librenms_ifInBits_rate{ifAlias="apr1", ifIndex="3", ifName="apr1", job="librenms", measurement="ports"} + librenms_ifOutBits_rate{ifAlias="apr1", ifIndex="3", ifName="apr1", job="librenms", measurement="ports"}))/1000000
+(sum by (instance) (librenms_ifInBits_rate{ifAlias=~".*apr.*", job="librenms", measurement="ports"} + librenms_ifOutBits_rate{ifAlias=~".*apr.*", job="librenms", measurement="ports"}))/1000000
