@@ -45,7 +45,7 @@ The Watchtower Stack offers a range of features:
   -  Machine learning on endpoint telemetry to forecast resource usage and detect anomalies (Ezra)
   -  Real-time uptime monitoring of critical network infrastructure (Bathesheba)
   -  Per-port and per-device network management statistics and information (Peter)
-  -  Watchtower Looking Glass - Custom dashboard to view extensive network metrics (Jehoahaz)
+  -  Watchtower Looking Glass - A custom dashboard to view extensive network metrics (Jehoahaz)
   -  Vulnerability scanning with OpenVAS/Greenbone (Jezebel)
   -  So much more!
 
