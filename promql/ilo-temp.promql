@@ -1,0 +1,6 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates exposed iLo temperature values
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+{instance="192.168.13.135", sensor_class="temperature", __name__="librenms_sensor"} * 1.8 + 32
