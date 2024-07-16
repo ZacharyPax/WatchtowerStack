@@ -1,0 +1,6 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates the amount of impressions from a printer since it has been booted
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+{__name__="librenms_sensor", instance="192.168.0.98", job="librenms", measurement="sensor", sensor_class="count", sensor_descr="Impressions-since-powered-on", sensor_index="prtMarkerPowerOnCount", sensor_type="jetdirect"}
