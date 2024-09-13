@@ -25,3 +25,10 @@ B.S. Computer Science
 
 - Providing documentation that complimented Ms. Gupta's suggestions in resolving the Wazuh FIM Registry undesired behavior in Watchtower 2.1.0 rc1
 ---
+
+Anthony Borgstrom - System Administrator - Jackson Electric Cooperative
+
+Chippewa Valley Technical College
+
+- Made many useful suggestions including the repurposing of previously-developed Grafana panel json for the decoding and analysis of SSH activity
+---
