@@ -1,0 +1,7 @@
+# Lucene query used for alerting in Grafana.
+# For full query information see Grafana alerting YAML.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+# EXTREMELY CRITICAL: Other unspecified critical alert found!
+
+rule.metadata.signature_severity:"Critical" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata AND NOT "ET EXPLOIT MS-SQL SQL Injection closing string plus line comment" AND NOT "ET EXPLOIT Possible OpenSSL HeartBleed" AND NOT "ET MALWARE Java EXE Download by Vulnerable Version"
