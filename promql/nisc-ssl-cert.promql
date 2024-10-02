@@ -1,0 +1,6 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates the remaining days of Riverland Energy Cooperative's SSL certificate
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+monitor_cert_days_remaining{monitor_name="NISC.riverlandenergy.com",monitor_type="http",monitor_url="https://nisc.riverlandenergy.com",monitor_hostname="null",monitor_port="null"}
