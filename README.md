@@ -82,7 +82,7 @@ The Watchtower Stack comprises several key virtual machines:
 
 ### Watchtower Stack 2.1.1 Data Flow
 
-![Watchtower Data Flow](https://i.imgur.com/XmbFsRE.png)
+![Watchtower Data Flow](https://i.imgur.com/pA5JO61.png)
 
 ### Watchtower Stack 2.1.1 Endpoint File Inspection Pipeline
 
