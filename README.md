@@ -64,7 +64,7 @@ The Watchtower Stack comprises several key virtual machines:
      
    - David: The main data ingest virtual machine, which contains Security Onion Console, the ELK Stack, Redis, Suricata, Zeek, Strelka, and Stenographer.
      
-   - Manasseh: An Ubuntu Server Installation that maintains extremely long-term historical data on network connections (over ten years capacity expected) and is the target for the Watchtower Data Preservation script.
+   - Manasseh: An Ubuntu Server Installation that maintains extremely long-term historical data on network connections (over ten years capacity expected) and is the target for the Watchtower Data Preservation script. The data is accessible via SFTP or a handy web UI.
      
    - Zechariah: An Ubuntu Server Installation that manages network device inventory with “Watch Your LAN”.
 
