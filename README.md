@@ -48,6 +48,7 @@ The Watchtower Stack offers a range of features:
   -  Watchtower Looking Glass - A custom dashboard to view extensive network metrics (Jehoahaz)
   -  Vulnerability scanning with OpenVAS/Greenbone (Jezebel)
   -  Protection against Wifi spoofing attacks with iwscan (Watchtower-Skynet & Vashti)
+  -  Veeam REST API Monitoring (Micah & Jehoahaz)
   -  So much more!
 
 ### Virtual Machines
