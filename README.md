@@ -81,6 +81,8 @@ The Watchtower Stack comprises several key virtual machines:
 
    - Jezebel: A Kali Linux installation running OpenVAS for vulnerability detection.
 
+   - Micah: A Rocky Linux installation used to host an InfluxDB database and scrape API metrics.
+
 ### Watchtower Stack 2.1.1 Data Flow
 
 ![Watchtower Data Flow](https://i.imgur.com/pA5JO61.png)
