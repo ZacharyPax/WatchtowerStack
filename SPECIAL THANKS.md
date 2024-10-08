@@ -32,3 +32,8 @@ Chippewa Valley Technical College
 
 - Made many useful suggestions including the repurposing of previously-developed Grafana panel json for the decoding and analysis of SSH activity
 ---
+
+Jorge De La Cruz - Senior Systems Engineer - Veeam
+
+- Created free software integrations to access data from the Veeam REST API which is vital for Watchtower's Veeam Monitoring System
+---
