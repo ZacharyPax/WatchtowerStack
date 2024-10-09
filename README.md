@@ -83,6 +83,9 @@ The Watchtower Stack comprises several key virtual machines:
 
    - Micah: A Rocky Linux installation used to host an InfluxDB database and scrape API metrics.
 
+   - Gideon: An Ubuntu Server installation that monitors infrastructure on the WAN and sends that data to Prometheus.
+
+
 ### Watchtower Stack 2.1.1 Data Flow
 
 ![Watchtower Data Flow](https://i.imgur.com/8f20oPn.png)
