@@ -2,3 +2,4 @@ Note to self:
 
 Redact tinyurl link and IP of Shared Services VPN alert before uploading revision.
 Redact MAC addresses from SSID alerting rule
+Redact door controller IP address and tinyurl link
