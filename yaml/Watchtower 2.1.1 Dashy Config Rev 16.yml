@@ -106,8 +106,7 @@ sections:
         id: 3_1487_dnsrequests
       - title: DHCP Logs
         description: Breakdown of DHCP Statistics and Logs
-        icon: >-
-          https://i0.wp.com/technogecko.net/wp-content/uploads/2016/10/DHCP-Icon.png?fit=256%2C256&ssl=1
+        icon: https://martinsblog.dk/wp-content/uploads/2020/11/dhcp.png
         url: >-
           https://wt-secure-redirect.local/kibana/app/dashboards#/view/80625c10-96dd-11ea-814e-bb515e873c2c?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))
         target: newtab
