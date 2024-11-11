@@ -1,0 +1,1486 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_VASHTI-VM",
+      "label": "Vashti-VM",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "11.3.0"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "state-timeline",
+      "name": "State timeline",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": false,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 9,
+        "x": 0,
+        "y": 0
+      },
+      "id": 7,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# <p align=\"center\"><strong>Watchtower Alma Synology Monitoring System</strong></p>\n<p align=\"center\"><em>Zachary Pax 2024 for Riverland Energy Cooperative</em></p>\n\n",
+        "mode": "markdown"
+      },
+      "pluginVersion": "11.3.0",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "1": {
+                  "color": "dark-green",
+                  "index": 0,
+                  "text": "Healthy"
+                },
+                "2": {
+                  "color": "dark-orange",
+                  "index": 1,
+                  "text": "Warning!"
+                },
+                "3": {
+                  "color": "dark-red",
+                  "index": 2,
+                  "text": "Critical!"
+                },
+                "4": {
+                  "color": "dark-red",
+                  "index": 3,
+                  "text": "BROKEN"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-1-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 1"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-2-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 2"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-3-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 3"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-4-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 4"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-5-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 5"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-6-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 6"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-7-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 7"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-8-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 8"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-9-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 9"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-10-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 10"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-11-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 11"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-12-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 12"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 15,
+        "x": 9,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "librenms_sensor{instance=\"192.168.3.186\", sensor_type=\"diskHealthStatusState\"}",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{sensor_descr}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-purple",
+                "value": null
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{__name__=\"librenms_used\", instance=\"192.168.3.186\", job=\"librenms\", measurement=\"mempool\", mempool_class=\"system\", mempool_index=\"1\", mempool_type=\"hrstorage\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "RAM Used"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{__name__=\"librenms_free\", instance=\"192.168.3.186\", job=\"librenms\", measurement=\"mempool\", mempool_class=\"system\", mempool_index=\"1\", mempool_type=\"hrstorage\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "RAM Free"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 9,
+        "x": 0,
+        "y": 3
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "librenms_used{instance=\"192.168.3.186\", mempool_class=\"system\"}",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "librenms_free{instance=\"192.168.3.186\", mempool_class=\"system\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "1": {
+                  "color": "light-blue",
+                  "index": 0,
+                  "text": "Operational"
+                },
+                "2": {
+                  "color": "dark-orange",
+                  "index": 1,
+                  "text": "Initialized"
+                },
+                "3": {
+                  "color": "dark-red",
+                  "index": 2,
+                  "text": "Not Initialized"
+                },
+                "4": {
+                  "color": "dark-red",
+                  "index": 3,
+                  "text": "Partition Errors"
+                },
+                "5": {
+                  "color": "dark-red",
+                  "index": 4,
+                  "text": "BROKEN"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-1-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 1"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-2-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 2"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-3-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 3"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-4-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 4"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-5-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 5"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-6-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 6"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-7-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 7"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-8-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 8"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-9-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 9"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-10-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 10"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-11-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 11"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-12-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 12"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 15,
+        "x": 9,
+        "y": 6
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 24
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "librenms_sensor{instance=\"192.168.3.186\", sensor_type=\"diskStatusState\"}",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{sensor_descr}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 1,
+            "barWidthFactor": 0.1,
+            "drawStyle": "line",
+            "fillOpacity": 100,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 3,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 9,
+        "x": 0,
+        "y": 7
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "right",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "librenms_1min{instance=\"192.168.3.186\", measurement=\"ucd_load\"}",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "CPU Load",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 15,
+        "x": 9,
+        "y": 12
+      },
+      "id": 6,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "librenms_sensor{instance=\"192.168.3.186\", sensor_class=\"temperature\"}+32*1.8",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{sensor_descr}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Synology Temperature Sensors",
+      "transparent": true,
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "1": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "Normal"
+                },
+                "2": {
+                  "color": "orange",
+                  "index": 1,
+                  "text": "Repairing"
+                },
+                "3": {
+                  "color": "orange",
+                  "index": 2,
+                  "text": "Migrating"
+                },
+                "4": {
+                  "color": "orange",
+                  "index": 3,
+                  "text": "Expanding"
+                },
+                "5": {
+                  "color": "orange",
+                  "index": 4,
+                  "text": "Deleting"
+                },
+                "6": {
+                  "color": "orange",
+                  "index": 5,
+                  "text": "Creating"
+                },
+                "7": {
+                  "color": "orange",
+                  "index": 6,
+                  "text": "RaidSyncing"
+                },
+                "8": {
+                  "color": "orange",
+                  "index": 7,
+                  "text": "RaidParityChecking"
+                },
+                "9": {
+                  "color": "orange",
+                  "index": 8,
+                  "text": "RaidAssembling"
+                },
+                "10": {
+                  "color": "orange",
+                  "index": 9,
+                  "text": "Canceling"
+                },
+                "11": {
+                  "color": "red",
+                  "index": 10,
+                  "text": "Degraded"
+                },
+                "12": {
+                  "color": "dark-red",
+                  "index": 11,
+                  "text": "CRITICAL"
+                },
+                "13": {
+                  "color": "orange",
+                  "index": 12,
+                  "text": "Scrubbing"
+                },
+                "14": {
+                  "color": "orange",
+                  "index": 13,
+                  "text": "RaidDeploying"
+                },
+                "15": {
+                  "color": "orange",
+                  "index": 14,
+                  "text": "RaidUnDeploying"
+                },
+                "16": {
+                  "color": "orange",
+                  "index": 15,
+                  "text": "RaidMountCache"
+                },
+                "17": {
+                  "color": "orange",
+                  "index": 16,
+                  "text": "RaidUnMountCache"
+                },
+                "18": {
+                  "color": "orange",
+                  "index": 17,
+                  "text": "Expanding"
+                },
+                "19": {
+                  "color": "orange",
+                  "index": 18,
+                  "text": "SHRToPool"
+                },
+                "20": {
+                  "color": "orange",
+                  "index": 19,
+                  "text": "SHR1toSHR2"
+                },
+                "21": {
+                  "color": "dark-red",
+                  "index": 20,
+                  "text": "Unknown"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-1-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 1"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-2-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 2"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-3-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 3"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-4-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 4"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-5-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 5"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-6-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 6"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-7-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 7"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-8-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 8"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-9-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 9"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-10-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 10"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-11-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 11"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disk-12-WD4003FFBX-68MU3N0"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Disk 12"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 9,
+        "x": 0,
+        "y": 16
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 24
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "librenms_sensor{instance=\"192.168.3.186\", sensor_type=\"raidStatusState\"}",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{sensor_descr}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "RAID Status",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "1": {
+                  "color": "#07c182",
+                  "index": 0,
+                  "text": "Good"
+                },
+                "2": {
+                  "color": "dark-red",
+                  "index": 1,
+                  "text": "Failed"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "FAN---CPU"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "CPU Fan"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{__name__=\"librenms_sensor\", instance=\"192.168.3.186\", job=\"librenms\", measurement=\"sensor\", sensor_class=\"state\", sensor_descr=\"FAN---System\", sensor_index=\"0\", sensor_type=\"systemFanStatusState\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "System Fan"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "{__name__=\"librenms_sensor\", instance=\"192.168.3.186\", job=\"librenms\", measurement=\"sensor\", sensor_class=\"state\", sensor_descr=\"Power\", sensor_index=\"0\", sensor_type=\"powerStatusState\"}"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Power Supply"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 9,
+        "x": 0,
+        "y": 20
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 24
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "librenms_sensor{instance=\"192.168.3.186\", sensor_type=\"cpuFanStatusState\"}",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{sensor_descr}}",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "librenms_sensor{instance=\"192.168.3.186\", sensor_type=\"systemFanStatusState\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "librenms_sensor{instance=\"192.168.3.186\", sensor_type=\"powerStatusState\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#059595",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 300
+              }
+            ]
+          },
+          "unit": "seconds"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 5,
+        "x": 0,
+        "y": 24
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "librenms_poller{instance=\"192.168.3.186\", module=\"ALL\"}",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Watchtower Scraping Time",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_VASHTI-VM}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#673ef3b3",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 300
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 5,
+        "y": 24
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_VASHTI-VM}"
+          },
+          "editorMode": "code",
+          "expr": "monitor_response_time{monitor_name=\"Alma Synology\"}",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Latency from Arcadia",
+      "transparent": true,
+      "type": "stat"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 40,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Watchtower Synology Monitoring System",
+  "uid": "de3mwmw8o1g5cb",
+  "version": 15,
+  "weekStart": ""
+}
