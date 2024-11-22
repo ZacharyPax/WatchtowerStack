@@ -1,0 +1,7 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates the amount of time a Synology CPU is executing a certain task by monitoring the rate that the total execution time per task changes over a 15 minute period.
+# LibreNMS SNMP to Pushgateway to Prometheus
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+rate({job="librenms", instance="SYNOLOGY-IP", measurement="ucd_cpu", __name__="librenms_value"}[15m])
