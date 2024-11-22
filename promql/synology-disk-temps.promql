@@ -1,0 +1,6 @@
+# Prometheus Query Language Query
+# Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
+# This query calculates the disk temperatures on a Synology NAS after it's SNMP data has been scraped by LibreNMS and exported to Pushgateway.
+# Zachary Pax 2024 for Riverland Energy Cooperative
+
+librenms_sensor{instance="SYNOLOGY-IP", sensor_class="temperature", sensor_descr=~"Disk.*"}*1.8+32
