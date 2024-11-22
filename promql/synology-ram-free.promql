@@ -1,6 +1,6 @@
 # Prometheus Query Language Query
 # Used for alerting/dashboard purposes in Grafana or in the Prometheus Database directly on Vashti
-# This query calculates the the amount of free system RAM on a Synology NAS after it's SNMP data has been scraped by LibreNMS and exported to Pushgateway.
+# This query calculates the amount of free system RAM on a Synology NAS after it's SNMP data has been scraped by LibreNMS and exported to Pushgateway.
 # Zachary Pax 2024 for Riverland Energy Cooperative
 
 (4000000000-librenms_used{instance="SYNOLOGY-IP", mempool_class="system"})/4000000000
