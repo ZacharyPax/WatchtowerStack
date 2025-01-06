@@ -1,0 +1,7 @@
+# Lucene query used for alerting in Grafana.
+# For full query information see Grafana alerting YAML.
+# Zachary Pax 2025 for Riverland Energy Cooperative
+
+# Possible Unauthorized Online File Sharing
+
+"ET FILE_SHARING" AND NOT soc.fields.requestMethod:GET AND NOT event.action:"Searching Elasticsearch" AND data_stream.dataset:suricata
