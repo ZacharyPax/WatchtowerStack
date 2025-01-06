@@ -1,0 +1,7 @@
+# Lucene query used for alerting in Grafana.
+# For full query information see Grafana alerting YAML.
+# Zachary Pax 2025 for Riverland Energy Cooperative
+
+# CRITICAL: CONNECTION TO NORTH KOREA DETECTED
+
+destination.geo.country_name:"North Korea" 
