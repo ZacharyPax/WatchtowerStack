@@ -20,7 +20,7 @@ echo "|   Removing files from holding cell...                                |"
 rm ~/Watchtower-Reporting/Holding-Cell/*
 echo "|   Preparing log...                                                   |"
 echo ------------------------------------------------------------------------
-/usr/bin/python3 ./trace-summary -b -n 75 -c ~/Watchtower-Reporting/WatchtowerDPIDailyLog.log
+/usr/bin/python3 ~/Watchtower-Reporting/trace-summary -b -n 75 -c ~/Watchtower-Reporting/WatchtowerDPIDailyLog.log
 echo ------------------------------------------------------------------------
 echo -   Cleaning up...   -
 rm WatchtowerDPIDailyLog.log
