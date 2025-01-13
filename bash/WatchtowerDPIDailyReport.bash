@@ -15,12 +15,12 @@ cp ~/Watchtower-Forensic-Datastore/$thedayiwant/conn.* ~/Watchtower-Reporting/Ho
 echo "|   Extracting GNU-zip compressed logs and deleting archives...        |"
 gunzip ~/Watchtower-Reporting/Holding-Cell/*
 echo "|   Concatenating all copied logs...                                   |"
-cat ~/Watchtower-Reporting/Holding-Cell/*.log > WatchtowerDPIDailyLog.log
+cat ~/Watchtower-Reporting/Holding-Cell/*.log > /home/notroot/Watchtower-Reporting/WatchtowerDPIDailyLog.log
 echo "|   Removing files from holding cell...                                |"
 rm ~/Watchtower-Reporting/Holding-Cell/*
 echo "|   Preparing log...                                                   |"
 echo ------------------------------------------------------------------------
-/usr/bin/python3 ~/Watchtower-Reporting/trace-summary -b -n 75 -c ~/Watchtower-Reporting/WatchtowerDPIDailyLog.log
+sudo -u notroot /usr/bin/python3 /home/notroot/Watchtower-Reporting/trace-summary -b -n 75 -c /home/notroot/Watchtower-Reporting/WatchtowerDPIDailyLog.log
 echo ------------------------------------------------------------------------
 echo -   Cleaning up...   -
 rm WatchtowerDPIDailyLog.log
