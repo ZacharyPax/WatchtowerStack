@@ -2039,7 +2039,7 @@ groups:
                 metrics:
                     - id: "1"
                       type: count
-                query: tags:smb* AND NOT source.ip:192.168.0.9 AND NOT source.ip:192.168.0.10 AND NOT destination.ip:192.168.0.9 AND NOT destination.ip:192.168.0.10 AND NOT destination.ip:192.168.0.16 AND NOT destination.ip:192.168.3.185 AND NOT source.ip:192.168.0.48 AND NOT destination.ip:192.168.0.48 AND NOT source.ip:192.168.0.8 AND NOT destination.ip:192.168.3.122 AND NOT source.ip:192.168.0.88 AND NOT destination.ip:192.168.3.186
+                query: tags:smb* AND NOT source.ip:192.168.0.9 AND NOT source.ip:192.168.0.10 AND NOT destination.ip:192.168.0.9 AND NOT destination.ip:192.168.0.10 AND NOT destination.ip:192.168.0.16 AND NOT destination.ip:192.168.3.185 AND NOT source.ip:192.168.0.48 AND NOT destination.ip:192.168.0.48 AND NOT source.ip:192.168.0.8 AND NOT destination.ip:192.168.3.122 AND NOT source.ip:192.168.0.88 AND NOT destination.ip:192.168.3.186 AND NOT destination.ip:192.168.0.149
                 refId: A
                 timeField: '@timestamp'
             - refId: B
