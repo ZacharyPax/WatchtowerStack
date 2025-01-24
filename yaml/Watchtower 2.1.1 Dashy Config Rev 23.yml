@@ -1,0 +1,334 @@
+appConfig:
+  theme: dashy-docs
+  layout: auto
+  iconSize: large
+  language: en
+pageInfo:
+  title: Watchtower Stack Home
+  description: The shrewd one sees the danger and conceals himself
+  navLinks: []
+  footerText: Zachary Pax - 2024
+sections:
+  - name: Core Watchtower Services
+    icon: ''
+    items:
+      - title: Security Onion
+        description: Network intrusion detection and monitoring
+        icon: >-
+          https://styles.redditmedia.com/t5_2vu7f/styles/communityIcon_e71fu00lz8c51.png?width=256&s=ea504d2c214811bbe3168072817d6e00822a4ebb
+        url: https://wt-secure-redirect.local
+        target: newtab
+        id: 0_2357_securityonion
+      - title: Wazuh
+        description: Endpoint telemetry and package management
+        icon: https://avatars2.githubusercontent.com/u/13752566?v=3&s=400
+        url: https://wazuh.local
+        id: 1_2357_wazuh
+      - title: All Watchtower Dashboards
+        description: View all Watchtower Dashboards in Grafana
+        icon: >-
+          https://cdn.icon-icons.com/icons2/2699/PNG/512/grafana_logo_icon_171048.png
+        url: http://status.local/dashboards
+        target: newtab
+        id: 2_2357_allwatchtowerdashboards
+      - title: Prometheus Database
+        description: Prometheus Database running on Vashti
+        icon: >-
+          https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Prometheus_software_logo.svg/2066px-Prometheus_software_logo.svg.png
+        url: http://prometheus.infra.wt.local:9090/
+        id: 3_2357_prometheusdatabase
+      - title: Elasticsearch Database
+        description: Elasticsearch Database running on David (Network Events)
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/elasticsearch-logo-png-transparent.png
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))&_a=(columns:!(),filters:!(),hideChart:!f,index:'logs-*',interval:auto,query:(language:kuery,query:''),sort:!(!('@timestamp',desc)))
+        id: 4_2357_elasticsearchdatabase
+      - title: Opensearch Database
+        description: Opensearch Database running on Hezekiah (Endpoint Telemetry)
+        icon: >-
+          https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fadmin.cloud.service.gov.uk%2Fassets%2Ffcce90f60ec4408f94d4.opensearch.png&f=1&nofb=1&ipt=7dfd8d3d96e27234ee5ffcf1e4135a99a8ec027e92d8a116f99dafab7699ffd1&ipo=images
+        url: >-
+          https://wazuh.local/app/discover#/?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-24h,to:now))&_a=(columns:!(_source),filters:!(),index:'wazuh-alerts-*',interval:auto,query:(language:kuery,query:''),sort:!())
+        id: 5_2357_opensearchdatabase
+      - title: Proxmox Hypervisor
+        description: Watchtower's Hypervisor "Adam"
+        icon: https://avatars.githubusercontent.com/u/2678585?s=280&v=4
+        url: https://infra.wt.local:8006/
+        id: 6_2357_proxmoxhypervisor
+      - title: Proxmox RAID0 PBS
+        description: RAID0 Proxmox Backup Server
+        icon: https://avatars.githubusercontent.com/u/2678585?s=280&v=4
+        url: https://pbs-data.storage.wt.local:8007/
+        id: 7_2357_proxmoxraidpbs
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+  - name: Core Monitoring
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: RDP Connections
+        description: RDP Connection Log
+        icon: https://i.imgur.com/rFAb8qV.png
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/dashboards#/view/5b743150-75c5-11ea-9565-7315f4ee5cac?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))
+        target: newtab
+        id: 0_1487_rdpconnections
+      - title: SSH Connections
+        description: SSH Connection Log
+        icon: >-
+          https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/PuTTY_Icon.svg/2048px-PuTTY_Icon.svg.png
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/dashboards#/view/9dfd77e0-75eb-11ea-9565-7315f4ee5cac?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))
+        target: newtab
+        id: 1_1487_sshconnections
+      - title: FTP Connections
+        description: FTP Connection Log
+        icon: https://upload.wikimedia.org/wikipedia/commons/4/4f/WinSCP_6_Logo.png
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/dashboards#/view/739bfad0-755a-11ea-9565-7315f4ee5cac?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))
+        target: newtab
+        id: 2_1487_ftpconnections
+      - title: DNS Requests
+        description: Breakdown of DNS Statistics and Logs
+        icon: https://www.pngkey.com/png/full/787-7875831_dns-logo.png
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/dashboards#/view/55ac6bf0-6ec4-11ea-9266-1fd14ca6af34?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))
+        target: newtab
+        id: 3_1487_dnsrequests
+      - title: DHCP Logs
+        description: Breakdown of DHCP Statistics and Logs
+        icon: https://martinsblog.dk/wp-content/uploads/2020/11/dhcp.png
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/dashboards#/view/80625c10-96dd-11ea-814e-bb515e873c2c?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))
+        target: newtab
+        id: 4_1487_dhcplogs
+      - title: HTTP Connections
+        description: HTTP Connection Log
+        icon: https://cdn-icons-png.flaticon.com/512/3165/3165065.png
+        url: >-
+          https://wt-secure-redirect.local/kibana/app/dashboards#/view/44e9c820-6eb1-11ea-9266-1fd14ca6af34?_g=(filters:!(),refreshInterval:(pause:!t,value:60000),time:(from:now-24h,to:now))
+        id: 5_1487_httpconnections
+      - title: Security Onion Health
+        description: Security Onion Server Health Information
+        icon: https://assets.zabbix.com/img/brands/influxdb.svg
+        url: >-
+          https://wt-secure-redirect.local/influxdb/orgs/88c85e36b49a7c09/dashboards/0c16886984750000?lower=now%28%29+-+3h
+        target: newtab
+        id: 6_1487_securityonionhealth
+      - title: Software Installation Events
+        description: Endpoint Telemetry of Software Installation Events
+        icon: >-
+          https://icon-library.com/images/windows-installer-icon/windows-installer-icon-18.jpg
+        url: >-
+          https://wazuh.local/app/dashboards#/view/445c84a0-cf3e-11ee-a46a-ab0060fd2640?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-7d,to:now))&_a=(description:'Dashboard%20Highlighting%20Software%20Installation%20Events',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:'Watchtower%20Software%20Installation%20Events%20Dashboard',viewMode:view)
+        target: newtab
+        id: 7_1487_softwareinstallationevents
+      - title: Downloaded Files VT API
+        description: VirusTotal API Results for Downloaded Files on our Endpoints
+        icon: >-
+          https://cdn.icon-icons.com/icons2/2699/PNG/512/virustotal_logo_icon_171247.png
+        url: >-
+          https://wazuh.local/app/dashboards#/view/5518f570-d197-11ee-b1e1-4b96e09d13bd?_g=(filters:!(),refreshInterval:(pause:!t,value:0),time:(from:now-24h,to:now))&_a=(description:'Contains%20what%20files%20were%20scanned%20by%20VirusTotal,%20what%20time%20they%20were%20scanned,%20and%20whether%20or%20not%20they%20were%20detected%20as%20malicious.',filters:!(),fullScreenMode:!f,options:(hidePanelTitles:!f,useMargins:!t),query:(language:kuery,query:''),timeRestore:!f,title:'VirusTotal%20Downloaded%20File%20Analytics',viewMode:view)
+        target: newtab
+        id: 8_1487_downloadedfilesvtapi
+      - title: Real-time DNS Cloud
+        description: Access real-time DNS data
+        icon: https://www.pngkey.com/png/full/787-7875831_dns-logo.png
+        url: >-
+          https://david.vm.wt.local/kibana/app/dashboards#/view/ba532871-240a-4927-88c2-8c5526609e39?embed=true&_g=(filters:!(),refreshInterval:(pause:!f,value:2000),time:(from:now-60s,to:now))
+        target: newtab
+        id: 9_1487_realtimednscloud
+  - name: Consoles
+    icon: ''
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Lazarus Console
+        description: lazarus.vm.wt.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: https://infra.wt.local:8006/#v1:0:=qemu%2F108:4:=jsconsole::::8::2
+        id: 0_838_lazarusconsole
+      - title: Ruth Console
+        description: ruth.external.vm.wt.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: >-
+          https://delilah.external.wt.local:8006/#v1:0:=qemu%2F100:4:=jsconsole::::8::2
+        id: 1_838_ruthconsole
+      - title: David Console
+        description: david.vm.wt.local
+        icon: https://clickcg.co/files/oracle-linux.png
+        url: >-
+          https://infra.wt.local:8006/#v1:0:=qemu%2F100:4:5:=contentBackup:::8::21
+        id: 2_838_davidconsole
+      - title: Hezekiah Console
+        description: hezekiah.vm.wt.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: >-
+          https://infra.wt.local:8006/#v1:0:=qemu%2F101:4:5:=contentBackup:::8::21
+        id: 3_838_hezekiahconsole
+      - title: Jehoahaz Console
+        description: jehoahaz.vm.wt.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: >-
+          https://infra.wt.local:8006/#v1:0:=qemu%2F102:4:5:=contentBackup:::8::21
+        id: 4_838_jehoahazconsole
+      - title: Vashti Console
+        description: vashti.vm.wt.local
+        icon: https://www.1kosmos.com/wp-content/uploads/2021/07/Windows_logo.png
+        url: >-
+          https://infra.wt.local:8006/#v1:0:=qemu%2F103:4:=jsconsole:=contentBackup:::8::5
+        id: 5_838_vashticonsole
+      - title: Manasseh Console
+        description: manasseh.vm.wt.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: >-
+          https://infra.wt.local:8006/#v1:0:=qemu%2F106:4:=jsconsole:=contentBackup:::8::5
+        id: 6_838_manassehconsole
+      - title: Korah Console
+        description: korah.vm.wt.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: >-
+          https://infra.wt.local:8006/#v1:0:=qemu%2F105:4:=jsconsole:=contentBackup:::8::5
+        id: 7_838_korahconsole
+      - title: Zechariah Console
+        description: zechariah.external.vm.wt.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: 'https://joshua.external.wt.local:8006/#v1:0:=qemu%2F100:4:::::8::'
+        id: 8_838_zechariahconsole
+      - title: Bathsheba Console
+        description: bathsheba.vm.wt.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: 'https://infra.wt.local:8006/#v1:0:=qemu%2F111:4:::::8::'
+        target: newtab
+        id: 9_838_bathshebaconsole
+      - title: Micah Console
+        description: micah.vm.wt.local
+        icon: >-
+          https://www.debugpoint.com/wp-content/uploads/2020/12/rockylogodebugpoint-1.png
+        url: 'https://infra.wt.local:8006/#v1:0:=qemu%2F112:4:::::8::'
+        target: newtab
+        id: 10_838_micahconsole
+      - title: Gideon Console
+        description: gideon.vm.wt.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: 'https://infra.wt.local:8006/#v1:0:=qemu%2F107:4:5:=contentBackup:::8::'
+        target: newtab
+        id: 11_838_gideonconsole
+      - title: Jezebel Console
+        description: jezebel.vm.wt.local
+        icon: >-
+          https://cdn.freelogovectors.net/wp-content/uploads/2021/12/kali-logo-freelogovectors.net_.png
+        url: 'https://infra.wt.local:8006/#v1:0:=qemu%2F104:4:::::8::'
+        target: newtab
+        id: 12_838_jezebelconsole
+      - title: Peter Console
+        description: peter.vm.wt.local
+        icon: >-
+          https://cdn.freebiesupply.com/logos/large/2x/ubuntu-4-logo-png-transparent.png
+        url: 'https://infra.wt.local:8006/#v1:0:=qemu%2F109:4:::::8::'
+        target: newtab
+        id: 13_838_peterconsole
+  - name: Documentation/Status
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
+      hideForGuests: false
+    items:
+      - title: Pi-hole
+        description: Pi-hole DNS Server
+        icon: >-
+          https://home.apeconsulting.co.uk/adrian/wp-content/uploads/sites/2/2020/01/1200px-Pi-hole_vector_logo.svg_-695x1024.png
+        url: http://192.168.0.6/admin/dns_records.php
+        target: newtab
+        id: 0_2061_pihole
+      - title: Watchtower Observatory
+        description: High level overviews of important traffic
+        icon: >-
+          https://clipart-library.com/new_gallery/1021998_all-seeing-eye-pyramid-png.png
+        url: >-
+          http://observatory.local/watchtower-data-aggregation/data-aggregation.html
+        target: newtab
+        id: 1_2061_watchtowerobservatory
+      - title: Network Inventory
+        description: Inventory of Network Devices
+        icon: >-
+          https://raw.githubusercontent.com/aceberg/WatchYourLAN/main/assets/logo.png
+        url: http://inventory.local
+        target: newtab
+        id: 2_2061_networkinventory
+      - title: Phone Inventory
+        description: Inventory of VoIP Phones on VLAN 3
+        icon: >-
+          https://d29fhpw069ctt2.cloudfront.net/clipart/118688/preview/VOIP-Desk-Phone_preview_10ed.png
+        url: http://phones.local
+        target: newtab
+        id: 3_2061_phoneinventory
+      - title: Watchtower Orchestration
+        description: Watchtower Health
+        icon: https://art.pixilart.com/044a0125e255154.png
+        url: http://wt-status.local
+        target: newtab
+        id: 4_2061_watchtowerorchestration
+      - title: Riverland Infrastructure Status
+        description: Health of Riverland's Critical Infrastructure
+        icon: https://art.pixilart.com/044a0125e255154.png
+        url: http://lan.local/status/wt-rec-lan
+        target: newtab
+        id: 5_2061_riverlandinfrastructurestatus
+      - title: SNMP Polling
+        description: Network Management Data for Meraki Infrastructure
+        icon: https://avatars.githubusercontent.com/u/5791783
+        url: >-
+          http://secure-intraroute-71mini.watchtower-internal-infrastructure.wt.local
+        target: newtab
+        id: 6_2061_snmppolling
+      - title: Collector Modem Status
+        description: Health of Riverland's Collector Modems
+        icon: https://www.pngall.com/wp-content/uploads/2016/06/Nyan-Cat.png
+        url: http://collectors.infra.wt.local
+        target: newtab
+        id: 7_2061_collectormodemstatus
+      - title: Watchtower Forensic
+        description: Access and Download Watchtower Forensic Data
+        icon: >-
+          https://images.onlinelabels.com/images/clip-art/TikiGawd/Fingerprint-278214.png
+        url: http://forensic-data.infra.wt.local:8080
+        target: newtab
+        id: 8_2061_watchtowerforensic
+      - title: Watchtower Tour de France
+        description: Access many Watchtower Dashboards on a Playlist
+        icon: https://pngimg.com/uploads/tour_de_france/tour_de_france_PNG7.png
+        url: >-
+          http://status.local/playlists/play/be0jsv14i9k3kb?kiosk&_dash.hideTimePicker&_dash.hideVariables
+        target: newtab
+        id: 9_2061_watchtowertourdefrance
+      - title: Arcadia Network Map
+        description: Map of Arcadia's Network Infrastructure with Metrics
+        icon: https://clipart-library.com/2023/roadmap-clipart-sm.png
+        url: http://peter.vm.wt.local/maps/custom/2?bare=yes
+        target: newtab
+        id: 10_2061_arcadianetworkmap
