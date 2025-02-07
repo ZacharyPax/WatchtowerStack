@@ -31,6 +31,7 @@ Anthony Borgstrom - System Administrator - Jackson Electric Cooperative
 Chippewa Valley Technical College
 
 - Made many useful suggestions including the repurposing of previously-developed Grafana panel json for the decoding and analysis of SSH activity
+- Donated old computers for use in the Watchtower Stack Proxmox cluster
 ---
 
 Jorge De La Cruz - Senior Systems Engineer - Veeam
