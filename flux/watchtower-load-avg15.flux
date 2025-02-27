@@ -1,0 +1,6 @@
+from(bucket: "watchtowersystem")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "cpustat")
+  |> filter(fn: (r) => r["_field"] == "avg15")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
