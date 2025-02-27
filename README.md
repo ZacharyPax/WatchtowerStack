@@ -79,9 +79,9 @@ The Watchtower Stack comprises several key virtual machines:
 
    - Peter: An Ubuntu Server installation that scrapes SNMP data from network devices with LibreNMS.
 
-   - Jezebel: A Kali Linux installation running OpenVAS for vulnerability detection.
+   - Jezebel: A Kali GNU/Linux installation running OpenVAS for vulnerability detection.
 
-   - Micah: A Rocky Linux installation used to host an InfluxDB database and scrape API metrics.
+   - Micah: A Rocky GNU/Linux installation used to host an InfluxDB database and scrape API metrics.
 
    - Gideon: An Ubuntu Server installation that monitors infrastructure on the WAN and sends that data to Prometheus.
 
