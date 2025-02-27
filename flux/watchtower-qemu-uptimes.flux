@@ -1,0 +1,8 @@
+from(bucket: "watchtowersystem")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "system")
+  |> filter(fn: (r) => r["_field"] == "uptime")
+  |> filter(fn: (r) => r["object"] == "qemu")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> map(fn: (r) => ({ r with _value: float(v: r._value) * 1000.0 }))
+  |> yield(name: "mean")
