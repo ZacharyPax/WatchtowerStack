@@ -1,5 +1,17 @@
 #!/bin/bash
 
+STOPSPAM="/tmp/nisc-timeout.lock"
+if [ -e "$STOPSPAM" ]; then
+    echo "NISC 45 minute timeout is in progress..."
+    exit 1
+fi
+
+touch "$STOPSPAM"
+
+cleanup() {
+    rm -f "$STOPSPAM"
+}
+
 URL="http://NISC-IP/xymon/nongreen.html"
 
 wget -q -O /tmp/nongreen.html "$URL"
