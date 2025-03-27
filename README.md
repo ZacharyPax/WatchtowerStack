@@ -55,7 +55,7 @@ The Watchtower Stack offers a range of features:
 
 The Watchtower Stack comprises several key virtual machines:
 
-   - Vashti: Houses the Prometheus Database, which collects real-time information from mission-critical servers, including RAM, CPU, Network, Disk, Windows Services, and more. It also contains HTTPd for piping data into Elasticsearch and Blackbox for Prometheus.
+   - Vashti: Houses the Prometheus Database, which collects real-time information from mission-critical servers, including RAM, CPU, Network, Disk, Windows Services, and more. It also contains HTTPd for piping data into Elasticsearch.
      
    - Jehoahaz: Contains Grafana for alerting, which allows the creation of custom alerts from Prometheus and Elastic and sends alerts to Discord, Teams, email, and more.
      
