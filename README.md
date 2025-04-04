@@ -42,7 +42,7 @@ The Watchtower Stack offers a range of features:
   -  A global dashboard to monitor network and system status from all data ingest points via Grafana (Jehoahaz)
   -  A simple HTML interface to inventory all network devices (Zechariah/Ruth)
   -  An elaborate status monitoring system to ensure both frontend and backend elements of the stack are operational (Lazarus)
-  -  Machine learning on endpoint telemetry to forecast resource usage and detect anomalies (Ezra)
+  -  Machine learning on endpoint telemetry to forecast resource usage and detect anomalies (Watchtower-WINE)
   -  Real-time uptime monitoring of critical network infrastructure (Bathesheba)
   -  Per-port and per-device network management statistics and information (Peter)
   -  Watchtower Looking Glass - A custom dashboard to view extensive network metrics (Jehoahaz)
@@ -55,9 +55,9 @@ The Watchtower Stack offers a range of features:
 
 The Watchtower Stack comprises several key virtual machines:
 
-   - Vashti: Houses the Prometheus Database, which collects real-time information from mission-critical servers, including RAM, CPU, Network, Disk, Windows Services, and more. It also contains HTTPd for piping data into Elasticsearch.
+   - Vashti: Houses the Prometheus Database, which collects real-time information from mission-critical servers, including RAM, CPU, Network, Disk, Windows Services, and more. This virtual machine also runs Apache for piping data into Elasticsearch via Watchtower Observatory and Watchtower Sankey Generator.
      
-   - Jehoahaz: Contains Grafana for alerting, which allows the creation of custom alerts from Prometheus and Elastic and sends alerts to Discord, Teams, email, and more.
+   - Jehoahaz: Contains Grafana for alerting, which allows the creation of custom alerts from Prometheus and Elastic and sends alerts to Discord, Teams, email, and more. The "single pane of glass" for all main Watchtower databases.
      
    - Hezekiah: Houses the Wazuh Stack, which monitors endpoint events. Custom rules allow for monitoring directories, file tampering, etc. Alerts to email and SMS via email-to-SMS relay services. Wazuh FIM facilitates VirusTotal cryptographic hash inspection on non-whitelisted downloaded files. It also contains Postfix to integrate with Microsoft 365.
      
@@ -73,15 +73,15 @@ The Watchtower Stack comprises several key virtual machines:
 
    - Lazarus: An Ubuntu Server Installation that does Internal Watchtower Stack status monitoring, orchestration, and alerting.
      
-   - Ezra: Provides machine learning analysis for Prometheus Data to detect anomalies.
+   - Watchtower-WINE: Provides machine learning analysis for Prometheus Data to detect anomalies.
      
    - Bathsheba: An Ubuntu Server installation that does LAN infrastructure monitoring and uptime calculations.
 
-   - Peter: An Ubuntu Server installation that scrapes SNMP data from network devices with LibreNMS.
-
+   - Peter: An Ubuntu Server installation that scrapes SNMP data from network devices with LibreNMS. This data is then exposed to Prometheus Pushgateway for scraping by the Prometheus database.
+     
    - Jezebel: A Kali GNU/Linux installation running OpenVAS for vulnerability detection.
 
-   - Micah: A Rocky GNU/Linux installation used to host an InfluxDB database and scrape API metrics.
+   - Micah: A Rocky GNU/Linux installation used to host an InfluxDB database and scrape API metrics. This data is then piped into Grafana.
 
    - Gideon: An Ubuntu Server installation that monitors infrastructure on the WAN and sends that data to Prometheus.
 
