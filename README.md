@@ -57,7 +57,7 @@ The Watchtower Stack comprises several key virtual machines:
 
    - Vashti: Houses the Prometheus Database, which collects real-time information from mission-critical servers, including RAM, CPU, Network, Disk, Windows Services, and more. This virtual machine also runs Apache for piping data into Elasticsearch via Watchtower Observatory and Watchtower Sankey Generator.
      
-   - Jehoahaz: Contains Grafana for alerting, which allows the creation of custom alerts from Prometheus and Elastic and sends alerts to Discord, Teams, email, and more. The "single pane of glass" for all main Watchtower databases.
+   - Jehoahaz: Contains Grafana for alerting, which allows the creation of custom alerts from Prometheus, Elasticsearch, and InfluxDB and sends alerts to Discord, Teams, email, and more. This is the "single pane of glass" for all main Watchtower databases.
      
    - Hezekiah: Houses the Wazuh Stack, which monitors endpoint events. Custom rules allow for monitoring directories, file tampering, etc. Alerts to email and SMS via email-to-SMS relay services. Wazuh FIM facilitates VirusTotal cryptographic hash inspection on non-whitelisted downloaded files. It also contains Postfix to integrate with Microsoft 365.
      
